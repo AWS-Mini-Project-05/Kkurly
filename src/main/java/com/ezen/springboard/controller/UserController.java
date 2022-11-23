@@ -79,4 +79,10 @@ public class UserController {
 		
 		return check;
 	}
+	//관리자 페이지 체크용 임시파일
+	@GetMapping("/createProduct.do")
+	public String createProduct() {
+	
+		return "admin/createProduct";
+	}
 }
