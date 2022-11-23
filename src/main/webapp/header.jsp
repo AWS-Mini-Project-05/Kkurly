@@ -57,6 +57,10 @@
             <li>
                <a href="/user/join.do">회원가입</a>
             </li>
+            <li>
+            	<a href="/cart/cart.do">장바구니</a>
+            </li>
+            
          </ul>
       </nav>
    </header>
