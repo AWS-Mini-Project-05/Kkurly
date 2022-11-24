@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+	<jsp:include page="./mainHeader.jsp"></jsp:include>
 <body>
-	<jsp:include page="./header.jsp"></jsp:include>
 	
 	<div style="text-align: center;">
 		<h1>게시판 홈</h1>
