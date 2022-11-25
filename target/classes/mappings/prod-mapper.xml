@@ -9,4 +9,33 @@
 		SELECT COUNT(*) FROM T_PROD WHERE PROD_NM = #{prodNm}
 	</select>
 	
+	<!-- 리스트 체크 -->
+	<select id="searchProduct" resultType="prod">
+	SELECT * FROM T_PROD
+	</select>
+	
+ 	<insert id="prodInsert" parameterType="prod">
+	INSERT INTO T_PROD(
+	PROD_NO,
+	PROD_CgCd,
+	PROD_NM,
+	PROD_PRICE,
+	PROD_QTY,
+	INPUT_DT,
+	PROD_UNIT,
+	PROD_VOL,
+	USE_YN,
+	SALE_Qty
+	)VALUES(	
+	(SELECT IFNULL(MAX(A.PROD_NO), 0) + 1 FROM T_PROD A),
+	'22220',
+	#{prodNm},
+	#{prodPrice},
+	#{prodQty},
+	NOW(),
+	#{prodUnit},
+	#{prodVol},
+	'Y',
+	0)
+	</insert> 
 </mapper>

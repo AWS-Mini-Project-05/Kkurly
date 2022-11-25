@@ -1,7 +1,10 @@
 package com.ezen.springboard.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +19,25 @@ import com.ezen.springboard.service.product.ProductService;
 public class ProductController {
 	@Autowired
 	private ProductService prodService;
+	
+	//페이지만 이동하는 로직
+	@RequestMapping("/searchProduct.do")
+	public String searchProduct(Model model) {
+		List<ProdVO> prodList = prodService.searchProduct();
+		
+		model.addAttribute("prodList", prodList);
+		return "admin/searchProduct";
+	}
+	//관리자 페이지 체크용 임시파일
+	@GetMapping("/createProduct.do")
+	public String createProduct() {
+	
+		return "admin/createProduct";
+	}
+	
+	
+	
+	
 
 	
 	//post 방식은 해당 로직 처리
@@ -31,10 +53,10 @@ public class ProductController {
 		return check;
 	}
 	//새 상품 등록
-//	@PostMapping("/prodInsert.do")
-//	public String prodInsert() {
-//	prodService.prodInsert();
-//		
-//	return "admin/createProduct";
-//	}
+	@PostMapping("/prodInsert.do")
+	public String prodInsert(ProdVO prodVO) {
+	prodService.prodInsert(prodVO);
+		
+	return "admin/createProduct";
+	}
 }

@@ -5,19 +5,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품 정보 편집</title>
+<title>상품 등록</title>
 <script src="${pageContext.request.contextPath }/js/jquery-3.6.1.min.js"></script>
 <style>
-	#body{margin-left: 30px}
 
-   #container2, #container3,#container0{width: 1300px; background-color: lightpink;
-    
+   #body{background-color: gray; padding-left: 5%;}
+   #container2, #container3,#container0{width: 1300px; background-color: white;
     padding: 30px;
     border-radius: 10px;
     }
-    
+   #container3{padding-bottom: 20px} 
     .sort{background-color: white;}
-    #blank{width: 1000px; height: 50px ; background-color: white}
+    #blank{width: 1000px; height: 50px ; background-color: gray}
    #m_menu_ctg,#p_name, #img_div{float: left;}
    .sort{
     float: left;
@@ -27,7 +26,7 @@
     border: 1px solid black;
    }
    #hr{clear: both;}
-   li{list-style: none; margin-top: 10px; cursor: pointer;}
+   li{list-style: none;  cursor: pointer;}
 
 
    li:nth-child(1){visibility: inherit}
@@ -66,24 +65,32 @@
 })
 //jquery
     $(function(){
-        $("#prodNm").on("keyup",function(){
-            $("#sub_prodNm").val($("#prodNm").val())
-          })
-        $("#prodPrice").on("keyup",function(){
-            $("#sub_price").val($("#prodPrice").val())
+        $("#sub_prodNm").on("keyup",function(){
+            $("#prodNm").val($("#sub_prodNm").val())
+          }) 
+        $("#sub_price").on("keyup",function(){
+            $("#prodPrice").val($("#sub_price").val())
         })
-        $("#prodQty").on("keyup",function(){
-            $("#sub_qty").val($("#prodQty").val())
+        $("#sub_qty").on("keyup",function(){
+            $("#prodQty").val($("#sub_qty").val())
           })
+          $("#sub_unit").on("change",function(){
+           $("#prodUnit").val($("#sub_unit").val())
+       })
+       $("#sub_vol1").on("keyup",function(){
+           $("#prodVol").val($("#sub_vol1").val()+$("#sub_vol2").val())
+         })
+      $("#sub_vol2").on("change",function(){
+           $("#prodVol").val($("#sub_vol1").val()+$("#sub_vol2").val())
+         })  
     })
 
 </script>
 </head>
-<body>
-	<jsp:include page="/header_admin.jsp"></jsp:include>
+<body id="body">
+   <jsp:include page="/header_admin.jsp"></jsp:include>
     <!--카테고리는 DB에서 불러오기-->
-    <div id="body">
-    	<div id="container0">
+       <div id="container0">
         <h3 title="상품의 카테고리를 지정하는 곳입니다.">카테고리 - 상품명</h3>
         <hr>
         <!--카테고리-->
@@ -130,7 +137,7 @@
             <!--상품명 중복되지않게 확인하는 로직 db연동해서 하기-->
         <div id="p_name">상품명<span style="color:red">*</span>&ensp;&ensp;</div>
         <div id="p_name_input">
-        <input type="text" id="prodNm">
+        <input type="text" id="sub_prodNm">
         <button type="button"id="btnCheck" style="height: 30px; width: 150px;">상품 이름 중복 확인</button>
         </div>
         <hr>
@@ -138,8 +145,23 @@
     <div id="blank"></div>
     <div id="container2">
         <h3 title="상품의 원하는 판매가를 기입합니다.">주문옵션 - 판매가</h3><hr><br>
-            판매가&ensp;&ensp;: <input type="text" id="prodPrice"><br><br><hr>
-            판매수량: <input type="text" name="" id="prodQty"><br><br><hr>
+            판매가&ensp;&ensp;: <input type="text" id="sub_price"><br><br><hr>
+            판매수량: <input type="text" name="" id="sub_qty"><br><br><hr>
+            판매단위: <select style="width:300px;height:30px;" id="sub_unit">
+                     <option value="not">--판매단위을 선택해주세요--</option>           
+                     <option value="개">개</option>
+                     <option value="캔">캔</option>
+                     <option value="단">단</option>
+                     <option value="봉">봉</option>             
+                  </select><br><br><hr>
+            판매중량: <input type="text" name="" id="sub_vol1">
+            <select style="width:50px;height:30px;" id="sub_vol2"> 
+                      <option value="not">--판매중량을 선택해주세요--</option>           
+                     <option value="g">g</option>
+                     <option value="kg">kg</option>
+                  </select>
+           
+            
     </div>
     <div id="blank"></div>
 
@@ -153,41 +175,43 @@
         </div>
         <br><br> <br><br>   
         <form action="/product/prodInsert.do" method="post">
-        카테고리: <input type="text" id="sub_cat"> <br><br>
-        상품명&ensp;&ensp;: <input type="text" id="sub_prodNm" readonly style="background-color: lightgray;"> <br><br>
-        판매가&ensp;&ensp;: <input type="text" id="sub_price" readonly style="background-color: lightgray;"> <br><br>
-        판매수량: <input type="text" id="sub_qty" readonly style="background-color: lightgray;"> <br><br>
+        카테고리: <input type="text" id="sub_cat" name="sub_cat"> <br><br>
+        상품명&ensp;&ensp;: <input type="text" id="prodNm"  name="prodNm" readonly value="${sub_prodNm }" style="background-color: lightgray;"> <br><br>
+        판매가&ensp;&ensp;: <input type="text" id="prodPrice"  name="prodPrice" readonly style="background-color: lightgray;"> <br><br>
+        판매수량: <input type="text" id="prodQty"  name="prodQty" readonly style="background-color: lightgray;"> <br><br>
+        판매단위: <input type="text" id="prodUnit"   name="prodUnit" readonly style="background-color: lightgray;"> <br><br>
+        판매중량: <input type="text" id="prodVol"  name="prodVol" readonly style="background-color: lightgray;"> <br><br>
        &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;  <input type="submit" style="height: 30px;" value="새 상품 작성하기" id="sub_input"> <br><br>
         </form>
     </div>
-    </div>
-	<jsp:include page="/footer.jsp"></jsp:include>	
-		<script>
-		$(function(){
-			$("#btnCheck").on("click",function(){
-				var prodNm = $('#prodNm').val();
-				$.ajax({
-				url: '/product/prodNameCheck.do',
-				type : 'post',
-				data :{
-					"prodNm" : prodNm
-				},
-				success : function(obj){
-					console.log("Check :"+ obj);
-					if(!obj){
-						alert("이미 사용 중인 상품명 입니다!");
-						$('#prodNm').val('');
-						$('#prodNm').focus();
-					} else {
-						alert("사용 가능한 상품명 입니다!");
-						}
-				},
-				error : function(e){
-					console.log(e);
-				}
-				});
-			});
-		});
-	</script>	
+   <jsp:include page="/footer_admin.jsp"></jsp:include>   
+      <script>
+      //물건이름 중복체크
+      $(function(){
+         $("#btnCheck").on("click",function(){
+            var prodNm = $('#prodNm').val();
+            $.ajax({
+            url: '/product/prodNameCheck.do',
+            type : 'post',
+            data :{
+               "prodNm" : prodNm
+            },
+            success : function(obj){
+               console.log("Check :"+ obj);
+               if(!obj){
+                  alert("이미 사용 중인 상품명 입니다!");
+                  $('#prodNm').val('');
+                  $('#prodNm').focus();
+               } else {
+                  alert("사용 가능한 상품명 입니다!");
+                  }
+            },
+            error : function(e){
+               console.log(e);
+            }
+            });
+         });
+      });
+   </script>   
 </body>
 </html>

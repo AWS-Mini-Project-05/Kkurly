@@ -7,52 +7,50 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
   <style>
-        #container{width: 1500px; height: 100px; background-color: purple;
+  		body{background-color:lightgray;}
+        #container1{width: 100%; height: 100px;
                     line-height: 30px;
                     margin-bottom: 30px;
-         
+                    display:flex;
         }
-        ul,div{display: inline-block;}
-        a{text-decoration: none; color: white;}
-        li{list-style-type: none}
-    
+        
+        .a{text-decoration: none;   color: white; text-shadow: 0 0 10px purple;
+        }
+        li{list-style-type: none; padding-top: 20px
+        }
+    	img{margin-bottom: 30px}
     </style>
 </head>
 <body>
-    <div id="container">
+    <div id="container1">
         <ul>
-            <li>
-               <h2><a href="/index.jsp">Market KKurly</a></h2>
+            <li class="ali">
+             <a href="/index.jsp"><img alt="" src="/images/KKURLY_LOGO.png" width="150px" class="a"></a>
+            </li>
+        </ul>
+        <ul>
+            <li class="ali">
+                <a href="/product/searchProduct.do" class="a">상품 관리</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="ali">
+                <a href="" class="a">주문 목록 검색</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="ali">
+                <a href="" class="a">카테고리 관리</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="ali">
+                <a href="" class="a">회원 관리</a>
             </li>
         </ul>
         <ul>
             <li>
-                <a href="/user/createProduct.do">상품 등록</a>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <a href="">상품 검색</a>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <a href="">주문 목록 검색</a>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <a href="">카테고리 관리</a>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <a href="">회원 관리</a>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <a href=""></a>
+                <a href="" ></a>
             </li>
         </ul>
         <ul>
@@ -65,12 +63,17 @@
                 <a href=""></a>
             </li>
         </ul>
-        <div class="div"><a href="/user/mypage.do">님반갑습니다.</a></div>
-        <ul>
+          <ul>
             <li>
-                <a href="/user/logout.do">로그아웃</a>
+                <a href="/user/mypage.do" class="a">님 반갑습니다.</a>
             </li>
         </ul>
+          <ul>
+              <li class="ali">
+                <a href="/user/logout.do" class="a">로그아웃</a>
+            </li>
+        </ul>
+       
     </div>
 </body>
 </html>
