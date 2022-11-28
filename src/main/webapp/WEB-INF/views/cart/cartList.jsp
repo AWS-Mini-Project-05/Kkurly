@@ -258,9 +258,9 @@ input[type=checkbox]:checked + label {
 				<td style="width:17%;">
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
-							<td><input type="image" onclick="count('minus')" src="${pageContext.request.contextPath }/images/minus.png"/></td>
+							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
 							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">0</span></td>
-							<td><input type="image" onclick="count('plus')" src="${pageContext.request.contextPath }/images/plus.png"/></td>
+							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
 						</tr>
 					</table>
 				</td>
@@ -284,9 +284,9 @@ input[type=checkbox]:checked + label {
 				<td style="width:17%">
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
-							<td><input type="image" onclick="count('minus')" src="${pageContext.request.contextPath }/images/minus.png"/></td>
+							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
 							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">0</span></td>
-							<td><input type="image" onclick="count('plus')" src="${pageContext.request.contextPath }/images/plus.png"/></td>
+							<td><input type="image"  class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
 						</tr>
 					</table>
 				</td>
@@ -319,9 +319,9 @@ input[type=checkbox]:checked + label {
 				<td style="width:17%">
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
-							<td><input type="image" onclick="count('minus')" src="${pageContext.request.contextPath }/images/minus.png"/></td>
+							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
 							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">0</span></td>
-							<td><input type="image" onclick="count('plus')" src="${pageContext.request.contextPath }/images/plus.png"/></td>
+							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
 						</tr>
 					</table>
 				</td>
@@ -345,9 +345,9 @@ input[type=checkbox]:checked + label {
 				<td style="width:17%">
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
-							<td><input type="image" onclick="count('minus')" src="${pageContext.request.contextPath }/images/minus.png"/></td>
+							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
 							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">0</span></td>
-							<td><input type="image" onclick="count('plus')" src="${pageContext.request.contextPath }/images/plus.png"/></td>
+							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
 						</tr>
 					</table>
 				</td>
@@ -380,9 +380,9 @@ input[type=checkbox]:checked + label {
 				<td style="width:17%">
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
-							<td><input type="image" onclick="count('minus')" src="${pageContext.request.contextPath }/images/minus.png"/></td>
+							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
 							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">0</span></td>
-							<td><input type="image" onclick="count('plus')" src="${pageContext.request.contextPath }/images/plus.png"/></td>
+							<td><input type="image" class="plus-btn"  src="${pageContext.request.contextPath }/images/plus.png"/></td>
 						</tr>
 					</table>
 				</td>
@@ -406,9 +406,9 @@ input[type=checkbox]:checked + label {
 				<td style="width:17%">
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
-							<td><input type="image" onclick="count('minus')" src="${pageContext.request.contextPath }/images/minus.png"/></td>
+							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
 							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">0</span></td>
-							<td><input type="image" onclick="count('plus')" src="${pageContext.request.contextPath }/images/plus.png"/></td>
+							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
 						</tr>
 					</table>
 				</td>
@@ -561,10 +561,28 @@ input[type=checkbox]:checked + label {
 
 
 		});
+		
+		$(".plus-btn").on("click", function() {
+			
+			let num = $(this).parent().prev().children("#result").text();
+			$(this).parent().prev().children("#result").text(parseInt(num) + 1);
+		})
+		
+		$(".minus-btn").on("click", function() {
+			
+			let num = $(this).parent().next().children("#result").text();
+			if (parseInt(num) > 0) {
+				$(this).parent().next().children("#result").text(parseInt(num) - 1);
+			}
+		})
+		
+		
 	});
 	
 	function count(type) {
-		const resultElement = document.getElementById('result');
+		  const resultElement = document.getElementById('result');
+		  
+		  
 		  
 		  // 현재 화면에 표시된 값
 		  let number = resultElement.innerText;
@@ -581,6 +599,7 @@ input[type=checkbox]:checked + label {
 		
 		
 	}
+
 </script>
 
 </body>
