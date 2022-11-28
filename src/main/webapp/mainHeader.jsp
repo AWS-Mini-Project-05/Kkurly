@@ -24,7 +24,7 @@
     width: 100%;
     z-index: 10;
     height: 150px;
-    position: absolute;
+    /* position: fixed; */
   }
   .nav-top {
     position: relative;
@@ -246,7 +246,7 @@
       </div>
 
       <div id="nav-headerMain">
-        <img src="KKURLY_LOGO.png" alt="Bootstrap" width="120" style="flex: 0 0 82px;">
+        <img src="/images/KKURLY_LOGO.png" alt="Bootstrap" width="120" style="flex: 0 0 82px;">
         <p id="main_txt">마켓껄리</p>
 
         <div id="nav-search">
@@ -256,7 +256,7 @@
         <div id="nav-icon">
           <div class="icon-adr"></div>
           <button class="icon-like"></button>
-          <button class="icon-cart"></button>
+          <button class="icon-cart" onclick="location.href='/cart/cartList.do'"></button>
         </div>
       </div>
       <div id="nav-header">

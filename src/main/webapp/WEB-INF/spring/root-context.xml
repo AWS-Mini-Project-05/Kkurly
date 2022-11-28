@@ -19,11 +19,6 @@
 		destroy-method="close">
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver"></property>
-	<!-- 	<property name="url"
-			value="jdbc:mysql://localhost:3306/studydb?serverTimezone=UTC"></property>
-		<property name="username" value="study"></property>
-		<property name="password" value="!ezen1234"></property> -->
-		
 		<property name="url"
 			value="jdbc:mysql://14.63.62.56:3306/kkurly_5?serverTimezone=UTC"></property>
 		<property name="username" value="g_5"></property>
