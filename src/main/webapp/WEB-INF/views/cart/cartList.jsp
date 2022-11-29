@@ -642,7 +642,17 @@ input[type=checkbox]:checked + label {
 			
 		})
 		
-		
+		$(".btn-txt-delete").on("click", function() {
+			console.log("btn test");
+			
+			$(".prod-table").each(function(index, item){
+				if($(this).val() == "on") {
+					$(this).parent().parent("tr").remove();
+				}
+			});
+			
+			console.log($(".prod-table").length);
+		});
 	});
 
 </script>
