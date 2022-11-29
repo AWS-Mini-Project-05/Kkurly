@@ -24,6 +24,18 @@ public class CartController {
 
 	@RequestMapping("/cartList.do")
 	public String cartList() {
+		
+		// 로그인인지 비로그인인지 확인해서 따로 데이터를 전달 
+		// 비로그인 : localstorage에서 가져옴 -> 그냥 localstorage 에서 가지고 온다.
+		//   로그인 : db에서 가지고 옴        -> 회원 번호를 가지고 장바구니 테이블에서 가지고 온다.
+		// Model로? session으로?
+		
+		// input : prodNo
+		// 비로그인 : 로컬 저장소(localstorage)    -> 상품 번호 -> 상품 테이블 -> model
+		//   로그인 : 회원 번호 -> 장바구니 테이블 -> 상품 번호 -> 상품 테이블 -> model
+		
+		// output : 상품 정보 리스트 
+		
 		return "/cart/cartList";
 	}
 	
@@ -32,9 +44,6 @@ public class CartController {
 		return "/cart/order";
 	}
 	
-//	@RequestMapping("/addCart.do")
-//	public String addCart() {
-//		
-//	}
+
 	
 }
