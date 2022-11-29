@@ -11,6 +11,7 @@ import com.ezen.springboard.VO.ProdVO;
 import com.ezen.springboard.service.main.MainService;
 
 @Controller
+@RequestMapping("/main")
 public class MainController {
 
 	@Autowired
@@ -29,6 +30,6 @@ public class MainController {
 			System.out.println(element);
 		}
 
-		return "redirect:/#";
+		return "/main/CategoriesMain";
 	}
 }

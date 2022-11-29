@@ -304,12 +304,12 @@ nav {
 
 			<div id="nav-login">
 				<a class="nav-login">회원가입</a> <a> | </a> <a class="nav-login">로그인</a>
-				<a> | </a> <a class="nav-login" href="/product/searchProduct.do"> 관리자페이지 
-				</a>
+				<a> | </a> <a class="nav-login" href="/product/searchProduct.do">
+					관리자페이지 </a>
 			</div>
 
 			<div id="nav-headerMain">
-				<img src="/images/KKURLY_LOGO2.png" alt="Bootstrap" width="120"
+				<img src="/images/KKURLY_LOGO2.png" alt="메인로고" width="120"
 					style="flex: 0 0 82px;">
 				<p id="main_txt">마켓껄리</p>
 
@@ -334,7 +334,8 @@ nav {
 						<div width="0" class="cg-sub-container">
 							<ul class="cg-sub-ul">
 								<li class="cg-sub-li">
-									<div class="cg-sub-div" onclick="location.href='/categori.do?CD=vet'">
+									<div class="cg-sub-div"
+										onclick="location.href='/main/categori.do?CD=vet'">
 										<img
 											src="https://collection-image.kurly.com/site-category-groups/1/4IYbd0CEWkokpqiN00CAL9cDC2Q7nT101TDEn0tF.png"
 											alt="채소" class="cg-sub-img"><span class="cg-sub-span">채소</span>
@@ -423,6 +424,10 @@ nav {
 			function() {
 				document.getElementById("cg-sub").style.display = "none";
 			});
+
+	document.getElementById("main_txt").addEventListener("click", function() {
+		window.location.href = '/';
+	});
 </script>
 
 </html>
