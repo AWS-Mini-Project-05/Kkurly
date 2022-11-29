@@ -347,7 +347,7 @@
 						src="https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1637922344768l0.jpeg"
 						alt="상품 이미지" loading="lazy">
 					<div>
-						<button type="button" class="product-function">
+						<button type="button" class="product-function" >
 							<img
 								src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iNDUiIHZpZXdCb3g9IjAgMCA0NSA0NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBmaWxsPSIjMkEwMDM4IiBvcGFjaXR5PSIuNSIgY3g9IjIyLjUiIGN5PSIyMi41IiByPSIyMi41Ii8+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEuMDMgMTQuMzgpIiBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0ibTIwLjQ2IDIuOTEtMi4xNyA5LjIzSDUuODdMMy43MSAyLjkxeiIvPgogICAgICAgICAgICA8Y2lyY2xlIHN0cm9rZS13aWR0aD0iMS4yIiBjeD0iMTYuMzUiIGN5PSIxNi44NiIgcj0iMS43Ii8+CiAgICAgICAgICAgIDxjaXJjbGUgc3Ryb2tlLXdpZHRoPSIxLjIiIGN4PSI3LjgyIiBjeT0iMTYuODYiIHI9IjEuNyIvPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0iTTAgMGgzLjAybDEuNDEgNS45OCIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
 								alt="장바구니 아이콘">
@@ -751,6 +751,102 @@
 				next.style.opacity = 0;
 				prev.style.opacity = 0;
 			})
+	
+			
+			
+	$(function() {
+		$(".product-function").on("click", function() {
+			
+			//localStorage.setItem("kkurlyNonMembersBasket", "prod-ex");
+			//console.log("localstorage test btn");
+			//console.log($(this).children("img").attr("src"));
+			
+			
+			//let tmpId = $(this).children("img").attr("src");
+			let tmpId = $(this).parent().prev().attr("src");
+			
+			let tmpData = {
+					"prodNo" : tmpId,
+					"prodQty" : "1"
+			}
+			let tmpArrayStr = new Array();
+			
+			if (localStorage.getItem('kkurlyNonMembersBasket') == null) {
+				tmpArrayStr.push(tmpData);
+				//tmpArrayStr.push(tmpData);
+				localStorage.setItem("kkurlyNonMembersBasket", JSON.stringify(tmpArrayStr));
+			} else {
+				let tmpLocalStorage = localStorage.getItem('kkurlyNonMembersBasket');
+				
+				
+				
+				tmpArrayStr = JSON.parse(tmpLocalStorage);
+				//if (hasDuplicate(tmpArrayStr, "prodNo") == true) return;
+				// 장바구니 중복 확인 
+				for (let tmp of tmpArrayStr) {
+					//console.log(tmp.prodNo);
+					if (tmp.prodNo === tmpData.prodNo) return;
+				}
+				//console.log(tmpArrayStr);
+				
+				tmpArrayStr.push(tmpData);
+				
+				//console.log(tmpArrayStr);
+				
+				localStorage.setItem("kkurlyNonMembersBasket", JSON.stringify(tmpArrayStr));
+			}
+			
+			 
+			 
+			/* 
+			console.log("json test");
+			let tmpJson = {
+				"prodNo" : $(this).children("img").attr("src"),
+				"prodQty" : "4"
+			};
+			let tmpJsonArray = [];
+			tmpJsonArray.push(tmpJson);
+			tmpJson = {
+					"prodNo" : "a",
+					"prodQty" : "4"
+			};
+			tmpJsonArray.push(tmpJson);
+			tmpJson = {
+					"prodNo" : "b",
+					"prodQty" : "4"
+			};
+			tmpJsonArray.push(tmpJson);
+			tmpJson = {
+					"prodNo" : "c",
+					"prodQty" : "4"
+			};
+			tmpJsonArray.push(tmpJson);
+			tmpJsonArray.push(tmpJson);
+			
+			console.log(tmpJsonArray);
+			
+			let map = new Map();
+			for (let i = 0; i < tmpJsonArray.length; i++) {
+				map.set(tmpJsonArray[i].prodNo, tmpJsonArray[i].prodQty);
+			}
+			console.log(map);
+			
+			//let str = JSON.stringify(Array.from(map.entries()));
+			//let str = JSON.stringify(map.entries());
+			let str = JSON.stringify(Object.fromEntries(map));
+			
+			console.log(str);
+			 */
+		})
+	}); 
+	
+	/* const hasDuplicate = (arrayObj, colName) => {
+		   var hash = Object.create(null);
+		   return arrayObj.some((arr) => {
+		      return arr[colName] && (hash[arr[colName]] || !(hash[arr[colName]] = true));
+		   });
+		};  */
 </script>
-<%-- <jsp:include page="./mainFooter.jsp"></jsp:include> --%>
+<jsp:include page="./mainFooter.jsp"></jsp:include>
 </html>
+

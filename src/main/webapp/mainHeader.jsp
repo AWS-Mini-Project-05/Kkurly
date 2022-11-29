@@ -297,7 +297,7 @@ nav {
 	align-items: center;
 }
 </style>
-
+<script src="${pageContext.request.contextPath }/js/jquery-3.6.1.min.js"></script>
 <body>
 	<nav>
 		<div class="nav-top">
