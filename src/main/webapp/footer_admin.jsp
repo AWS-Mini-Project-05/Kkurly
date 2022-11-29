@@ -8,18 +8,15 @@
 <style>
 	footer {
 		display: flex;
-		justify-content : center;
-		align-items: center;
-		background : skyblue;
+		background : gray;
 		margin-top: 30px;
+		height: 150px;
 	}
 </style>
 </head>
 <body>
 	<footer>
 		<div>
-			<p>copyright ezen아카데미</p>
-			<a href="/product/createProduct.do">관리자페이지테스트</a>
 		</div>
 	</footer>
 </body>

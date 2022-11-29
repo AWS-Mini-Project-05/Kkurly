@@ -1,8 +1,12 @@
 package com.ezen.springboard.service.product.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ezen.springboard.VO.ProdFileVO;
+import com.ezen.springboard.VO.ProdVO;
 import com.ezen.springboard.service.product.ProductService;
 
 @Service
@@ -18,6 +22,20 @@ public class ProductServiceImpl implements ProductService {
 			return false;
 		} else return true;
 	}
+
+
+	@Override
+	public List<ProdVO> searchProduct() {
+		
+		return productDAO.searchProduct();
+	}
+
+	@Override
+	public void prodInsert(ProdVO prodVO, List<ProdFileVO> fileList) {
+	productDAO.prodInsert(prodVO, fileList);
+	}
+
+
 
 
 }

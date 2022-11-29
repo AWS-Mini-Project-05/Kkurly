@@ -1,10 +1,12 @@
 package com.ezen.springboard.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -79,10 +81,32 @@ public class UserController {
 		
 		return check;
 	}
-	//관리자 페이지 체크용 임시파일
-	@GetMapping("/createProduct.do")
-	public String createProduct() {
 	
-		return "admin/createProduct";
+
+	//게시글 목록 화면으로 이동
+	@RequestMapping("/manageUser.do")
+	public String manageUser(Model model, @RequestParam Map<String, String> paramMap) {
+		List<UserVO> userList = userService.manageUser(paramMap);
+		
+		model.addAttribute("userList", userList);
+		
+		if(paramMap.get("searchCondition") != null && !paramMap.get("searchCondition").equals(""))
+			model.addAttribute("searchCondition", paramMap.get("searchCondition"));
+		
+		if(paramMap.get("searchKeyword") != null && !paramMap.get("searchKeyword").equals(""))
+			model.addAttribute("searchKeyword", paramMap.get("searchKeyword"));
+		
+		return "admin/manageUser";
 	}
+	//유저 상세 조회
+	@RequestMapping("/manageUserDetail.do")
+	public String getUser(@RequestParam("userNo") int userNo, Model model) {
+		UserVO user = userService.getUser(userNo);
+		
+		model.addAttribute("user", user);
+		
+		return "admin/manageUserDetail";
+	}
+
+ 	
 }
