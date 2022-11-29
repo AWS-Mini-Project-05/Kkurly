@@ -21,8 +21,7 @@ public class MainController {
 		
 		System.out.println("=============== 선택한 카테고리 : "+ cd);
 		
-		String cdTest = "22220";
-		List<ProdVO> list = mainService.getProdList(cdTest);
+		List<ProdVO> list = mainService.getProdList("1120");
 		
 		for(int i = 0 ; i<list.size() ; i++) {
 			System.out.println(list.get(i));

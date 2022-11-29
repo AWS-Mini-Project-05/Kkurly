@@ -304,8 +304,7 @@ nav {
 
 			<div id="nav-login">
 				<a class="nav-login">회원가입</a> <a> | </a> <a class="nav-login">로그인</a>
-				<a> | </a> <a class="nav-login"> 고객센터 <span
-					class="nav-login-down"></span>
+				<a> | </a> <a class="nav-login" href="/product/searchProduct.do"> 관리자페이지 
 				</a>
 			</div>
 

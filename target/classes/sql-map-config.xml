@@ -23,5 +23,6 @@
 		<mapper resource="mappings/board-mapper.xml"></mapper>
 		<mapper resource="mappings/user-mapper.xml"></mapper>
 		<mapper resource="mappings/prod-mapper.xml"></mapper>
+		<mapper resource="mappings/main-mapper.xml"></mapper>
 	</mappers>
 </configuration>

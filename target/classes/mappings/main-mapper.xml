@@ -7,8 +7,8 @@
 	<!-- 쿼리 작성 영역 -->
 	<select id="getProdList" parameterType="String" resultType="prod">
 		SELECT * 
-		FROM T_PROD
-		WHERE PROD_CgCd = #{cd}
+		FROM TB_PROD
+		WHERE PROD_CG_CD = #{cd}
 	</select>
 	
 </mapper>
