@@ -6,5 +6,7 @@ import com.ezen.springboard.VO.ProdVO;
 
 public interface MainService {
 
+
 	List<ProdVO> getProdList(String cd);
+
 }

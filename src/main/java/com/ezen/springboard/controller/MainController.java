@@ -16,6 +16,8 @@ public class MainController {
 	@Autowired
 	MainService mainService;
 
+
+
 	@RequestMapping("/categori.do")
 	public String getProdList(@RequestParam("CD") String cd) {
 

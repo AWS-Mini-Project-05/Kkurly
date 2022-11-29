@@ -26,7 +26,6 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<ProdVO> searchProduct() {
-
 		return productDAO.searchProduct();
 	}
 

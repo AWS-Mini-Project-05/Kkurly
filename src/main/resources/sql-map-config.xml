@@ -13,11 +13,16 @@
 	<typeAliases>
 		<typeAlias type="com.ezen.springboard.VO.BoardVO" alias ="board"></typeAlias>
 		<typeAlias type="com.ezen.springboard.VO.UserVO" alias ="user"></typeAlias>
+		<typeAlias type="com.ezen.springboard.VO.ProdVO" alias ="prod"></typeAlias>
+		<typeAlias type="com.ezen.springboard.VO.ProdFileVO" alias ="prodFile"></typeAlias>
+		
 	</typeAliases>
 	
 	<!-- 사용할 SQL 매퍼 위치 지정 -->
 	<mappers>
 		<mapper resource="mappings/board-mapper.xml"></mapper>
 		<mapper resource="mappings/user-mapper.xml"></mapper>
+		<mapper resource="mappings/prod-mapper.xml"></mapper>
+		<mapper resource="mappings/main-mapper.xml"></mapper>
 	</mappers>
 </configuration>

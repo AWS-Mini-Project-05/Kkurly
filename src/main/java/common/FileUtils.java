@@ -15,6 +15,7 @@ import com.ezen.springboard.VO.ProdFileVO;
 public class FileUtils {
 	//Map<String, String> => 파일 업로드 기능이 여러군데에서 사용될 때 범용성을 높이기 위해
 	//Map을 사용한다. Map을 사용할 경우 매퍼까지 Map으로 보내준다.
+
 	public static ProdFileVO parseFileInfo(MultipartFile file,
 			String attachPath) throws IOException {
 		ProdFileVO prodFile = new ProdFileVO();

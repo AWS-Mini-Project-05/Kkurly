@@ -23,6 +23,7 @@ public class ProductDAO {
 	public void prodInsert(ProdVO prodVO, List<ProdFileVO> fileList) {
 		mybatis.insert("ProductDAO.prodInsert", prodVO);
 
+
 	if(fileList.size() > 0) {
 			//게시글 번호를 담아주는 작업
 			for(ProdFileVO prodFile : fileList) {
@@ -33,8 +34,5 @@ public class ProductDAO {
 			mybatis.insert("ProductDAO.prodInsertFileList", fileList);
 		}
 	}
-//	public void prodInsert(ProdVO prodVO) {
-//		mybatis.insert("ProductDAO.prodInsert", prodVO);
-//	}
 
 }
