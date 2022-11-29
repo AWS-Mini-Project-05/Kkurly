@@ -259,7 +259,7 @@ input[type=checkbox]:checked + label {
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
 							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
-							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">0</span></td>
+							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">1</span></td>
 							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
 						</tr>
 					</table>
@@ -285,7 +285,7 @@ input[type=checkbox]:checked + label {
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
 							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
-							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">0</span></td>
+							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">1</span></td>
 							<td><input type="image"  class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
 						</tr>
 					</table>
@@ -320,7 +320,7 @@ input[type=checkbox]:checked + label {
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
 							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
-							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">0</span></td>
+							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">1</span></td>
 							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
 						</tr>
 					</table>
@@ -346,7 +346,7 @@ input[type=checkbox]:checked + label {
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
 							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
-							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">0</span></td>
+							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">1</span></td>
 							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
 						</tr>
 					</table>
@@ -381,7 +381,7 @@ input[type=checkbox]:checked + label {
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
 							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
-							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">0</span></td>
+							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">1</span></td>
 							<td><input type="image" class="plus-btn"  src="${pageContext.request.contextPath }/images/plus.png"/></td>
 						</tr>
 					</table>
@@ -407,7 +407,7 @@ input[type=checkbox]:checked + label {
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
 							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
-							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">0</span></td>
+							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">1</span></td>
 							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
 						</tr>
 					</table>
@@ -433,7 +433,7 @@ input[type=checkbox]:checked + label {
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
 							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
-							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">0</span></td>
+							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">1</span></td>
 							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
 						</tr>
 					</table>
@@ -459,7 +459,7 @@ input[type=checkbox]:checked + label {
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
 							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
-							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">0</span></td>
+							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">1</span></td>
 							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
 						</tr>
 					</table>
@@ -623,7 +623,7 @@ input[type=checkbox]:checked + label {
 		$(".minus-btn").on("click", function() {
 			
 			let num = $(this).parent().next().children("#result").text();
-			if (parseInt(num) > 0) {
+			if (parseInt(num) > 1) {
 				$(this).parent().next().children("#result").text(parseInt(num) - 1);
 			}
 		});
