@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ezen.springboard.VO.ProdFileVO;
 import com.ezen.springboard.VO.ProdVO;
 import com.ezen.springboard.service.product.ProductService;
 
@@ -22,16 +23,19 @@ public class ProductServiceImpl implements ProductService {
 		} else return true;
 	}
 
-	@Override
-	public void prodInsert(ProdVO prodVO) {
-		productDAO.prodInsert(prodVO);
-	}
 
 	@Override
 	public List<ProdVO> searchProduct() {
 		
 		return productDAO.searchProduct();
 	}
+
+	@Override
+	public void prodInsert(ProdVO prodVO, List<ProdFileVO> fileList) {
+	productDAO.prodInsert(prodVO, fileList);
+	}
+
+
 
 
 }

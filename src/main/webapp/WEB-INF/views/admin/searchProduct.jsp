@@ -27,18 +27,7 @@
 	a{text-decoration: none;   color: black;}
 </style>
 <script>
-   $(function(){
-    
-    //체크박스 해제
-    $('input[type="checkbox"][name="optionCheck"]').click(function(){
-        if($(this).prop('checked')){
-            $('input[type="checkbox"][name="optionCheck"]').prop('checked',false);
-            $(this).prop('checked',true);
-        }
-    });
 
-
-   }) 
     
 </script>
 </head>
@@ -56,7 +45,7 @@
  	   </div>
  	   <div class="btn-section" style="display: flex; justify-content: end;">
 	 	   <div class="btn-wrap" style="width: 17%; display: flex; justify-content: space-between;">
-	 	  	 <form action="/product/createProduct.do" method="get">
+	 	  	 <form action="/product/prodInsert.do" method="get">
 	 	  	 	<input type="submit" value="새 상품 작성하기">
 	 	  	 </form>
 	 	   	<form action="/product/deleteProduct.do" method="get">

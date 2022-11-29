@@ -45,7 +45,7 @@
         </ul>
         <ul>
             <li class="ali">
-                <a href="" class="a">회원 관리</a>
+                <a href="/user/manageUser.do" class="a">회원 관리</a>
             </li>
         </ul>
         <ul>
