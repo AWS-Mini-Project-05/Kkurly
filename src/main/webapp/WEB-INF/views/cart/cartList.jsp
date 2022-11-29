@@ -268,7 +268,7 @@ input[type=checkbox]:checked + label {
 					104,000원
 				</td>
 				<td style="width:5%">
-					<input type="image" src="${pageContext.request.contextPath }/images/delete.png">
+					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png">
 				</td>
 			</tr>
 			<tr class="prod-prod" style="height:110px;">
@@ -294,7 +294,7 @@ input[type=checkbox]:checked + label {
 					104,000원
 				</td>
 				<td style="width:5%">
-					<input type="image" src="${pageContext.request.contextPath }/images/delete.png">
+					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png">
 				</td>
 			</tr>
 			
@@ -329,7 +329,7 @@ input[type=checkbox]:checked + label {
 					104,000원
 				</td>
 				<td style="width:5%">
-					<input type="image" src="${pageContext.request.contextPath }/images/delete.png">
+					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png">
 				</td>
 			</tr>
 			<tr class="prod-prod" style="height:110px;">
@@ -355,7 +355,7 @@ input[type=checkbox]:checked + label {
 					104,000원
 				</td>
 				<td style="width:5%">
-					<input type="image" src="${pageContext.request.contextPath }/images/delete.png">
+					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png">
 				</td>
 			</tr>
 			
@@ -366,7 +366,7 @@ input[type=checkbox]:checked + label {
 			<span class="prod-fold"><input type="image" src="${pageContext.request.contextPath }/images/fold.png"  
 				class="btn-normal-fold btn-fold" value="unfold"></span>
 		</div>
-		<table class="normal-table">
+		<table class="normal-table" id="normal-table">
 			<tr class="prod-prod" style="height:110px;">
 				<td style="width:4%">
 					<input type="image" class="normal-prod-table prod-table" src="${pageContext.request.contextPath }/images/click-off.png" value="off">
@@ -390,7 +390,7 @@ input[type=checkbox]:checked + label {
 					104,000원
 				</td>
 				<td style="width:5%">
-					<input type="image" src="${pageContext.request.contextPath }/images/delete.png">
+					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png">
 				</td>
 			</tr>
 			<tr class="prod-prod" style="height:110px;">
@@ -416,7 +416,59 @@ input[type=checkbox]:checked + label {
 					104,000원
 				</td>
 				<td style="width:5%">
-					<input type="image" src="${pageContext.request.contextPath }/images/delete.png">
+					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png">
+				</td>
+			</tr>
+			<tr class="prod-prod" style="height:110px;">
+				<td style="width:4%">
+					<input type="image" class="normal-prod-table prod-table" src="${pageContext.request.contextPath }/images/click-off.png" value="off">
+				</td>
+				<td style="width:9%">
+					<img src="${pageContext.request.contextPath }/images/img-prod01.png" style="width: 62px; height: 80px;">
+				</td>
+				<td style="width:47%">
+					<p>[껄리] 이 육개장이 ㅇ러메나 맛있게</p>
+				</td>
+				<td style="width:17%">
+					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
+						<tr>
+							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
+							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">0</span></td>
+							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
+						</tr>
+					</table>
+				</td>
+				<td style="width:18%">
+					104,000원
+				</td>
+				<td style="width:5%">
+					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png">
+				</td>
+			</tr>
+			<tr class="prod-prod" style="height:110px;">
+				<td style="width:4%">
+					<input type="image" class="normal-prod-table prod-table" src="${pageContext.request.contextPath }/images/click-off.png" value="off">
+				</td>
+				<td style="width:9%">
+					<img src="${pageContext.request.contextPath }/images/img-prod01.png" style="width: 62px; height: 80px;">
+				</td>
+				<td style="width:47%">
+					<p>[껄리] 이 육개장이 ㅇ러메나 맛있게</p>
+				</td>
+				<td style="width:17%">
+					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
+						<tr>
+							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
+							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">0</span></td>
+							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
+						</tr>
+					</table>
+				</td>
+				<td style="width:18%">
+					104,000원
+				</td>
+				<td style="width:5%">
+					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png">
 				</td>
 			</tr>
 			
@@ -574,31 +626,24 @@ input[type=checkbox]:checked + label {
 			if (parseInt(num) > 0) {
 				$(this).parent().next().children("#result").text(parseInt(num) - 1);
 			}
+		});
+		
+		$(".del-prod").on("click", function() {
+						
+			//$(this).parent().parent("tr").parent("table").hide();
+			$(this).parent().parent("tr").remove();
+			
+			//console.log($(this).parent().parent());
+			//console.log($(this).parent().parent().children("tr"));
+			//console.log($(this).parent().parent("tr").length);
+			//console.log($(".normal-table").children("tr"));
+			
+			console.log($("#normal-table .prod-prod").length);
+			
 		})
 		
 		
 	});
-	
-	function count(type) {
-		  const resultElement = document.getElementById('result');
-		  
-		  
-		  
-		  // 현재 화면에 표시된 값
-		  let number = resultElement.innerText;
-		  
-		  // 더하기/빼기
-		  if(type === 'plus') {
-		    number = parseInt(number) + 1;
-		  }else if(type === 'minus' && number > 0)  {
-		    number = parseInt(number) - 1;
-		  }
-		  
-		  // 결과 출력
-		  resultElement.innerText = number;
-		
-		
-	}
 
 </script>
 

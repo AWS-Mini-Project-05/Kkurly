@@ -751,6 +751,13 @@
 				next.style.opacity = 0;
 				prev.style.opacity = 0;
 			})
+			
+	$(function() {
+		$(".product-function").on("click", function() {
+			
+			console.log("btn test");
+		})
+	})
 </script>
 <jsp:include page="./mainFooter.jsp"></jsp:include>
 </html>
