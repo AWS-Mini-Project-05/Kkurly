@@ -14,11 +14,11 @@
 	SELECT * FROM TB_PROD
 	</select>
 	
- 	<insert id="prodInsert" parameterType="prod">
+ 	<insert id="prodInsert" parameterType="map">
  	<selectKey resultType="int" keyProperty="prodNo" order="BEFORE">
 			SELECT IFNULL(MAX(A.PROD_NO), 0) + 1 FROM TB_PROD A
 		</selectKey>
-		INSERT INTO TB_PROD(
+	INSERT INTO TB_PROD(
 		PROD_NO,
 		PROD_CG_CD,
 		PROD_NM,
@@ -28,22 +28,25 @@
 		PROD_UNIT,
 		PROD_VOL,
 		USE_YN,
-		SALE_Qty
-		)VALUES
-		(	
+		SALE_Qty,
+		PROD_IMG_NM,
+		PROD_IMG_PATH
+	) VALUES(	
 		#{prodNo},
 		'1120',
-		#{prodNm},
-		#{prodPrice},
-		#{prodQty},
+		#{prodVO.prodNm},
+		#{prodVO.prodPrice},
+		#{prodVO.prodQty},
 		NOW(),
-		#{prodUnit},
-		#{prodVol},
+		#{prodVO.prodUnit},
+		#{prodVO.prodVol},
 		'Y',
-		0
+		0,
+		#{prodFile.prodFileNm},
+		#{prodFile.prodFilePath}
 	)
 	</insert> 
-	<insert id="prodInsertFileList" parameterType="list">
+<!-- 	<insert id="prodInsertFileList" parameterType="list">
 		INSERT INTO TB_PROD_IMAGES(
 			PROD_NO,
 			PROD_IMG_NO,
@@ -68,7 +71,7 @@
 			200
 		)
 		</foreach> 
-	</insert>
+	</insert> -->
 
 	
 </mapper>

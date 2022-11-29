@@ -1,6 +1,8 @@
 package com.ezen.springboard.service.product.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,21 +22,18 @@ public class ProductDAO {
 	public List<ProdVO> searchProduct(){
 		return mybatis.selectList("ProductDAO.searchProduct");
 	}
-	public void prodInsert(ProdVO prodVO, List<ProdFileVO> fileList) {
-		mybatis.insert("ProductDAO.prodInsert", prodVO);
+	public void prodInsert(ProdVO prodVO, ProdFileVO prodFile) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
 		
-	if(fileList.size() > 0) {
-			//게시글 번호를 담아주는 작업
-			for(ProdFileVO prodFile : fileList) {
-			prodFile.setProdNo(prodVO.getProdNo());
+		paramMap.put("prodVO", prodVO);
 		
-			}
-
-			mybatis.insert("ProductDAO.prodInsertFileList", fileList);
+		if(prodFile.getProdOriginFileNm() != null &&
+			!prodFile.getProdOriginFileNm().equals("")) {
+			paramMap.put("prodFile", prodFile);
 		}
+		
+		mybatis.insert("ProductDAO.prodInsert", paramMap);
 	}
-//	public void prodInsert(ProdVO prodVO) {
-//		mybatis.insert("ProductDAO.prodInsert", prodVO);
-//	}
+
 	
 }

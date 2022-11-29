@@ -66,14 +66,13 @@ public class ProductController {
 
 	//새 상품 등록
 	@PostMapping("/prodInsert.do")
-	public String prodInsert(ProdVO prodVO, MultipartFile[] uploadFiles,
+	public String prodInsert(ProdVO prodVO, MultipartFile uploadFiles,
 			HttpServletRequest request) throws IOException {
+		ProdFileVO prodFile = new ProdFileVO();
 		
-		
-		List<ProdFileVO> fileList = new ArrayList<ProdFileVO>();
-		
-		//파일업로드 기능 구현
-		if(uploadFiles.length > 0) {
+		//getOriginalFileName() : 업로드한 파일의 파일명 
+		if(!uploadFiles.getOriginalFilename().equals("") &&
+			uploadFiles.getOriginalFilename() != null) {
 			String attachPath = request.getSession().getServletContext().getRealPath("/") 
 					+ "/upload/";
 			
@@ -84,33 +83,22 @@ public class ProductController {
 				directory.mkdir();
 			}
 			
-		//multipartFile 배열에서 파일들을 꺼내 DB 형식에 맞게 변경한다.
-			for(int i = 0; i < uploadFiles.length; i++) {
-				MultipartFile file = uploadFiles[i];
-				
-				//getOriginalFileName() : 업로드한 파일의 파일명 
-				if(!file.getOriginalFilename().equals("") &&
-				   file.getOriginalFilename() != null) {
-					ProdFileVO prodFile = new ProdFileVO();
-					
-					prodFile = FileUtils.parseFileInfo(file, attachPath);
-					
-					fileList.add(prodFile);
-				}
-			}
+			//multipartFile 배열에서 파일들을 꺼내 DB 형식에 맞게 변경한다.
+			
+			prodFile = FileUtils.parseFileInfo(uploadFiles, attachPath);
 		}
 
-		prodService.prodInsert(prodVO, fileList);
+		prodService.prodInsert(prodVO, prodFile);
 		
 		//등록 후 게시글 목록으로 이동
 		return "redirect:searchProduct.do";
 	}	
 	
-		//관리자 페이지 체크용 임시파일
-		@GetMapping("/prodInsert.do")
-		public String prodInsert() {
-		
-			return "admin/prodInsert";
-		}
+	//관리자 페이지 체크용 임시파일
+	@GetMapping("/prodInsert.do")
+	public String prodInsert() {
+	
+		return "admin/prodInsert";
+	}
 
 }

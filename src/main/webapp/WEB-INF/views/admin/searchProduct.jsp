@@ -69,8 +69,8 @@
         <c:forEach items="${prodList}" var="prod">
         	<tr>
 	        	<td><a href="">${prod.prodNo}</a></td>
-	            <td><a href=""><img src="/images/KKURLY_LOGO.png" width="100px" class="a"></a></td>
-	            <td><a href="">${prod.prodNm}</a></td>
+ 	            <td><a href=""><img src="/upload/${prod.prodImgNm}" width="100px" class="a"></a></td>
+ 	            <td><a href="">${prod.prodNm}</a></td>
 	            <td><a href="">${prod.prodPrice}</a></td>
 	            <td><a href="">카테고리</a></td>
 	           <td>

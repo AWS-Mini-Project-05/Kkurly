@@ -31,8 +31,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void prodInsert(ProdVO prodVO, List<ProdFileVO> fileList) {
-	productDAO.prodInsert(prodVO, fileList);
+	public void prodInsert(ProdVO prodVO, ProdFileVO prodFile) {
+	productDAO.prodInsert(prodVO, prodFile);
 	}
 
 
