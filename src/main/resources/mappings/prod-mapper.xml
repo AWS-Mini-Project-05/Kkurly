@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.drg/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ProductDAO">
+	<!-- 쿼리 작성 영역 -->
+	<select id="prodNameCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM TB_PROD WHERE PROD_NM = #{prodNm}
+	</select>
+	
+	<!-- 리스트 체크 -->
+	<select id="searchProduct" resultType="prod">
+	SELECT * FROM TB_PROD
+	</select>
+	
+ 	<insert id="prodInsert" parameterType="prod">
+ 	<selectKey resultType="int" keyProperty="prodNo" order="BEFORE">
+			SELECT IFNULL(MAX(A.PROD_NO), 0) + 1 FROM TB_PROD A
+		</selectKey>
+		INSERT INTO TB_PROD(
+		PROD_NO,
+		PROD_CG_CD,
+		PROD_NM,
+		PROD_PRICE,
+		PROD_QTY,
+		INPUT_DT,
+		PROD_UNIT,
+		PROD_VOL,
+		USE_YN,
+		SALE_Qty
+		)VALUES
+		(	
+		#{prodNo},
+		'1120',
+		#{prodNm},
+		#{prodPrice},
+		#{prodQty},
+		NOW(),
+		#{prodUnit},
+		#{prodVol},
+		'Y',
+		0
+	)
+	</insert> 
+	<insert id="prodInsertFileList" parameterType="list">
+		INSERT INTO TB_PROD_IMAGES(
+			PROD_NO,
+			PROD_IMG_NO,
+ 			PROD_IMG_NM,
+ 			INPUT_DT,
+			USE_YN,
+			MAIN_YN,
+			IMG_SIZE
+		) VALUES
+		<foreach collection="list" item="file" separator=",">
+		(
+			#{file.prodNo},
+			(
+				SELECT IFNULL(MAX(A.PROD_IMG_NO), 0) + 1
+					FROM TB_PROD_IMAGES A
+					WHERE A.PROD_NO = #{file.prodNo}
+			),
+			#{file.prodFileNm},
+			NOW(),
+			'Y',
+			'Y',
+			200
+		)
+		</foreach> 
+	</insert>
+
+	
+</mapper>
