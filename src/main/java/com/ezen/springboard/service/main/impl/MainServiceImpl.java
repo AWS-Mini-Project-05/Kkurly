@@ -24,4 +24,14 @@ public class MainServiceImpl implements MainService{
 		return mainDAO.getProdCnt(cd);
 	}
 
+	@Override
+	public String getCgNm(String cd) {
+		return mainDAO.getCgNm(cd);
+	}
+
+	@Override
+	public ProdVO getProd(int prodNo) {
+		return mainDAO.getProd(prodNo);
+	}
+
 }

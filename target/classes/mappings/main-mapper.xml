@@ -8,13 +8,26 @@
 	<select id="getProdList" parameterType="String" resultType="prod">
 		SELECT * 
 		FROM TB_PROD
-		WHERE PROD_CG_CD = #{cd}
+		WHERE PROD_CG_CD LIKE CONCAT('%', #{cd})
 	</select>
 	
 	<select id="getProdCnt" parameterType="String" resultType="Integer">
 		SELECT COUNT(*) 
 		FROM TB_PROD
-		WHERE PROD_CG_CD = #{cd}
+		WHERE PROD_CG_CD LIKE CONCAT('%', #{cd})
+	</select>
+	
+	<select id="getCgNm" parameterType="String" resultType="String">
+		SELECT CD_NM
+		FROM TB_CD
+		WHERE CD = #{cd}
+		LIMIT 1
+	</select>
+	
+	<select id="getProd" parameterType="int" resultType="prod">
+		SELECT * 
+		FROM TB_PROD
+		WHERE PROD_NO = #{prodNo}
 	</select>
 	
 </mapper>

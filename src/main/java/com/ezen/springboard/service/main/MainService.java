@@ -10,5 +10,9 @@ public interface MainService {
 	List<ProdVO> getProdList(String cd);
 	
 	int getProdCnt(String cd);
+	
+	String getCgNm (String cd);
+	
+	ProdVO getProd(int prodNo);
 
 }

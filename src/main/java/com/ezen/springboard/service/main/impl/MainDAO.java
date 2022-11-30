@@ -21,4 +21,12 @@ public class MainDAO {
 	public int getProdCnt(String cd) {
 		return mybatis.selectOne("MainDAO.getProdCnt", cd);
 	}
+	
+	public String getCgNm(String cd) {
+		return mybatis.selectOne("MainDAO.getCgNm",cd);
+	}
+	
+	public ProdVO getProd(int prodNo) {
+		return mybatis.selectOne("MainDAO.getProd",prodNo);
+	}
 }

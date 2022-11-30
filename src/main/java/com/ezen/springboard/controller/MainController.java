@@ -25,8 +25,9 @@ public class MainController {
 
 		System.out.println("=============== 선택한 카테고리 : "+ cd +"===============");
 
-		List<ProdVO> prodList = mainService.getProdList("1120");
-		int cnt = mainService.getProdCnt("1120");
+		List<ProdVO> prodList = mainService.getProdList(cd);
+		int cnt = mainService.getProdCnt(cd);
+		String cgNm = mainService.getCgNm(cd);
 
 		for (ProdVO element : prodList) {
 			System.out.println(element);
@@ -34,7 +35,32 @@ public class MainController {
 		
 		model.addAttribute("prodList",prodList);
 		model.addAttribute("cnt", cnt);
+		model.addAttribute("cgNm",cgNm);
 
-		return "main/CategoriesMain";
+		return "main/categoriesMain";
+	}
+	
+	@RequestMapping("/getProdMain.do")
+	public String getProdMain(@RequestParam("prodNo") int prodNo, Model model) {
+		ProdVO prod = mainService.getProd(prodNo);
+		
+		String cgCd = prod.getProdCgcd();
+		String temp = cgCd.substring(0,3);
+		
+		System.out.println(temp);
+		
+		if(temp.equals("T01")) {
+			temp = "상온";
+		} else if (temp.equals("T02")){
+			temp = "냉장";
+		} else {
+			temp = "냉동";
+		}
+		
+		model.addAttribute("prod", prod);
+		model.addAttribute("temp",temp);
+		
+		
+		return "main/getProdMain";
 	}
 }
