@@ -303,7 +303,7 @@ nav {
 		<div class="nav-top">
 
 			<div id="nav-login">
-				<a class="nav-login">회원가입</a> <a> | </a> <a class="nav-login">로그인</a>
+				<a href="/user/join.do" class="nav-login">회원가입</a> <a> | </a> <a href="/user/login.do" class="nav-login">로그인</a>
 				<a> | </a> <a class="nav-login" href="/product/searchProduct.do">
 					관리자페이지 </a>
 			</div>
