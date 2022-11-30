@@ -40,7 +40,6 @@
       <!-- /를 붙이면 무조건 루트주소 뒤에 붙는다. -->
       <!-- localhost:8090/user/login.do -->
       <!-- localhost:8090/hello.do -->
-      	 <a href="/user/createProduct.do">관리자페이지 임시 확인용</a>
          <a href="/index.jsp">홈</a>
       </h1>
       <nav>
@@ -58,6 +57,10 @@
             <li>
                <a href="/user/join.do">회원가입</a>
             </li>
+            <li>
+            	<a href="/cart/cart.do">장바구니</a>
+            </li>
+            
          </ul>
       </nav>
    </header>

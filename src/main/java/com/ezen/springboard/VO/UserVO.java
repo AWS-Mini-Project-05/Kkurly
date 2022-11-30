@@ -3,75 +3,88 @@ package com.ezen.springboard.VO;
 import java.sql.Date;
 
 public class UserVO {
+	private int userNo;
 	private String userId;
 	private String userPw;
 	private String userNm;
-	private String userMail;
 	private String userTel;
-	private Date userRegdate;
-	private String userRole;
-
+	private String userGen;
+	private String userEmail;
+	private String userBd;
+	private Date inputDt;
+	private String useYn;
+	private String userNick;
+	public String getUserNick() {
+		return userNick;
+	}
+	public void setUserNick(String userNick) {
+		this.userNick = userNick;
+	}
+	public int getUserNo() {
+		return userNo;
+	}
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
+	}
 	public String getUserId() {
 		return userId;
 	}
-
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-
 	public String getUserPw() {
 		return userPw;
 	}
-
 	public void setUserPw(String userPw) {
 		this.userPw = userPw;
 	}
-
 	public String getUserNm() {
 		return userNm;
 	}
-
 	public void setUserNm(String userNm) {
 		this.userNm = userNm;
 	}
-
-	public String getUserMail() {
-		return userMail;
-	}
-
-	public void setUserMail(String userMail) {
-		this.userMail = userMail;
-	}
-
 	public String getUserTel() {
 		return userTel;
 	}
-
 	public void setUserTel(String userTel) {
 		this.userTel = userTel;
 	}
-
-	public Date getUserRegdate() {
-		return userRegdate;
+	public String getUserGen() {
+		return userGen;
 	}
-
-	public void setUserRegdate(Date userRegdate) {
-		this.userRegdate = userRegdate;
+	public void setUserGen(String userGen) {
+		this.userGen = userGen;
 	}
-
-	public String getUserRole() {
-		return userRole;
+	public String getUserEmail() {
+		return userEmail;
 	}
-
-	public void setUserRole(String userRole) {
-		this.userRole = userRole;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
-
+	public String getUserBd() {
+		return userBd;
+	}
+	public void setUserBd(String userBd) {
+		this.userBd = userBd;
+	}
+	public Date getInputDt() {
+		return inputDt;
+	}
+	public void setInputDt(Date inputDt) {
+		this.inputDt = inputDt;
+	}
+	public String getUseYn() {
+		return useYn;
+	}
+	public void setUseYn(String useYn) {
+		this.useYn = useYn;
+	}
 	@Override
 	public String toString() {
-		return "UserVO [userId=" + userId + ", userPw=" + userPw + ", userNm=" + userNm + ", userMail=" + userMail
-				+ ", userTel=" + userTel + ", userRegdate=" + userRegdate + ", userRole=" + userRole + "]";
+		return "UserVO [userNo=" + userNo + ", userId=" + userId + ", userPw=" + userPw + ", userNm=" + userNm
+				+ ", userTel=" + userTel + ", userGen=" + userGen + ", userEmail=" + userEmail + ", userBd=" + userBd
+				+ ", inputDt=" + inputDt + ", useYn=" + useYn + ", userNick=" + userNick + "]";
 	}
-	
-	
+
 }

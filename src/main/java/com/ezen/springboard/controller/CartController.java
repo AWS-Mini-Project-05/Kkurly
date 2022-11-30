@@ -1,7 +1,5 @@
 package com.ezen.springboard.controller;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -79,18 +77,8 @@ public class CartController {
 		for (Map<String, Object> tmp : listMap) {
 			System.out.println(tmp.toString());
 		}
+
 		
 	
-		
-		
-		//
-
-		
-		
-		
-		//System.out.println(json);
-
-
 	}
-	
 }

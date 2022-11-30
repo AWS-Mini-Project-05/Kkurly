@@ -40,7 +40,7 @@
 
   .swiper {
     width: 100%;
-    /* height: 100%; */
+    height: 100%; 
   }
 
   .swiper-slide {
@@ -849,33 +849,4 @@
 </script>
 <jsp:include page="./mainFooter.jsp"></jsp:include>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

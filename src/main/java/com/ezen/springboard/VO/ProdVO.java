@@ -12,7 +12,7 @@ public class ProdVO {
 	private Date updateDt;
 	private String prodUnit;
 	private String prodVol;
-	private char useYn;
+	private String useYn;
 	private int saleQty;
 	public int getProdNo() {
 		return prodNo;
@@ -74,10 +74,10 @@ public class ProdVO {
 	public void setProdVol(String prodVol) {
 		this.prodVol = prodVol;
 	}
-	public char getUseYn() {
+	public String getUseYn() {
 		return useYn;
 	}
-	public void setUseYn(char useYn) {
+	public void setUseYn(String useYn) {
 		this.useYn = useYn;
 	}
 	public int getSaleQty() {
@@ -86,6 +86,6 @@ public class ProdVO {
 	public void setSaleQty(int saleQty) {
 		this.saleQty = saleQty;
 	}
-	
+
 
 }
