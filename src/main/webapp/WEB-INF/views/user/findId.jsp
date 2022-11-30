@@ -264,7 +264,7 @@
   </div>
 <jsp:include page="${pageContext.request.contextPath}/mainFooter.jsp"></jsp:include>
 <script type="text/javascript">
-	function check() {
+/* 	function check() {
 		
 		if(document.fm_id.userNm.value == "") {
 			alert("이름을 입력해주세요.");
@@ -280,7 +280,38 @@
 		document.fm_id.method = "get";
 		document.fm_id.action = "./idSearch.do";
 		document.fm_id.submit();
-	} 
+	}  */
+	
+	$(function() {
+		$("#btnIdSearch").on("click", function() {
+			$.ajax({
+				url: "/user/findId.do",
+				type: "post",
+				data: $("#findIdForm").serialize(),
+				success: function(obj) {
+					console.log(obj);
+					//이름 체크
+					if(obj == "nmFail") {
+						alert("존재하지 않는 이름입니다.");
+						$("#userNm").focus();
+						return;
+					}
+					
+					//이메일 체크
+					if(obj =="emailFail") {
+						alert("이메일이 틀렸습니다. 다시 확인해주세요.");
+						$("#userEmail").focus();
+						return;
+					}
+					
+					location.href="/user/idSearch.do";
+				},
+				error: function(e) {
+					console.log(e);
+				}
+			});
+		});
+	});
 </script>
 </body>
 </html>

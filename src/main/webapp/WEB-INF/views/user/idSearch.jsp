@@ -249,7 +249,7 @@
                 고객님의<br>아이디를 확인해주세요.
             </p>
             <p class="info">
-                아이디: 
+                아이디: ${findIdUser.userId }
             </p>
             <a href="/user/login.do" class="btn_type1">
                 <span class="txt_type">로그인 하기</span>

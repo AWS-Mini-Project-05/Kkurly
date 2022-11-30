@@ -255,7 +255,7 @@
                         <input type="text" name="userId" id="userId" size="20" tabindex="2" size="29" required="required" placeholder="아이디 입력">
                         <strong class="tit_label">이메일</strong>
                         <input type="text" name="userEmail" id="userEmail" size="20" tabindex="5" size="29" required="required" placeholder="가입 시 등록한 이메일 입력">
-                        <button type="button" class="btn_type1" onclick="check()" style="cursor:pointer">
+                        <button type="button" id="findPw" class="btn_type1" onclick="check()" style="cursor:pointer">
                             <span class="txt_type">확인</span>
                         </button>
                     </form>

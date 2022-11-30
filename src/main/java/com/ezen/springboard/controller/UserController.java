@@ -52,6 +52,7 @@ public class UserController {
 		return "user/pwSearch";
 	}
 
+
 	//post방식은 해당 로직 처리
 	//회원가입 진행
 	@PostMapping(value="/join.do", produces="application/text; charset=UTF-8")
@@ -182,6 +183,30 @@ public class UserController {
 
 		return "admin/manageUserDetail";
 	}
+	
+	
+	// id 찾기
+	@PostMapping("/findId.do")
+	@ResponseBody
+	public String findId(UserVO userVO, HttpSession session) {
+		//1. 아이디 체크
+		int nmCheck = userService.idCheck(userVO.getUserNm());
+			
+		if(nmCheck < 1) {
+			return "nmFail";
+		} else {
+			UserVO findIdUser = userService.findId(userVO);
+				
+			//2. 이메일 체크
+			if(findIdUser == null) {
+				return "emailFail";
+			}
+				
+			session.setAttribute("findIdUser", findIdUser);
+			return "findIdSuccess";
+		}
+	}
+	
 
 
 }
