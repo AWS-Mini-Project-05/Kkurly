@@ -18,6 +18,7 @@
     h3{text-align: center;}
     table{border: 1px solid black;border-collapse: collapse;}
     th,td{border: 1px solid black;text-align: center ; font-size: 1.2em;}
+    th{background-color: #83929e}
     td{width: 150px;height: 150px;}
 	a{text-decoration: none;   color: black;}
 </style>

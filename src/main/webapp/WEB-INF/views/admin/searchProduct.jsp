@@ -21,6 +21,7 @@
     .checkbox1{margin-left: 250px}
     .checkbox2{margin-left: 150px}
     #search{margin-left: 200px; height: 30px;}
+    th{background-color: #83929e}
     table{border: 1px solid black;border-collapse: collapse;}
     th,td{border: 1px solid black;text-align: center ;}
     td{height: 150px;height: 150px;}

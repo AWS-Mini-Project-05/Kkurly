@@ -17,6 +17,7 @@
     border-radius: 10px;
     }
     h3{text-align: center;}
+    th{background-color:#83929e}
     .checkbox{margin-left: 100px;}
     .checkbox1{margin-left: 250px}
     .checkbox2{margin-left: 150px}

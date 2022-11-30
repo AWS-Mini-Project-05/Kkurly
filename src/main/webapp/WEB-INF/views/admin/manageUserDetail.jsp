@@ -17,6 +17,7 @@
     border-radius: 10px;
     }
     h1{text-align: center;}
+    th{background-color:#83929e}
     table{border: 1px solid black;border-collapse: collapse;}
     th,td{border: 1px solid black;text-align: center ;  height: 150px}
     td{height: 150px;height: 150px;}
@@ -36,45 +37,45 @@
        <table style="width: 80%; margin-left: 10%; " >
         <tr>
 	        <th style="width: 35%;">유저 아이디</th>
-			<th style="width: 65%;">${user.userId}</th>
+			<td style="width: 65%;">${user.userId}</td>
         </tr>
         <tr>
 	        <th style="width: 35%;">유저 이름</th>
-			<th style="width: 65%;">${user.userNm}</th>
+			<td style="width: 65%;">${user.userNm}</td>
         </tr>
         <tr>
 	        <th style="width: 35%;">유저 이메일</th>
-			<th style="width: 65%;">${user.userEmail}</th>
+			<td style="width: 65%;">${user.userEmail}</td>
         </tr>
         <tr>
 	        <th style="width: 35%;">유저 번호</th>
-			<th style="width: 65%;">${user.userNo}</th>
+			<td style="width: 65%;">${user.userNo}</td>
         </tr>
         <tr>
 	        <th style="width: 35%;">가입일</th>
-			<th style="width: 65%;">${user.inputDt}</th>
+			<td style="width: 65%;">${user.inputDt}</td>
         </tr>
          <tr>
 	        <th style="width: 35%;">닉네임</th>
-			<th style="width: 65%;">${user.userNick}</th>
+			<td style="width: 65%;">${user.userNick}</td>
         </tr>
          <tr>
 	        <th style="width: 35%;">휴면여부</th>
-	         <th style="width: 65%;">
+	         <td style="width: 65%;">
 					<c:if test="${user.useYn eq 'Y'}">
 		            	사용중
 		            </c:if>
 		             <c:if test="${user.useYn eq 'N'}">
 		            	휴면
 		            </c:if>
-		  </th>
+		  </td>
         </tr>
   
         
        </table>
-       <div id="btnSession" style="margin-top: 30px; text-align: center;">
-       <a href="/user/updateUser.do?userNo=${user.userNo }" id="updateBtn">회원 수정</a>
-       <a href="/user/deleteUser.do?userNo=${user.userNo }" id="deleteBtn">회원 삭제</a>
+       <div id="btnSession" style="margin-top: 30px; text-align: center; ">
+       <a href="/user/updateUser.do?userNo=${user.userNo }" id="updateBtn" style="background-color: lightgray; border:1px solid black;">회원 수정</a>
+       <a href="/user/deleteUser.do?userNo=${user.userNo }" id="deleteBtn"  style="background-color: lightgray; border:1px solid black;">회원 삭제</a>
        </div>
     </div>
    <jsp:include page="/footer_admin.jsp"></jsp:include>   
