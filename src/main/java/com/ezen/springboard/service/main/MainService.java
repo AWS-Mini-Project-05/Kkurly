@@ -8,5 +8,7 @@ public interface MainService {
 
 
 	List<ProdVO> getProdList(String cd);
+	
+	int getProdCnt(String cd);
 
 }

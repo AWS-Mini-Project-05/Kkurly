@@ -14,7 +14,11 @@ public class MainDAO {
 	private SqlSessionTemplate mybatis;
 
 	public List<ProdVO> getProdList(String cd){
-		System.out.println("MainDAO ING~"+cd);
+//		System.out.println("MainDAO ING~"+cd);
 		return mybatis.selectList("MainDAO.getProdList",cd);
+	}
+	
+	public int getProdCnt(String cd) {
+		return mybatis.selectOne("MainDAO.getProdCnt", cd);
 	}
 }

@@ -12,11 +12,16 @@ import com.ezen.springboard.service.main.MainService;
 public class MainServiceImpl implements MainService{
 
 	@Autowired
-	MainDAO maindao;
+	MainDAO mainDAO;
 
 	@Override
 	public List<ProdVO> getProdList(String cd) {
-		return maindao.getProdList(cd);
+		return mainDAO.getProdList(cd);
+	}
+
+	@Override
+	public int getProdCnt(String cd) {
+		return mainDAO.getProdCnt(cd);
 	}
 
 }

@@ -342,56 +342,56 @@ nav {
 									</div>
 								</li>
 								<li class="cg-sub-li">
-									<div class="cg-sub-div" onclick="location.href='#'">
+									<div class="cg-sub-div" onclick="location.href='/main/categori.do?CD=frut'">
 										<img
 											src="https://collection-image.kurly.com/site-category-groups/2/DNXCcUaXoXakDOdHiGhIMCNUeUjJioG9EyeQ7RRX.png"
 											alt="과일" class="cg-sub-img"><span class="cg-sub-span">과일</span>
 									</div>
 								</li>
 								<li class="cg-sub-li">
-									<div class="cg-sub-div" onclick="location.href='#'">
+									<div class="cg-sub-div" onclick="location.href='/main/categori.do?CD=aqua'">
 										<img
 											src="https://collection-image.kurly.com/site-category-groups/3/fivaoZPBTeqaDswJUgr3k0xMV0von36Qb9qnn7ZZ.png"
 											alt="수산물" class="cg-sub-img"><span class="cg-sub-span">수산물</span>
 									</div>
 								</li>
 								<li class="cg-sub-li">
-									<div class="cg-sub-div" onclick="location.href='#'">
+									<div class="cg-sub-div" onclick="location.href='/main/categori.do?CD=meat'">
 										<img
 											src="https://collection-image.kurly.com/site-category-groups/4/jj6zZg2sY94aytlc2k1udIAmWWvmUignR9VYaMcm.png"
 											alt="육류" class="cg-sub-img"><span class="cg-sub-span">육류</span>
 									</div>
 								</li>
 								<li class="cg-sub-li">
-									<div class="cg-sub-div" onclick="location.href='#'">
+									<div class="cg-sub-div" onclick="location.href='/main/categori.do?CD=pet'">
 										<img
 											src="https://collection-image.kurly.com/site-category-groups/19/DeT1R9JFqxgxubAIJuFcbZPPbBu8DHUkFJmGZBlJ.png"
 											alt="반려동물" class="cg-sub-img"><span class="cg-sub-span">반려동물</span>
 									</div>
 								</li>
 								<li class="cg-sub-li">
-									<div class="cg-sub-div" onclick="location.href='#'">
+									<div class="cg-sub-div" onclick="location.href='/main/categori.do?CD=kit'">
 										<img
 											src="https://collection-image.kurly.com/site-category-groups/6/kwat5Szmq0ONTpMd4hlbcGmCOBd3FsMPyTzWxKBb.png"
 											alt="간편식" class="cg-sub-img"><span class="cg-sub-span">간편식</span>
 									</div>
 								</li>
 								<li class="cg-sub-li">
-									<div class="cg-sub-div" onclick="location.href='#'">
+									<div class="cg-sub-div" onclick="location.href='/main/categori.do?CD=alco'">
 										<img
 											src="https://collection-image.kurly.com/site-category-groups/12/UnO3V0GDnss8p37EKmTGvnF9SzeyzgyzC0O7Wh1R.png"
 											alt="주류" class="cg-sub-img"><span class="cg-sub-span">주류</span>
 									</div>
 								</li>
 								<li class="cg-sub-li">
-									<div class="cg-sub-div" onclick="location.href='#'">
+									<div class="cg-sub-div" onclick="location.href='/main/categori.do?CD=drink'">
 										<img
 											src="https://collection-image.kurly.com/site-category-groups/8/bKllScRqF9gQ5q58LcmBfOOhgBrCOdVypPiRvQkL.png"
 											alt="음료" class="cg-sub-img"><span class="cg-sub-span">음료</span>
 									</div>
 								</li>
 								<li class="cg-sub-li">
-									<div class="cg-sub-div" onclick="location.href='#'">
+									<div class="cg-sub-div" onclick="location.href='/main/categori.do?CD=bek'">
 										<img
 											src="https://collection-image.kurly.com/site-category-groups/9/5qKRHLtIeBWLxUPa1g3koUhqsAkc39YjtMnyIXCJ.png"
 											alt="베이커리" class="cg-sub-img"><span class="cg-sub-span">베이커리</span>

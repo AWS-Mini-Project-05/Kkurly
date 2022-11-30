@@ -11,4 +11,10 @@
 		WHERE PROD_CG_CD = #{cd}
 	</select>
 	
+	<select id="getProdCnt" parameterType="String" resultType="Integer">
+		SELECT COUNT(*) 
+		FROM TB_PROD
+		WHERE PROD_CG_CD = #{cd}
+	</select>
+	
 </mapper>
