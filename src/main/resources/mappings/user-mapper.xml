@@ -44,6 +44,7 @@
 			 , USER_NM
 			 , USER_TEL
 			 , USER_EMAIL
+			 , USER_NO
 			FROM TB_USER
 			WHERE USER_ID = #{userId}
 			  AND USER_PW = #{userPw}

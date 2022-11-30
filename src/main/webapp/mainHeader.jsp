@@ -116,6 +116,7 @@ nav {
 		url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCAzNiAzNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgzNnYzNkgweiIvPgogICAgICAgIDxnIHN0cm9rZT0iIzVGMDA4MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2Utd2lkdGg9IjEuNyI+CiAgICAgICAgICAgIDxwYXRoIGQ9Im0yNi4wODEgMjYuMDgxLTQuMTItNC4xMk0xNi40NjcgMjMuMzM0YTYuODY3IDYuODY3IDAgMSAwIDAtMTMuNzM0IDYuODY3IDYuODY3IDAgMCAwIDAgMTMuNzM0eiIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg==")
 		0px 0px no-repeat;
 	border: 0px;
+	cursor : pointer;
 }
 
 #main_txt {
@@ -226,7 +227,7 @@ nav {
 	min-height: 200px;
 	position: absolute;
 	display: none;
-	top: 46px;
+	top: 40px;
 	padding-top: 10px;
 }
 
@@ -235,6 +236,7 @@ nav {
 	z-index: 21;
 	width: 249px;
 	border: 1px solid rgb(221, 221, 221);
+	border-top : 0px;
 	background-color: rgb(255, 255, 255);
 	animation: 0s linear 0s 1 normal none running animation-w43n76;
 }
@@ -312,7 +314,7 @@ nav {
 					관리자페이지 </a>
 				</c:when>
 				<c:otherwise>
-				<<a href="/user/mypage.do" class="nav-login">${loginUser.userId }님</a> <a> | </a> <a href="/user/logout.do" class="nav-login">로그아웃</a>
+				<a href="/user/mypage.do" class="nav-login">${loginUser.userId }님</a> <a> | </a> <a href="/user/logout.do" class="nav-login">로그아웃</a>
 				<a> | </a> <a class="nav-login" href="/product/searchProduct.do">
 					관리자페이지 </a>
 				</c:otherwise>
@@ -327,8 +329,8 @@ nav {
 
 				<div id="nav-search">
 					<input id="gnb_search" class="nav-search-input"
-						placeholder="검색어를 입력해주세요" required="" value="">
-					<button id="submit" class="nav-search-icon"></button>
+						placeholder="검색어를 입력해주세요" value="">
+					<button id="submit" class="nav-search-icon" onclick="search()"></button>
 				</div>
 				<div id="nav-icon">
 					<div class="icon-adr"></div>
@@ -440,6 +442,12 @@ nav {
 	document.getElementById("main_txt").addEventListener("click", function() {
 		window.location.href = '/';
 	});
+
+  function search(){
+    let prodNm = document.getElementById("gnb_search").value;
+    console.log(prodNm);
+    window.location.href="/main/search.do?prodNm="+prodNm;
+  }
 </script>
 
 </html>

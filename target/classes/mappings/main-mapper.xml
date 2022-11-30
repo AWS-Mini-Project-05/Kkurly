@@ -5,17 +5,23 @@
 
 <mapper namespace="MainDAO">
 	<!-- 쿼리 작성 영역 -->
-	<select id="getProdList" parameterType="String" resultType="prod">
+	<select id="getProdCdList" parameterType="String" resultType="prod">
 		SELECT * 
 		FROM TB_PROD
 		WHERE PROD_CG_CD LIKE CONCAT('%', #{cd})
 	</select>
 	
-	<select id="getProdCnt" parameterType="String" resultType="Integer">
+	<select id="getProdList" parameterType="String" resultType="prod">
+		SELECT *
+		FROM TB_PROD
+		WHERE PROD_NM LIKE CONCAT('%', #{prodNm}, '%')
+	</select>
+	
+	<!-- <select id="getProdCnt" parameterType="String" resultType="Integer">
 		SELECT COUNT(*) 
 		FROM TB_PROD
 		WHERE PROD_CG_CD LIKE CONCAT('%', #{cd})
-	</select>
+	</select> -->
 	
 	<select id="getCgNm" parameterType="String" resultType="String">
 		SELECT CD_NM
@@ -29,5 +35,11 @@
 		FROM TB_PROD
 		WHERE PROD_NO = #{prodNo}
 	</select>
+	
+	<insert id="insertLike" parameterType="map">
+		INSERT INTO TB_USER_LIKE
+		VALUES 
+		(#{userNo}, #{prodNo})
+	</insert>
 	
 </mapper>

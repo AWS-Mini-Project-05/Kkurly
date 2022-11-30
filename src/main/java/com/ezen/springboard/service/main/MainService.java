@@ -7,12 +7,16 @@ import com.ezen.springboard.VO.ProdVO;
 public interface MainService {
 
 
-	List<ProdVO> getProdList(String cd);
+	List<ProdVO> getProdCdList(String cd);
 	
-	int getProdCnt(String cd);
+	List<ProdVO> getProdList(String prodNm);
+	
+//	int getProdCnt(String cd);
 	
 	String getCgNm (String cd);
 	
 	ProdVO getProd(int prodNo);
+	
+	void insertLike(int userNo, int prodNo);
 
 }
