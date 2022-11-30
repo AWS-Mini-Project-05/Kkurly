@@ -572,11 +572,11 @@
 	            })
 	         });
 		
-/*         //id 중복체크 후 다시 id를 변경했을 때
+        //id 중복체크 후 다시 id를 변경했을 때
         $("#userId").on("change", function() {
            checkId = false;
            $('.field_id .btn').attr("disabled", false);
-        }); */
+        }); 
 
 
 	    $('#addressSearch').click(function(){

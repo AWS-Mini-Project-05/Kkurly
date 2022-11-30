@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -303,10 +304,20 @@ nav {
 		<div class="nav-top">
 
 			<div id="nav-login">
+			<c:choose>
+				<c:when test="${loginUser eq null}">
 				<a href="/user/join.do" class="nav-login">회원가입</a> <a> | </a> <a href="/user/login.do" class="nav-login">로그인</a>
 				<a> | </a> <a class="nav-login" href="/product/searchProduct.do">
 					관리자페이지 </a>
+				</c:when>
+				<c:otherwise>
+				<<a href="/user/mypage.do" class="nav-login">${loginUser.userId }님</a> <a> | </a> <a href="/user/logout.do" class="nav-login">로그아웃</a>
+				<a> | </a> <a class="nav-login" href="/product/searchProduct.do">
+					관리자페이지 </a>
+				</c:otherwise>
+			</c:choose>
 			</div>
+			
 
 			<div id="nav-headerMain">
 				<img src="/images/KKURLY_LOGO2.png" alt="메인로고" width="120"
