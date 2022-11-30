@@ -61,6 +61,19 @@
 	]]>
 	</select>
 	
+	<select id="findPw" parameterType="user" resultType="user">
+	<![CDATA[
+		SELECT USER_ID
+			 , USER_NM
+			 , USER_EMAIL
+			 , USER_PW
+			FROM TB_USER
+			WHERE USER_NM = #{userNm}
+			  AND USER_EMAIL = #{userEmail}
+			  AND USER_ID = #{userId}
+	]]>
+	</select>
+	
 	
 	<select id="manageUser" parameterType="map" resultType="user">
 	<![CDATA[

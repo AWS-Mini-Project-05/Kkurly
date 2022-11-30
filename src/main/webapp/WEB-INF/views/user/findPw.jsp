@@ -245,7 +245,7 @@
             <div class="section_login">
                 <h3 class="tit_login">FIND YOUR PASSWORD</h3>
                 <div class="write_form find_view">
-                    <form method="post" name="fm_pw" id="form" onsubmit="return chkForm(this);" action="">
+                    <form method="post" name="fm_pw" id="findPwForm" action="">
                         <input type="hidden" name="act" value="Y">
                         <input type="hidden" name="rncheck" value="none">
                         <input type="hidden" name="dupeinfo" value>
@@ -255,7 +255,7 @@
                         <input type="text" name="userId" id="userId" size="20" tabindex="2" size="29" required="required" placeholder="아이디 입력">
                         <strong class="tit_label">이메일</strong>
                         <input type="text" name="userEmail" id="userEmail" size="20" tabindex="5" size="29" required="required" placeholder="가입 시 등록한 이메일 입력">
-                        <button type="button" id="findPw" class="btn_type1" onclick="check()" style="cursor:pointer">
+                        <button type="button" id="btnPwSearch" class="btn_type1" style="cursor:pointer">
                             <span class="txt_type">확인</span>
                         </button>
                     </form>
@@ -266,28 +266,38 @@
   </div>
 <jsp:include page="${pageContext.request.contextPath}/mainFooter.jsp"></jsp:include>
 <script type="text/javascript">
-	function check() {
-		
-		if(document.fm_pw.userNm.value == "") {
-			alert("이름을 입력해주세요.");
-			f.userNm.focus();
-			return false;
-		}
-		if(document.fm_pw.userId.value == "") {
-			alert("아이디를 입력해주세요.");
-			f.userId.focus();
-			return false;
-		}
-		if(document.fm_pw.userEmail.value == "") {
-			alert("이메일을 입력해주세요.");
-			f.userEmail.focus();
-			return false;
-		}
-		
-		document.fm_pw.method = "get";
-		document.fm_pw.action = "./pwSearch.do";
-		document.fm_pw.submit();
-	} 
+$(function() {
+	$("#btnPwSearch").on("click", function() {
+		$.ajax({
+			url: "/user/findPw.do",
+			type: "post",
+			data: $("#findPwForm").serialize(),
+			success: function(obj) {
+				console.log(obj);
+				
+				//이름 체크
+				if(obj == "nmFail") {
+					alert("존재하지 않는 이름입니다.");
+					$("#userNm").focus();
+					return;
+				}
+				
+				//아이디 체크
+				if(obj == "idFail") {
+					alert("존재하지 않는 아이디입니다.");
+					$("#userId").focus();
+					return;
+				}
+				
+				
+				location.href="/user/pwSearch.do";
+			},
+			error: function(e) {
+				console.log(e);
+			}
+		});
+	});
+});
 </script>
 </body>
 </html>

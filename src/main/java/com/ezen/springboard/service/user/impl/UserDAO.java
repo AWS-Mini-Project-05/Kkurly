@@ -37,6 +37,9 @@ public class UserDAO {
 		return mybatis.selectOne("UserDAO.findId", userVO);
 	}
 
+	public UserVO findPw(UserVO userVO) {
+		return mybatis.selectOne("UserDAO.findPw", userVO);
+	}
 
 
 

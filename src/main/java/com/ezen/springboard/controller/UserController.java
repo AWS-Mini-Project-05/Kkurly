@@ -189,7 +189,7 @@ public class UserController {
 	@PostMapping("/findId.do")
 	@ResponseBody
 	public String findId(UserVO userVO, HttpSession session) {
-		//1. 아이디 체크
+		//1. 이름 체크
 		int nmCheck = userService.idCheck(userVO.getUserNm());
 			
 		if(nmCheck < 1) {
@@ -204,6 +204,28 @@ public class UserController {
 				
 			session.setAttribute("findIdUser", findIdUser);
 			return "findIdSuccess";
+		}
+	}
+	
+	//pw 찾기
+	@PostMapping("/findPw.do")
+	@ResponseBody
+	public String findPw(UserVO userVO, HttpSession session) {
+		//1. 아이디 체크
+		int idCheck = userService.idCheck(userVO.getUserId());
+		
+		if(idCheck < 1) {
+			return "idFail";
+		} else {
+			UserVO findPwUser = userService.findPw(userVO);
+				
+			//2. 이름 체크
+			if(findPwUser == null) {
+				return "nmFail";
+			}
+				
+			session.setAttribute("findPwUser", findPwUser);
+			return "findPwSuccess";
 		}
 	}
 	
