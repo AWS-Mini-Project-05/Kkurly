@@ -231,7 +231,7 @@ input[type=checkbox]:checked + label {
 	<div id="select-top">
  		<span><input type="image" src="${pageContext.request.contextPath }/images/click-off.png" class="btn-img-all"></span>
  		<!-- <span><input type="checkbox" id="btn-img-all" class="btn-img-all"><label for="btn-img-all">a</label></span> -->		
- 		<span><input type="button" class="btn-txt-all" value="전체선택 (0/0)"></span>
+ 		<span><input type="button" class="btn-txt-all" value="전체선택">(<span id="selectProd">0</span>/<span id="totalProd">0</span>)</span>
  		<span style="line-height" class="vertical-line">|</span>
  		<span><input type="button" class="btn-txt-delete" value="선택삭제"></span>
 	</div>
@@ -409,6 +409,12 @@ input[type=checkbox]:checked + label {
 	let foldNormalFlag = false;
 	
 	$(function() {
+		
+		let numOfProd = $(".prod-prod").length;
+		
+		console.log(numOfProd);
+		$("#totalProd").text(numOfProd);
+	
 		$(".btn-img-all").click(function() {
 			if (selectAllFlag == false) {
 				$(".btn-img-all").attr("src", "${pageContext.request.contextPath }/images/click-on.png");
@@ -416,6 +422,7 @@ input[type=checkbox]:checked + label {
 				$(".prod-table").each(function(index, item){
 					$(this).val("off");
 				});
+				
 				$(".prod-table").click();
 			} else {
 				$(".btn-img-all").attr("src", "${pageContext.request.contextPath }/images/click-off.png");
@@ -423,6 +430,8 @@ input[type=checkbox]:checked + label {
 				$(".prod-table").each(function(index, item){
 					$(this).val("on");
 				});
+
+				
 				$(".prod-table").click();
 			}
 		});
@@ -470,18 +479,22 @@ input[type=checkbox]:checked + label {
 			if ($(this).val() == "on") {
 				$(this).attr("src", "${pageContext.request.contextPath }/images/click-off.png");
 				$(this).val("off");
+
 			} else if ($(this).val() == "off") {
 				$(this).attr("src", "${pageContext.request.contextPath }/images/click-on.png");
 				$(this).val("on");
+
 			}
 			
 			let numOfChecked = 0;
-
 			$(".prod-table").each(function(index, item){
-				if($(this).val() == "on") numOfChecked += 1;
+				if($(this).val() == "on") {
+					numOfChecked += 1;
+				}
 /* 				console.log($(this).val());
 				console.log(numOfChecked); */
 			});
+			$("#selectProd").text(numOfChecked);
 			
 			if (numOfChecked == $(".prod-table").length) {
 				$(".btn-img-all").attr("src", "${pageContext.request.contextPath }/images/click-on.png");
@@ -528,7 +541,8 @@ input[type=checkbox]:checked + label {
 			//console.log($(this).parent().parent("tr").length);
 			//console.log($(".normal-table").children("tr"));
 			
-			console.log($("#normal-table .prod-prod").length);
+			countNumOfSelect();
+			countNumOfTotal();
 			
 		})
 		
@@ -541,7 +555,19 @@ input[type=checkbox]:checked + label {
 				}
 			});
 			
+			countNumOfSelect();
+			countNumOfTotal();
 			console.log($(".prod-table").length);
+			
+			if (selectAllFlag == true) {
+				$(".btn-img-all").attr("src", "${pageContext.request.contextPath }/images/click-off.png");
+				selectAllFlag = false;
+				/* $(".prod-table").each(function(index, item){
+					$(this).val("on");
+				});
+				$(".prod-table").click(); */
+			}
+			
 		});
 		
 		$(".allPrice").on("change", function() {
@@ -566,6 +592,23 @@ input[type=checkbox]:checked + label {
 			//console.log(total);
 			$(".price").text(total);
 		});
+		
+		function countNumOfSelect() {
+			let numOfChecked = 0;
+			$(".prod-table").each(function(index, item){
+				if($(this).val() == "on") {
+					numOfChecked += 1;
+				}
+			});
+			$("#selectProd").text(numOfChecked);
+		}
+		
+		function countNumOfTotal() {
+			let numOfProd = $(".prod-prod").length;
+			
+			console.log(numOfProd);
+			$("#totalProd").text(numOfProd);
+		}
 		
 	});
 
