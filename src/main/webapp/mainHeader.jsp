@@ -72,7 +72,7 @@ nav {
 	display: flex;
 	-webkit-box-align: center;
 	align-items: center;
-	height: 63px;
+	/* height: 63px; */
 	padding-top: 30px;
 }
 
@@ -271,6 +271,7 @@ nav {
 	display: flex;
 	width: 500px;
 	margin-left: -90px;
+	margin-top: 10px;
 }
 
 .nav-header-li {
