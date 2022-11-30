@@ -244,59 +244,36 @@ input[type=checkbox]:checked + label {
 			<span class="prod-fold"><input type="image" src="${pageContext.request.contextPath }/images/fold.png" 
 				class="btn-cold-fold btn-fold" value="unfold"></span>
 		</div>
-		<table class="cold-table">
-			<tr class="prod-prod" style="height:110px;">
+		<table class="cold-table"> 
+			<c:forEach items="${coldList }" var="cold" varStatus="status">
+				<tr class="prod-prod" style="height:110px;">
 				<td style="width:4%">
 					<input type="image" class="cold-prod-table prod-table" src="${pageContext.request.contextPath }/images/click-off.png" value="off">
 				</td>
 				<td style="width:9%">
-					<img src="${pageContext.request.contextPath }/images/img-prod01.png" style="width: 62px; height: 80px;">
+					<img src="${pageContext.request.contextPath }${cold.prodImgPath }${cold.prodImgNm}" style="width: 62px; height: 80px;">
 				</td>
 				<td style="width:47%">
-					<p>[껄리] 이 육개장이 ㅇ러메나 맛있게</p>
+					<p>${cold.prodNm }</p>
 				</td>
-				<td style="width:17%;">
+				<td style="width:14%;">
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
-							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
-							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">1</span></td>
-							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
+							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png" value="${cold.prodNo }"/></td>
+							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result${cold.prodNo }">${coldQtyList[status.index] }</span></td>
+							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png" value="${cold.prodNo }"/></td>
 						</tr>
 					</table>
 				</td>
-				<td style="width:18%">
-					104,000원
+				<td style="width:14%; text-align: right;">
+					<input type="hidden" value="${cold.prodPrice }">
+					<span id="prod-price${cold.prodNo }" class="allPrice">${cold.prodPrice }</span> 원
 				</td>
-				<td style="width:5%">
+				<td style="width:13%; text-align: right; padding-right: 1.2%">
 					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png">
 				</td>
-			</tr>
-			<tr class="prod-prod" style="height:110px;">
-				<td style="width:4%">
-					<input type="image" class="cold-prod-table prod-table" src="${pageContext.request.contextPath }/images/click-off.png" value="off">
-				</td>
-				<td style="width:9%">
-					<img src="${pageContext.request.contextPath }/images/img-prod01.png" style="width: 62px; height: 80px;">
-				</td>
-				<td style="width:47%">
-					<p>[껄리] 이 육개장이 ㅇ러메나 맛있게</p>
-				</td>
-				<td style="width:17%">
-					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
-						<tr>
-							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
-							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">1</span></td>
-							<td><input type="image"  class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
-						</tr>
-					</table>
-				</td>
-				<td style="width:18%">
-					104,000원
-				</td>
-				<td style="width:5%">
-					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png">
-				</td>
-			</tr>
+				</tr>
+			</c:forEach>
 			
 		</table>
 		<div id="frozen-prod">
@@ -306,58 +283,36 @@ input[type=checkbox]:checked + label {
 				class="btn-frozen-fold btn-fold" value="unfold"></span>
 		</div>
 		<table class="frozen-table">
-			<tr class="prod-prod" style="height:110px;">
-				<td style="width:4%">	
-					<input type="image" class="frozen-prod-table prod-table" src="${pageContext.request.contextPath }/images/click-off.png" value="off">
-				</td>
-				<td style="width:9%">
-					<img src="${pageContext.request.contextPath }/images/img-prod01.png" style="width: 62px; height: 80px;">
-				</td>
-				<td style="width:47%">
-					<p>[껄리] 이 육개장이 ㅇ러메나 맛있게</p>
-				</td>
-				<td style="width:17%">
-					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
-						<tr>
-							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
-							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">1</span></td>
-							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
-						</tr>
-					</table>
-				</td>
-				<td style="width:18%">
-					104,000원
-				</td>
-				<td style="width:5%">
-					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png">
-				</td>
-			</tr>
-			<tr class="prod-prod" style="height:110px;">
+			<c:forEach items="${frozenList }" var="frozen" varStatus="status">
+				<tr class="prod-prod" style="height:110px;">
 				<td style="width:4%">
 					<input type="image" class="frozen-prod-table prod-table" src="${pageContext.request.contextPath }/images/click-off.png" value="off">
 				</td>
 				<td style="width:9%">
-					<img src="${pageContext.request.contextPath }/images/img-prod01.png" style="width: 62px; height: 80px;">
+					<img src="${pageContext.request.contextPath }${frozen.prodImgPath }${frozen.prodImgNm}" style="width: 62px; height: 80px;">
 				</td>
 				<td style="width:47%">
-					<p>[껄리] 이 육개장이 ㅇ러메나 맛있게</p>
+					<p>${frozen.prodNm }</p>
 				</td>
-				<td style="width:17%">
+				<td style="width:14%;">
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
-							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
-							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">1</span></td>
-							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
+							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png" value="${frozen.prodNo }"/></td>
+							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result${frozen.prodNo }">${frozenQtyList[status.index] }</span></td>
+							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png" value="${frozen.prodNo }"/></td>
 						</tr>
 					</table>
 				</td>
-				<td style="width:18%">
-					104,000원
+				<td style="width:14%; text-align: right;">
+					<input type="hidden" value="${frozen.prodPrice }">
+					<span id="prod-price${frozen.prodNo }" class="allPrice">${frozen.prodPrice }</span> 원
 				</td>
-				<td style="width:5%">
+				<td style="width:13%; text-align: right; padding-right: 1.2%">
 					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png">
 				</td>
-			</tr>
+				</tr>
+			</c:forEach>
+			
 			
 		</table>
 		<div id="normal-prod">
@@ -367,111 +322,36 @@ input[type=checkbox]:checked + label {
 				class="btn-normal-fold btn-fold" value="unfold"></span>
 		</div>
 		<table class="normal-table" id="normal-table">
-			<tr class="prod-prod" style="height:110px;">
+			<c:forEach items="${normalList }" var="normal" varStatus="status">
+				<tr class="prod-prod" style="height:110px;">
 				<td style="width:4%">
 					<input type="image" class="normal-prod-table prod-table" src="${pageContext.request.contextPath }/images/click-off.png" value="off">
 				</td>
 				<td style="width:9%">
-					<img src="${pageContext.request.contextPath }/images/img-prod01.png" style="width: 62px; height: 80px;">
+					<img src="${pageContext.request.contextPath }${normal.prodImgPath }${normal.prodImgNm}" style="width: 62px; height: 80px;">
 				</td>
 				<td style="width:47%">
-					<p>[껄리] 이 육개장이 ㅇ러메나 맛있게</p>
+					<p>${normal.prodNm }</p>
 				</td>
-				<td style="width:17%">
+				<td style="width:14%;">
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
-							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
-							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">1</span></td>
-							<td><input type="image" class="plus-btn"  src="${pageContext.request.contextPath }/images/plus.png"/></td>
+							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png" value="${normal.prodNo }"/></td>
+							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result${normal.prodNo }">${normalQtyList[status.index] }</span></td>
+							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png" value="${normal.prodNo }"/></td>
 						</tr>
 					</table>
 				</td>
-				<td style="width:18%">
-					104,000원
+				<td style="width:14%; text-align: right;">
+					<input type="hidden" value="${normal.prodPrice }">
+					<span id="prod-price${normal.prodNo }" class="allPrice">${normal.prodPrice }</span> 원
 				</td>
-				<td style="width:5%">
+				<td style="width:13%; text-align: right; padding-right: 1.2%">
 					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png">
 				</td>
-			</tr>
-			<tr class="prod-prod" style="height:110px;">
-				<td style="width:4%">
-					<input type="image" class="normal-prod-table prod-table" src="${pageContext.request.contextPath }/images/click-off.png" value="off">
-				</td>
-				<td style="width:9%">
-					<img src="${pageContext.request.contextPath }/images/img-prod01.png" style="width: 62px; height: 80px;">
-				</td>
-				<td style="width:47%">
-					<p>[껄리] 이 육개장이 ㅇ러메나 맛있게</p>
-				</td>
-				<td style="width:17%">
-					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
-						<tr>
-							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
-							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">1</span></td>
-							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
-						</tr>
-					</table>
-				</td>
-				<td style="width:18%">
-					104,000원
-				</td>
-				<td style="width:5%">
-					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png">
-				</td>
-			</tr>
-			<tr class="prod-prod" style="height:110px;">
-				<td style="width:4%">
-					<input type="image" class="normal-prod-table prod-table" src="${pageContext.request.contextPath }/images/click-off.png" value="off">
-				</td>
-				<td style="width:9%">
-					<img src="${pageContext.request.contextPath }/images/img-prod01.png" style="width: 62px; height: 80px;">
-				</td>
-				<td style="width:47%">
-					<p>[껄리] 이 육개장이 ㅇ러메나 맛있게</p>
-				</td>
-				<td style="width:17%">
-					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
-						<tr>
-							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
-							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">1</span></td>
-							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
-						</tr>
-					</table>
-				</td>
-				<td style="width:18%">
-					104,000원
-				</td>
-				<td style="width:5%">
-					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png">
-				</td>
-			</tr>
-			<tr class="prod-prod" style="height:110px;">
-				<td style="width:4%">
-					<input type="image" class="normal-prod-table prod-table" src="${pageContext.request.contextPath }/images/click-off.png" value="off">
-				</td>
-				<td style="width:9%">
-					<img src="${pageContext.request.contextPath }/images/img-prod01.png" style="width: 62px; height: 80px;">
-				</td>
-				<td style="width:47%">
-					<p>[껄리] 이 육개장이 ㅇ러메나 맛있게</p>
-				</td>
-				<td style="width:17%">
-					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
-						<tr>
-							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png"/></td>
-							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result">1</span></td>
-							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png"/></td>
-						</tr>
-					</table>
-				</td>
-				<td style="width:18%">
-					104,000원
-				</td>
-				<td style="width:5%">
-					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png">
-				</td>
-			</tr>
-			
+				</tr>
+			</c:forEach>	
+		
 		</table>
 	</div>
 <!-- side -->
@@ -479,24 +359,24 @@ input[type=checkbox]:checked + label {
 		<table id="table-price">
 			<tr>
 				<td class="text-price">상품금액</td>
-				<td class="num-price">500,000</td>
+				<td class="num-price prodPrice">${prodPrice }</td>
 				<td>원</td>
 			</tr>
 			<tr>
 				<td class="text-price">상품할인금액</td>
-				<td class="num-price">300,000</td>
+				<td class="num-price discountPrice">0</td>
 				<td>원</td>
 			</tr>
 			<tr>
 				<td class="text-price">배송비</td>
-				<td class="num-price">200,000</td>
+				<td class="num-price delivery">0</td>
 				<td>원</td>
 			</tr>
 		</table>
 		<table id="table-price-all">
 			<tr>
 				<td class="text-price">결제예정금액</td>
-				<td class="num-price">600,000</td>
+				<td class="num-price price">${totalPrice }</td>
 				<td>원</td>
 			</tr>
 		</table>
@@ -615,17 +495,27 @@ input[type=checkbox]:checked + label {
 		});
 		
 		$(".plus-btn").on("click", function() {
-			
-			let num = $(this).parent().prev().children("#result").text();
-			$(this).parent().prev().children("#result").text(parseInt(num) + 1);
+			let prodNo = $(this).val();   // prodNo
+
+			let prodQty = parseInt($("#result"+prodNo).text()) + 1;
+			let prodPrice = parseInt($("#prod-price"+prodNo).prev().val());
+			$("#result"+prodNo).text(prodQty);
+			$("#prod-price"+prodNo).text(prodQty * prodPrice);
+			$(".allPrice").trigger("change");
 		})
 		
+
 		$(".minus-btn").on("click", function() {
 			
-			let num = $(this).parent().next().children("#result").text();
-			if (parseInt(num) > 1) {
-				$(this).parent().next().children("#result").text(parseInt(num) - 1);
-			}
+			let prodNo = $(this).val();   // prodNo
+
+			let prodQty = parseInt($("#result"+prodNo).text());
+			if (prodQty > 1) prodQty = prodQty- 1;
+			let prodPrice = parseInt($("#prod-price"+prodNo).prev().val());
+			//console.log(prodQty + " " +prodPrice);
+			$("#result"+prodNo).text(prodQty);
+			$("#prod-price"+prodNo).text(prodQty * prodPrice);
+			$(".allPrice").trigger("change");
 		});
 		
 		$(".del-prod").on("click", function() {
@@ -653,6 +543,30 @@ input[type=checkbox]:checked + label {
 			
 			console.log($(".prod-table").length);
 		});
+		
+		$(".allPrice").on("change", function() {
+			
+			let total = 0;
+			//console.log($(".allPrice").length);
+			$(".allPrice").each(function(index, item){
+				total += parseInt($(this).text());
+			});
+			//console.log(total);
+			$(".prodPrice").text(total);
+			$(".num-price").trigger("change");
+			
+		});
+		
+		$(".num-price").on("change", function() {
+			let total = 0;
+			//console.log($(".allPrice").length);
+			total += parseInt($(".prodPrice").text());
+			total += parseInt($(".discountPrice").text());
+			total += parseInt($(".delivery").text());
+			//console.log(total);
+			$(".price").text(total);
+		});
+		
 	});
 
 </script>

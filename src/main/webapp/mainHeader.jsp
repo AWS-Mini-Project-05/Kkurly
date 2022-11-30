@@ -332,7 +332,7 @@ nav {
         <div id="nav-icon">
           <div class="icon-adr"></div>
           <button class="icon-like"></button>
-          <form action="/cart/tmpCartList.do" method="post" class="localContainer" id="localContainer" style="display:none;">
+          <form action="/cart/cartList.do" method="post" class="localContainer" id="localContainer" style="display:none;">
           	<input type="hidden" class="localInput" id="tmp" name="tmp">
           </form>
           <!-- <button class="icon-cart" onclick="location.href='/cart/cartList.do'"></button> -->
