@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Search PW</title>
 <style>
 	*, *:after, *:before{
 	    box-sizing:border-box;
@@ -123,7 +123,7 @@
 	    line-height: 18px;
 	    text-align: left;
 	}
-	.section_login .find_view .btnLogin {
+	.section_login .find_view .btn_type1 {
 	    margin-top: 30px;
 	}
 	.section_login .find_view .thumb {
@@ -139,7 +139,7 @@
 	    line-height: 29px;
 	}
 	
-	.btnLogin .txt_type, .btn_type2 .txt_type {
+	.btn_type1 .txt_type, .btn_type2 .txt_type {
 	    display: inline-block;
 	    height: 100%;
 	    width:100%;
@@ -149,12 +149,12 @@
 	    text-align: center;
 	}
 	
-	.btnLogin{
+	.btn_type1{
 	    border: 1px solid #5f0081;
 	    background-color: #5f0080;
 	    width:100%;
 	}
-	.btnLogin .txt_type{
+	.btn_type1 .txt_type{
 	    color:#fff;
 	}
 	.btn_type2{
@@ -165,7 +165,7 @@
 	.btn_type2 .txt_type{
 	    color:#5F4C0B;
 	}
-	.btnLogin, .btn_type2{
+	.btn_type1, .btn_type2{
 	    display:block;
 	    overflow:hidden;
 	    width:100%;
@@ -238,90 +238,25 @@
 </style>
 </head>
 <body>
-	<jsp:include page="${pageContext.request.contextPath}/mainHeader.jsp"></jsp:include>
-        <div id="container" class="container">
-            <div id="main">
-                <div id="content">
-                    <div class="section_login">
-                        <h3 class="tit_login">LOGIN</h3>
-                        <div class="write_form">
-                            <div class="write_view login_view">
-                                <form id="loginForm">
-                                	<input type="hidden" id="joinMsg" value="${joinMsg }">
-                                    <input type="hidden" name="returnUrl" value="">
-                                    <input type="hidden" name="close" value="">
-                                    <input type="text" name="userId" id="userId" size="20" tabindex="1" value="" placeholder="아이디 입력">
-                                    <input type="password" name="userPw" id="userPw" size="20" tabindex="2" placeholder="비밀번호 입력">
-                                    <div class="checkbox_save">
-                                        <div class="login_search">
-                                            <a href="./findId.do" class="link">아이디 찾기</a>
-                                            <span class="bar"></span>
-                                            <a href="./findPw.do" class="link">비밀번호 찾기</a>
-                                        </div>
-                                    </div>
-                                    <button type="button" id="btnLogin" class="btnLogin" style="cursor:pointer">
-                                        <span class="txt_type">로그인</span>
-                                    </button>
-                                </form>
-                                <a href="/user/join.do" class="btn_type2 btn_member" style="cursor:pointer">
-                                    <span class="txt_type">회원가입</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div id="content">
+    <div class="section_login">
+        <h3 class="tit_login"></h3>
+        
+        <div class="write_form find_view">
+            <img class="thumb" src="https://res.kurly.com/pc/service/member/1908/img_id_find_succsess_v2.png" 
+            alt="아이디 찾기 완료">
+            <!-- icon 변경 필요. -->
+            <p class="desc">
+                고객님의<br>비밀번호를 확인해주세요.
+            </p>
+            <p class="info">
+                비밀번호: 
+            </p>
+            <a href="/user/login.do" class="btn_type1">
+                <span class="txt_type">로그인 하기</span>
+            </a>
         </div>
-	<jsp:include page="${pageContext.request.contextPath}/mainFooter.jsp"></jsp:include>
-	
-	
-	<script>
-		$(function() {
-			//회원가입 성공 시 메시지 출력
-			if($("#joinMsg").val() != "" && $("#joinMsg").val() != null) {
-				alert($("#joinMsg").val());
-			}
-
-			function enterkey(){ /* 엔터 누를 시 로그인 수행 */
-			    if(window.event.keyCode==13){
-			        check_input();
-			    }
-			}
-			
-			//로그인 시 아이디나 비밀번호가 틀렸을 경우에
-			//대비하여 폼 서브밋 대신 ajax로 처리
-			$("#btnLogin").on("click", function() {
-				$.ajax({
-					url: "/user/login.do",
-					type: "post",
-					data: $("#loginForm").serialize(),
-					success: function(obj) {
-						console.log(obj);
-						//id 체크
-						if(obj == "idFail") {
-							alert("존재하지 않는 아이디입니다.");
-							$("#userId").focus();
-							return;
-						}
-						
-						//pw 체크
-						if(obj =="pwFail") {
-							alert("비밀번호가 틀렸습니다. 비밀번호를 확인해주세요.");
-							$("#userPw").focus();
-							return;
-						}
-						
-						//로그인 처리
-						location.href="/index.jsp";
-					},
-					error: function(e) {
-						console.log(e);
-					}
-				});
-			});
-		});
-		
-		
-	</script>
+    </div>
+</div>
 </body>
 </html>

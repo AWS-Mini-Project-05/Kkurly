@@ -5,8 +5,49 @@
 
 <mapper namespace="UserDAO">
 	<!-- 쿼리 작성 영역 -->
-	<select id="idCheck" parameterType="String" resultType="integer">
-		SELECT COUNT(*) FROM T_USER WHERE USER_ID = #{id}
+<select id="idCheck" parameterType="string" resultType="int">
+		SELECT COUNT(USER_ID)
+			FROM TB_USER
+			WHERE USER_ID = #{userId}
+	</select>
+	
+	<insert id="join" parameterType="user">
+	<![CDATA[
+		INSERT INTO TB_USER(
+			USER_NO,
+			USER_ID,
+			USER_PW,
+			USER_NM,
+			USER_TEL,
+			USER_EMAIL,
+			USER_BD,
+			INPUT_DT
+		) VALUES (
+			(
+				SELECT IFNULL(MAX(A.USER_NO), 0) + 1
+					FROM TB_USER A
+			),
+			#{userId},
+			#{userPw},
+			#{userNm},
+			#{userTel},
+			#{userEmail},
+			#{userBD},
+			NOW()
+		)
+	]]>
+	</insert>
+	
+	<select id="login" parameterType="user" resultType="user">
+	<![CDATA[
+		SELECT USER_ID
+			 , USER_NM
+			 , USER_TEL
+			 , USER_EMAIL
+			FROM TB_USER
+			WHERE USER_ID = #{userId}
+			  AND USER_PW = #{userPw}
+	]]>
 	</select>
 	
 	<select id="manageUser" parameterType="map" resultType="user">

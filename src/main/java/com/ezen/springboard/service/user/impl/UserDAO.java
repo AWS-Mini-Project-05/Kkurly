@@ -14,8 +14,16 @@ public class UserDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 
-	public int idCheck(String id) {
-		return mybatis.selectOne("UserDAO.idCheck", id);
+	public int idCheck(String userId) {
+		return mybatis.selectOne("UserDAO.idCheck", userId);
+	}
+	
+	public int join(UserVO userVO) {
+		return mybatis.insert("UserDAO.join", userVO);
+	}
+	
+	public UserVO login(UserVO userVO) {
+		return mybatis.selectOne("UserDAO.login", userVO);
 	}
 
 	public List<UserVO> manageUser(Map<String, String> paramMap) {
@@ -24,5 +32,6 @@ public class UserDAO {
 	public UserVO getUser(int userNo) {
 		return mybatis.selectOne("UserDAO.getUser",userNo);
 	}
+
 
 }
