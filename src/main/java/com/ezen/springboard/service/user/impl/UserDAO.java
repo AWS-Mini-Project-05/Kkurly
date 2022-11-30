@@ -24,5 +24,11 @@ public class UserDAO {
 	public UserVO getUser(int userNo) {
 		return mybatis.selectOne("UserDAO.getUser",userNo);
 	}
-
+	public void updateUser(Map<String, Object> paramMap) {
+		
+		mybatis.update("UserDAO.updateUser",paramMap);
+	}
+	public void deleteUser(int no) {
+		mybatis.delete("UserDAO.deleteUser",no);
+	}
 }

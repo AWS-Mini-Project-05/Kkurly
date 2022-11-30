@@ -35,7 +35,7 @@
         </ul>
         <ul>
             <li class="ali">
-                <a href="" class="a">주문 목록 검색</a>
+                <a href="/order/orderList.do?option=''" class="a">주문 목록 검색</a>
             </li>
         </ul>
         <ul>

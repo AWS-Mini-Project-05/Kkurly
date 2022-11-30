@@ -37,8 +37,8 @@
        <h3>회원 목록</h3>
        <hr>
        <div class="search-section">
-         		<form id="searchForm" action="/user/manageUser.do" method="post">
-			<table border="1" style="width: 700px; border-collapse: collapse;">
+         		<form id="searchForm" action="/user/manageUser.do" method="post" >
+			<table border="1" style="width: 1300px; border-collapse: collapse;">
 				<tr>
 					<td align="right">
 						<select name="searchCondition">
@@ -58,7 +58,7 @@
 								</c:if>
 							>No</option>
 						</select>
-						<input type="text" name="searchKeyword" value="${searchKeyword }">
+						<input type="text" name="searchKeyword" value="${searchKeyword }"  style="width: 800px">
 						<button type="submit" id="btnSearch">검색</button>
 					</td>
 				</tr>

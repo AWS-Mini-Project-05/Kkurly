@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,11 +67,13 @@
          })
       $("#sub_vol2").on("change",function(){
            $("#prodVol").val($("#sub_vol1").val()+$("#sub_vol2").val())
-         })  
-         
-
-         
-         
+         })
+     $("#bigCate").on("change",function(){
+    	 	$("#prodCgcd").val($("#bigCate").val()+$("#smallCate").val())
+         });
+       $("#smallCate").on("change",function(){
+    	 	$("#prodCgcd").val($("#bigCate").val()+$("#smallCate").val())
+         });
          
     })
    
@@ -83,15 +86,21 @@
         <h3 title="상품의 카테고리를 지정하는 곳입니다.">카테고리 - 상품명</h3>
         <hr>
         <!--카테고리-->
-		    <nav>
-			    <ul><a href="#">상온</a>
-			   		<li>메뉴 1</li>
-			    	<li>메뉴 1</li>
-			    	<li>메뉴 1</li>
-			    	<li>메뉴 1</li>
-			    	<li>메뉴 1</li>
-			    </ul>
-			</nav>
+        	<nav style="padding-bottom: 10px">카테고리 선택 </nav>
+		    <select id = "bigCate" style="width:300px; height: 30px">
+		     	<option value="not">--상위 카테고리를 선택해주세요--</option>
+		    	<option value="T01">상온</option>
+		    	<option value="T02">냉동</option>
+		        <option value="T03">냉장</option>
+		    </select>
+		    <select id = "smallCate" style="width:300px; height: 30px">
+		    <option value="not">--하위 카테고리를 선택해주세요--</option>
+			    <c:forEach items="${cateVO}" var="cate">
+						<option value="${cate.cd}">${cate.cd}</option>
+	        	</c:forEach>
+		      </select>
+		    
+		    
         <hr id="hr">
             <!--상품명 중복되지않게 확인하는 로직 db연동해서 하기-->
         <div id="p_name">상품명<span style="color:red">*</span>&ensp;&ensp;</div>
@@ -137,7 +146,7 @@
 					<div id="attZone" data-placeholder="파일을 첨부하려면 파일선택 버튼을 누르세요."></div>
 				</div>
 	
-		        카테고리: <input type="text" id="sub_cat" name="sub_cat"> <br><br>
+		        카테고리: <input type="text" id="prodCgcd" name="prodCgcd" readonly style="background-color: lightgray;"> <br><br>
 		        상품명&ensp;&ensp;: <input type="text" id="prodNm"  name="prodNm" readonly value="${sub_prodNm }" style="background-color: lightgray;"> <br><br>
 		        판매가&ensp;&ensp;: <input type="text" id="prodPrice"  name="prodPrice" readonly style="background-color: lightgray;"> <br><br>
 		        판매수량: <input type="text" id="prodQty"  name="prodQty" readonly style="background-color: lightgray;"> <br><br>

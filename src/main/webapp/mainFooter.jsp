@@ -15,29 +15,24 @@
 	font-weight: 400;
 	letter-spacing: -.2px;
 }
-
 #footer::after {
 	display: block;
 	content: '';
 	clear: both;
 }
-
 #footer .inner_footer {
 	/* overflow: hidden; */
 	padding-bottom: 20px;
 }
-
 #footer .inner_footer::after {
 	content: '';
 	clear: both;
 	display: block;
 }
-
 .inner_footer .cc_footer {
 	float: left;
 	width: 500px;
 }
-
 .inner_footer .cc_tit {
 	padding: 29px 0 2px;
 	font-weight: 700;
@@ -46,22 +41,18 @@
 	line-height: 24px;
 	margin-bottom: 0px
 }
-
 .inner_footer .cc_view {
 	/* overflow: hidden; */
 	padding-top: 12px;
 }
-
 .inner_footer .cc_view .tit {
 	float: left;
 	width: 140px;
 	margin-right: 16px;
 }
-
 .inner_footer .cc_call {
 	padding-top: 5px;
 }
-
 .inner_footer .cc_call .tit {
 	padding-top: 4px;
 	font-weight: 800;
@@ -71,14 +62,12 @@
 	letter-spacing: -.5px;
 	white-space: nowrap;
 }
-
 .cc_footer .list {
 	font-size: 14px;
 	color: #333;
 	line-height: 22px;
 	letter-spacing: -.2px;
 }
-
 .cc_footer .list .etc {
 	font-size: 16px;
 	color: #333;
@@ -86,7 +75,6 @@
 	letter-spacing: -.2px;
 	font-weight: bold;
 }
-
 .cc_footer .cc_kakao .tit, .cc_footer .cc_qna .tit {
 	height: 40px;
 	padding-top: 7px;
@@ -99,11 +87,9 @@
 	line-height: 22px;
 	text-align: center;
 }
-
 .cc_footer .list dd {
 	color: #999;
 }
-
 /* #footer right */
 #footer .company_info {
 	float: right;
@@ -112,19 +98,16 @@
 	color: #999;
 	line-height: 20px;
 }
-
 .company_info .list {
 	padding-bottom: 10px;
 	padding-left: 0px;
 	display: inline-block;
 	list-style: none;
 }
-
 .company_info .list li {
 	float: left;
 	padding-right: 16px;
 }
-
 .company_info .list .link {
 	font-size: 14px;
 	color: #333;
@@ -132,15 +115,12 @@
 	text-decoration-line: none;
 	font-weight: bold;
 }
-
 .company_info .spec_info .bar {
 	padding: 0 4px 0 3px;
 }
-
 .company_info .spec_info .link {
 	color: #5f0080;
 }
-
 .company_info .spec_info .copy {
 	display: block;
 	font-size: 10px;
@@ -148,30 +128,25 @@
 	line-height: 22px;
 	letter-spacing: 0;
 }
-
 .spec_info .sns {
 	float: left;
 	padding-top: 16px;
 	padding-left: 0px;
 }
-
 .sns li {
 	float: left;
 	list-style: none;
 }
-
 .sns .link_sns {
 	display: inline-block;
 	width: 10px;
 	height: 10px;
 	margin-right: 30px;
 }
-
 .sns .link_sns img {
 	width: 30px;
 	height: 30px;
 }
-
 #footer .link_footer {
 	width: 100%;
 	height: auto;
@@ -179,30 +154,25 @@
 	letter-spacing: 0;
 	border-top: 1px solid #eee;
 }
-
 .link_footer::after {
 	display: block;
 	content: '';
 	clear: both;
 }
-
 .link_footer .authentication {
 	float: left;
 	padding-top: 3px;
 }
-
 .link_footer .authentication .mark {
 	float: left;
 	width: 267px;
 }
-
 .link_footer .mark .logo {
 	float: left;
 	width: 34px;
 	height: 34px;
 	margin-right: 10px;
 }
-
 .link_footer .mark .txt {
 	float: left;
 	padding-top: 1px;
@@ -214,17 +184,14 @@
 	white-space: nowrap;
 	width: 125px;
 }
-
 #footer .lguplus {
 	width: 283px;
 	display: inline-block;
 }
-
 .link_footer .lguplus .logo {
 	width: 102px;
 	height: 34px;
 }
-
 hr {
 	opacity: 0.1;
 }

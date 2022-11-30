@@ -37,20 +37,39 @@
     <div id="container">
        <h3>상품 관리</h3>
        <hr>
-       <div class="search-section">
-         <form action="" method="get">
-	 	 	<input id="search" name="search" type="text" style="width: 800px;">
-	 		<input type="submit" value="검색">
+       <div class="search-section" style="display: flex;padding-left: 200px">
+            <form id="searchForm" action="/product/searchProduct.do" method="post">
+						<select name="searchCondition">
+							<option value="all"
+								<c:if test="${searchCondition eq 'all' || searchCondition eq '' || searchCondition eq null}">
+									selected="selected"
+								</c:if>
+							>전체</option>
+							<option value="Name"
+								<c:if test="${searchCondition eq 'Name' }">
+									selected="selected"
+								</c:if>
+							>이름</option>
+							<option value="Cate"
+								<c:if test="${searchCondition eq 'Cate' }">
+									selected="selected"
+								</c:if>
+							>카테고리</option>
+							<option value="No"
+								<c:if test="${searchCondition eq 'No' }">
+									selected="selected"
+								</c:if>
+							>No</option>
+						</select>
+						<input type="text" name="searchKeyword" value="${searchKeyword }" style=";width: 800px;">
+						<button type="submit" id="btnSearch">검색</button>
 	 	   </form>
  	   </div>
  	   <div class="btn-section" style="display: flex; justify-content: end;">
-	 	   <div class="btn-wrap" style="width: 17%; display: flex; justify-content: space-between;">
+	 	   <div class="btn-wrap" style=" display: flex;">
 	 	  	 <form action="/product/prodInsert.do" method="get">
 	 	  	 	<input type="submit" value="새 상품 작성하기">
 	 	  	 </form>
-	 	   	<form action="/product/deleteProduct.do" method="get">
-	 	   		<input type="submit" value="상품 삭제하기">
-	 	   	</form>
 	 	   	</div>
  	   	</div>
        <hr style="clear: both">
@@ -68,11 +87,11 @@
         </tr>
         <c:forEach items="${prodList}" var="prod">
         	<tr>
-	        	<td><a href="">${prod.prodNo}</a></td>
- 	            <td><a href=""><img src="/upload/${prod.prodImgNm}" width="100px" class="a"></a></td>
- 	            <td><a href="">${prod.prodNm}</a></td>
-	            <td><a href="">${prod.prodPrice}</a></td>
-	            <td><a href="">카테고리</a></td>
+	        	<td><a target="_black"  href="/product/searchProductDetail.do?prodNo=${prod.prodNo}">${prod.prodNo}</a></td>
+ 	            <td><a target="_black"  href="/product/searchProductDetail.do?prodNo=${prod.prodNo}"><img src="/upload/${prod.prodImgNm}" width="150px" class="a"></a></td>
+ 	            <td><a target="_black"  href="/product/searchProductDetail.do?prodNo=${prod.prodNo}">${prod.prodNm}</a></td>
+	            <td><a target="_black"  href="/product/searchProductDetail.do?prodNo=${prod.prodNo}">${prod.prodPrice}</a></td>
+	            <td><a target="_black"  href="/product/searchProductDetail.do?prodNo=${prod.prodNo}">${prod.prodCgcd}</a></td>
 	           <td>
 		            <c:if test="${prod.useYn eq 'Y'}">
 		            	<a href="">판매중</a>

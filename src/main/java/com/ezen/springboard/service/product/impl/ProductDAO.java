@@ -8,8 +8,10 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.ezen.springboard.VO.CateVO;
 import com.ezen.springboard.VO.ProdFileVO;
 import com.ezen.springboard.VO.ProdVO;
+import com.ezen.springboard.VO.UserVO;
 
 @Repository
 public class ProductDAO {
@@ -19,9 +21,13 @@ public class ProductDAO {
 	public int prodNameCheck(String prodNm) {
 		return mybatis.selectOne("ProductDAO.prodNameCheck", prodNm);
 	}
-	public List<ProdVO> searchProduct(){
-		return mybatis.selectList("ProductDAO.searchProduct");
+
+	public List<ProdVO> searchProduct(Map<String, String> paramMap) {
+		return mybatis.selectList("ProductDAO.searchProduct", paramMap);
 	}
+	
+	
+	
 	public void prodInsert(ProdVO prodVO, ProdFileVO prodFile) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		
@@ -35,5 +41,15 @@ public class ProductDAO {
 		mybatis.insert("ProductDAO.prodInsert", paramMap);
 	}
 
-	
+	public ProdVO prodDetail(int prodNo) {
+		return mybatis.selectOne("ProductDAO.prodDetail", prodNo);
+	}
+	public List<CateVO> prodInsert2() {
+		
+		return mybatis.selectList("ProductDAO.prodInsert2");
+	}
+	public void prodDelete(int prodNo) {
+		mybatis.delete("ProductDAO.prodDelete",prodNo);
+	}
+
 }

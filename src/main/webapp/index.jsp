@@ -752,5 +752,5 @@
 				prev.style.opacity = 0;
 			})
 </script>
-<%-- <jsp:include page="./mainFooter.jsp"></jsp:include> --%>
+<jsp:include page="./mainFooter.jsp"></jsp:include>
 </html>
