@@ -5,19 +5,25 @@
 
 <mapper namespace="OrderDAO">
 	<!-- 쿼리 작성 영역 -->
-	<select id="orderList" parameterType="int" resultType="order">
+	<select id="orderList" resultType="order">
 	SELECT * FROM TB_ORDER 
-<!-- 	WHERE 1=1 
-				<if test="option == 'ZERO'">
-				  OR 2=2
-				</if> -->
-			<!-- 	<if test="option == 'T01'">
-				   AND PROD_NO LIKE CONCAT('%', #{searchKeyword}, '%')
-				</if> -->
 	</select>
 	<select id="orderListDetail" parameterType="int" resultType="order">
 	SELECT * FROM TB_ORDER
 	WHERE ORDER_NO = #{orderNo}
 	</select>
+	<select id="canceledOrder" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM TB_RETURN
+		WHERE ORDER_NO =#{orderNo}
+	</select>
+<!-- 	<select id="canceledOrder" resultType="order">
+    SELECT A.*
+    FROM 
+    TB_ORDER A,
+    TB_RETURN B
+    WHERE
+    B.ORDER_NO= A.ORDER_NO;
+	</select> -->
+	
 	
 </mapper>

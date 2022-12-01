@@ -15,9 +15,9 @@ public class OrderServiceImpl implements OrderService {
 	private OrderDAO orderDAO;
 
 	@Override
-	public List<OrderVO> orderList(String option) {
+	public List<OrderVO> orderList() {
 		
-		return orderDAO.orderList(option);
+		return orderDAO.orderList();
 	}
 
 	@Override
@@ -26,7 +26,10 @@ public class OrderServiceImpl implements OrderService {
 		return orderDAO.orderListDetail(orderNo);
 	}
 
+	 @Override public int canceledOrder(int orderNo) {
 	
+		 return orderDAO.canceledOrder(orderNo); 
+	 }
 
 	
 }

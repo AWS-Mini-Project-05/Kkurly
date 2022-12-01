@@ -14,11 +14,16 @@ public class OrderDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	public List<OrderVO> orderList(String option) {		
-		return mybatis.selectList("OrderDAO.orderList", option);
+	public List<OrderVO> orderList( ) {		
+		return mybatis.selectList("OrderDAO.orderList");
 	}
 	public OrderVO orderListDetail(int orderNo) {
 		return mybatis.selectOne("OrderDAO.orderListDetail",orderNo);
 	}
+	
+	  public int canceledOrder(int orderNo) { return
+	  mybatis.selectOne("OrderDAO.canceledOrder",orderNo);
+	}
+	 
 
 }

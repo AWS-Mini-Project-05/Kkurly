@@ -8,8 +8,9 @@ import com.ezen.springboard.VO.OrderVO;
 
 public interface OrderService {
 		
-	List<OrderVO> orderList(String option);
+	List<OrderVO> orderList();
 	OrderVO	orderListDetail(int orderNo);
 	
-	
+	int canceledOrder(int orderNo);
+	 
 }

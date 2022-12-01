@@ -28,7 +28,6 @@
        <div id="container">
        <h1>주문 상세 정보</h1>
        <hr style="margin-bottom: 50px">
-       
      	<table style="width: 80%; margin-left: 10%; margin-top:100px" >
 	        <tr>
 		        <th style="width: 35%;">주문번호</th>
@@ -67,7 +66,11 @@
 				<td style="width: 65%;">${orderVO.payWay}</td>
 	        </tr>
 	        <tr>
-		        <th style="width: 35%;">주문상태</th>
+		        <th style="width: 35%;">주문 상태</th>
+				<td style="width: 65%;">${canceled}</td>
+	        </tr>
+	        <tr>
+		        <th style="width: 35%;">주문 처리상태</th>
 				<td style="width: 65%;">${orderVO.orderStatus}</td>
 	        </tr>
 	        <tr>

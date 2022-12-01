@@ -24,12 +24,10 @@ public class OrderController {
 	private UserService userService;
 	
 	@RequestMapping("/orderList.do")
-	public String orderList(Model model, @RequestParam("option") String option) {
-		if(option==""||option==null||option=="all") {
-			option = "zero";
-		}
+	public String orderList(Model model) {
 		
-		List<OrderVO> orderLists = orderService.orderList(option);
+		List<OrderVO> orderLists = orderService.orderList();
+		
 		model.addAttribute("orderLists",orderLists);
 		return "admin/orderList";
 	}
@@ -42,11 +40,17 @@ public class OrderController {
 		
 		OrderVO orderVO = orderService.orderListDetail(orderNo);
 		
+		int canceledOrder = orderService.canceledOrder(orderNo);
+		
+		if(canceledOrder>0) {
+			model.addAttribute("canceled","취소된 구매");
+		}else {model.addAttribute("canceled","정상 구매");}
+	
 		model.addAttribute("orderVO",orderVO);
 		model.addAttribute("userVo",userVo);
 		return "admin/orderListDetail";
 	}
-		
+
 	
  	
 }

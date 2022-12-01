@@ -44,20 +44,12 @@
     
     <div id="container">
        <h3>주문 관리</h3>
-       <hr>
-       <div class="search-section" style="display: flex;padding-left: 200px">
-            <form id="cateForm" action="/order/orderList.do?option=$('#cateCondition').val()" method="post">
-						<select id="cateCondition" name="cateCondition">
-							<option value="all">전체</option>
-							<option value="T01">상온</option>
-							<option value="T02">냉장</option>
-							<option value="T03">냉동</option>
-						</select>
-	 	   </form>
- 	   </div>
- 	   <div class="btn-section" style="display: flex; justify-content: end;">
-
- 	   	</div>
+       <hr style="margin-bottom: 50px">
+<!--         <form action="/order/ocancledOrderList.do" method="get" style="display: flex; justify-content: flex-end;">
+ -->        <a style="background-color: lightgray" href="/order/canceledOrderList.do" onclick="window.open(this.href,'팝업창','width=800,height=800'); return false;">취소 주문 조회</a>
+	<!--  	 <input type="submit" value="취소 주문 조회">
+	 	 </form> -->
+  
        <hr style="clear: both">
        <table style="width: 100%;">
         <tr>
@@ -83,5 +75,16 @@
        </table>
     </div>
    <jsp:include page="/footer_admin.jsp"></jsp:include>   
+   <script>
+   	function popupOpen(){
+   		url = "/order/canceledOrderList.do";
+   		name=" 취소 물품 목록";
+   		specs = "width=500,height=400,top=200,left=100, toolbar=nom menubar=no,scrollbars=no,resizable=yes";
+   		windows.open(url,name,specs);
+   		
+   		return false;
+   	}
+   
+   </script>
 </body>
 </html>
