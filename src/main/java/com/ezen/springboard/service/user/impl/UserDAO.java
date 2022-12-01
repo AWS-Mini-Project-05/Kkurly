@@ -32,6 +32,15 @@ public class UserDAO {
 	public UserVO getUser(int userNo) {
 		return mybatis.selectOne("UserDAO.getUser",userNo);
 	}
+	
+	public UserVO findId(UserVO userVO) {
+		return mybatis.selectOne("UserDAO.findId", userVO);
+	}
+
+	public UserVO findPw(UserVO userVO) {
+		return mybatis.selectOne("UserDAO.findPw", userVO);
+	}
+
 
 
 }

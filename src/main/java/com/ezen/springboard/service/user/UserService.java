@@ -15,5 +15,10 @@ public interface UserService {
 	int join(UserVO userVO);
 	//로그인
 	UserVO login(UserVO userVO);
+	//id 찾기
+	UserVO findId(UserVO userVO);
+	//id 찾기
+	UserVO findPw(UserVO userVO);
+	
 
 }
