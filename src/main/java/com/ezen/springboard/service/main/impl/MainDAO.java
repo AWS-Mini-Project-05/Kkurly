@@ -24,6 +24,18 @@ public class MainDAO {
 		return mybatis.selectList("MainDAO.getProdList",prodNm);
 	}
 	
+	public List<ProdVO> getBestProdList(){
+		return mybatis.selectList("MainDAO.getBestProdList");
+	}
+	
+	public List<ProdVO> getTopSaleProdList(){
+		return mybatis.selectList("MainDAO.getTopSaleProdList");
+	}
+	
+	public List<ProdVO> getRandomProdList(){
+		return mybatis.selectList("MainDAO.getRandomProdList");
+	}
+	
 //	public int getProdCnt(String cd) {
 //		return mybatis.selectOne("MainDAO.getProdCnt", cd);
 //	}

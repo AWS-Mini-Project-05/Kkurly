@@ -55,4 +55,19 @@ public class MainServiceImpl implements MainService {
 		mainDAO.deleteLike(userNo, prodNo);
 	}
 
+	@Override
+	public List<ProdVO> getBestProdList() {
+		return mainDAO.getBestProdList();
+	}
+
+	@Override
+	public List<ProdVO> getTopSaleProdList() {
+		return mainDAO.getTopSaleProdList();
+	}
+
+	@Override
+	public List<ProdVO> getRandomProdList() {
+		return mainDAO.getRandomProdList();
+	}
+
 }
