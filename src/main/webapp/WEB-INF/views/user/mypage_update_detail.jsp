@@ -5,11 +5,279 @@
 <head>
 <meta charset="UTF-8">
 <title>MY KKURLY</title>
-
    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/reset.css">
    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/common.css">
    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/mykurly_order_list.css">
    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+       <style>
+      #main {
+        border-bottom: 1px solid #f7f7f7;
+      }
+      
+      #content {
+        min-width: 1100px;
+        padding-bottom: 120px;
+      }
+      
+      #header, #container, #content {
+        position: relative;
+      }
+      
+      .page_aticle {
+        width: 1100px;
+        margin: 0 auto;
+      }
+      
+      .member_join {
+        width: 640px;
+        margin: 0 auto;
+      }
+      
+      .member_join .field_head .tit {
+        padding-top: 70px;
+        font-weight: 550;
+        font-size: 27px;
+        color: #333;
+        line-height: 15px;
+        text-align: center;
+        letter-spacing: -.5px;
+      }
+      
+      .member_join .field_head .sub {
+        padding: 20px 0 1px;
+        font-size: 12px;
+        font-weight: 600;
+        color: #666;
+        line-height: 17px;
+        text-align: right;
+      }
+      
+      .member_join .field_head .sub .ico {
+        padding-right: 2px;
+        color: #ee6a7b;
+      }
+      
+      .member_join .tbl_comm {
+        width: 100%;
+        border-top: 2px solid #333;
+      }
+      
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      
+      .member_join .tbl_comm .fst th {
+        padding-top: 30px;
+      }
+      
+      .member_join th {
+        width: 110px;
+        padding: 20px 10px 0px 5px;
+        font-weight: 1000;
+        font-size: 14px;
+        color: #333;
+        line-height: 20px;
+        vertical-align: top;
+        text-align: left;
+      }
+      
+      .member_join th .ico {
+        color: #ee6a7b;
+      }
+      
+      .screen_out {
+        display: block;
+        overflow: hidden;
+        position: absolute;
+        left: -9999px;
+        width: 1px;
+        height: 1px;
+        font-size: 0;
+        line-height: 0;
+        text-indent: -9999px;
+      }
+      
+      .member_join .tbl_comm .fst td {
+        padding-top: 20px;
+      }
+      
+      .member_join td {
+        padding: 10px 0;
+        border-top: 0;
+        font-size: 20px;
+        vertical-align: top;
+        text-align: left;
+      }
+      
+      .member_join input[type=text], .member_join input[type=password] {
+        width: 300px;
+      }
+      
+      .type_form textarea, .type_form input[type=text], .type_form input[type=password] {
+        height: 44px;
+        padding: 0 15px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+        font-weight: 550;
+        color: rgb(50, 50, 50);
+        line-height: 20px;
+        border-radius: 3px;
+        background: #fff;
+        outline: none;
+        vertical-align: top;
+      }
+      
+      .type_form .btn.default {
+        border: 1px solid #5f0080;
+        background-color: #fff;
+        color: #5f0080;
+      }
+      
+      #main .member_join .btn {
+        display: inline-block;
+        width: 120px;
+        margin-left: 5px;
+      }
+      
+      .type_form .btn {
+        display: block;
+        width: 100%;
+        height: 42px;
+        border: 0;
+        border-radius: 3px;
+        font-weight: 1000;
+        font-size: 13px;
+        line-height: 40px;
+        text-align: center;
+        outline: none;
+      }
+      
+      .member_join .txt_guide {
+        width: 332px;
+      }
+      
+      .type_form .txt_guide {
+        display: none;
+        padding: 0px 0 5px;
+        font-size: 11.5px;
+        color: rgb(56, 56, 56);
+        line-height: 18px;
+        word-break: break-all;
+        letter-spacing: -.1px;
+        clear: both;
+      }
+      
+      .type_form .txt_guide .txt {
+        display: block;
+      }
+      
+      .type_form .square .txt:before {
+        content: '\2022';
+        display: inline-block;
+        padding: 0 4px 0 2px;
+        font-size: 10px;
+        vertical-align: 0;
+      }
+      
+      .member_join .field_address {
+        padding-bottom: 10px;
+      }
+      
+      .member_join #addressSearch {
+        display: block;
+        overflow: hidden;
+        width: 300px;
+        height: 44px;
+        border: 1px solid #5f0080;
+        border-radius: 3px;
+        text-align: center;
+      }
+      
+      .member_join #addressNo {
+        display: inline-block;
+        height: 100%;
+        margin-left: -14px;
+        padding-left: 25px;
+        font-weight: 800;
+        font-size: 14px;
+        color: #5f0080;
+        line-height: 40px;
+        background: url(https://res.kurly.com/pc/service/common/2006/ico_search.svg) no-repeat 0 50%;
+        background-size: 20px 20px;
+        vertical-align: top;
+      }
+      
+      .member_join .birth .birth_day {
+        overflow: hidden;
+        width: 300px;
+        padding-left: 30px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+      
+      .member_join .birth .birth_day input[type=text] {
+        float: left;
+        width: 70px;
+        height: 40px;
+        border: 0;
+        text-align: center;
+      }
+      
+      .member_join .birth .bar {
+        float: left;
+      }
+      
+      .member_join .birth .bar:after {
+        content: "/";
+        float: left;
+        width: 15px;
+        height: 100%;
+        font-size: 13px;
+        color: #ccc;
+        line-height: 42px;
+        text-align: center;
+      }
+      
+      .Agree_use td {
+        display: inline-block;
+      }
+      
+      
+      img {
+        padding-top: 12px;
+        padding-right: 7px;
+      }
+      
+      .member_join .form_footer {
+        padding-top: 40px;
+        text-align: center;
+      }
+      
+      #main .member_join .form_footer .btn_join {
+        width: 240px;
+        height: 56px;
+        font-size: 15px;
+        font-weight: 900;
+        line-height: 54px;
+        
+      }
+      
+      .type_form .btn.active {
+        border: 1px solid #5f0081;
+        background-color: #5f0080;
+        color: #fff;
+      }
+      
+      input::placeholder{
+        color:rgb(165, 160, 160);
+      }
+      
+      .field_address input{
+        display:none;
+        margin-top:10px
+      }
+    </style>
 </head>
 <body>
 <jsp:include page="${pageContext.request.contextPath }/mainHeader.jsp"></jsp:include>
@@ -107,38 +375,165 @@
                             </ul>
                         </div>
                     </div>
-                    <div id="viewOrderList" class="page_section section_orderlist">
-                        <div class="head_aticle">
-                            <h2 class="tit">
-                                개인 정보 수정
-                                <span class="tit_sub">
-                                    개인 정보 수정이 가능합니다.
-                                </span>
-                            </h2>
+					<div id="container">
+                      <div id="main">
+                        <div id="content">
+                          <div class="page_aticle">
+                            <div class="type_form member_join">
+                              <form id="joinForm" action="/user/join.do" method="post">
+                                <div class="field_head">
+                                  <h3 class="tit">정보 수정</h3>
+                                  <p class="sub">
+                                    <span class="ico">*</span>
+                                    필수입력사항
+                                  </p>
+                                </div>
+                  
+                                <table class="tbl_comm">
+                                  <tbody>
+                                    <tr class="fst field_id">
+                                      <th><label for="userId">아이디</label>
+                                        <span class="ico">
+                                          *
+                                          <span class="screen_out">필수항목</span>
+                                        </span>
+                                      </th>
+                                      <td>
+                                        <input type="text" name="userId" id="userId" maxlength="16" required="" option="regId"
+                                          placeholder="아이디를 입력해주세요">
+                                        <button type="button" class="btn default" id="btnIdCheck" style="cursor:pointer">중복확인</button>
+                                      </td>
+                                    </tr>
+                  
+                                    <tr class="field_pw">
+                                      <th>
+                                        <label for="userPw">비밀번호</label>
+                                        <span class="ico">*
+                                          <span class="screen_out">필수항목</span>
+                                        </span>
+                                      </th>
+                                      <td>
+                                        <input type="password" name="userPw" id="userPw" required=""  maxlength="16"
+                                          class="reg_pw bad" placeholder="비밀번호를 입력해주세요">
+                                      </td>
+                                    </tr>
+                  
+                                    <tr class="member_pwd field_repw">
+                                      <th>
+                                        <label for="userPwCheck">비밀번호 확인</label>
+                                        
+                                        <span class="ico">
+                                          *
+                                          <span class="screen_out">필수항목</span>
+                                        </span>
+                                      </th>
+                                      <td>
+                                        <input type="password" id="userPwCheck" name="userPwCheck"  maxlength="16"
+                                          class="confirm_pw" placeholder="비밀번호를 한번 더 입력해주세요">
+                                          <p id="pwCheckResult" style="font-size: 0.8rem;"></p>
+                                      </td>
+                                    </tr>
+                  
+                                    <tr class="field_name">
+                                      <th>
+                                        <label for="userNm">이름</label>
+                                        <span class="ico">
+                                          *
+                                          <span class="screen_out">필수항목</span>
+                                        </span>
+                                      </th>
+                                      <td>
+                                        <input type="text" id="userNm" name="userNm" required="" label="이름" placeholder="이름을 입력해주세요">
+                                      </td>
+                                    </tr>
+                  
+                                    <tr class="field_email">
+                                      <th>
+                                        <label for="userMail">이메일</label>
+                                        <span class="ico">
+                                          *
+                                          <span class="screen_out">필수항목</span>
+                                        </span>
+                                      </th>
+                                      <td>
+                                        <input type="text" id="userEmail" name="userEmail" size="30" required="" option="Email" label="이메일"
+                                          placeholder="예: marketkkurly@kkurly.com">
+                                      </td>
+                                    </tr>
+                  
+                  
+                                    <tr class="field_phone">
+                                      <th>
+                                        <label for="userTel">전화번호</label>
+                                        <span class="ico">
+                                          *
+                                          <span class="screen_out">필수항목</span>
+                                        </span>
+                                      </th>
+                  
+                                      <td>
+                                        <div class="phone_num">
+                                          <input type="text" id="userTel" name="userTel" value="" pattern="[0-9]*" placeholder="숫자만 입력해주세요"
+                                            class="inp">
+                                        </div>
+                                      </td>
+                                    </tr>
+                  
+                                    <tr>
+                                      <th>
+                                        주소
+                                        <span class="ico">
+                                          *
+                                          <span class="screen_out">필수항목</span>
+                                        </span>
+                                      </th>
+                                      <td class="field_address" onclick="daum_address()">
+                                        <a href="#" id="addressSearch" class="search">
+                                          <span id="addressNo" class="address_no">주소검색</span>
+                                        </a>
+                                        <input type="text" id="userAdr" name="userAdr" placeholder="주소">
+                                        <input type="text" id="user_detail_address" name="user_detail_address" placeholder="상세주소">
+                                        <p class="txt_guide" style="display:block;">
+                                          <span class="txt txt_case1">배송지에 따라 상품 정보가 달라질 수 있습니다.</span>
+                                        </p>
+                                      </td>
+                                    </tr>
+                  
+                                    <tr class="birth field_birth">
+                                      <th>생년월일</th>
+                                      <td>
+                                        <div class="birth_day">
+                                          <input type="text" name="year" id="birth_year" pattern="[0-9]*" label="생년월일" size="4"
+                                            maxlength="4" placeholder="YYYY">
+                                          <span class="bar">
+                                          </span>
+                                          <input type="text" name="month" id="birth_month" pattern="[0-9]*" label="생년월일" size="2"
+                                            maxlength="2" placeholder="MM">
+                                          <span class="bar"></span>
+                                          <input type="text" name="day" id="birth_day" pattern="[0-9]*" label="생년월일" size="2"
+                                            maxlength="2" placeholder="DD">
+                                            <input type="hidden" id="userBd" name="userBd">
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <div id="formSubmit" class="form_footer" style="border-top: 1px solid #333;">
+                                  <button type="submit" class="btn active btn_join" style="cursor:pointer">수정하기</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
                         </div>
-                        <ul class="list_order">
-                        	<li>
-                        		<a style="font-size:20px; margin-left:350px; color:purple;">비밀번호 입력</a>
-                        		<hr>
-                        		<form id="insertPw">
-                    			<input type="password" name="userPw" id="userPw" option="regPass" onkeyup="pw_check()" maxlength="16"
-                        class="reg_pw bad" placeholder="비밀번호를 입력해주세요" style="margin-left:270px; font-size:20px; text-align:center; margin-top:20px;">
-                        		</form>
-                        	</li>
-                        	<li>
-                        	<input type="submit" value="확인" id="btnUpdate"
-                        	style="text-align:center; background-color:#5f0080; color:white; border:1px solid white; height:40px; width:150px; border-radius: 5px;
-                        	font-size:15px; margin-top:20px; margin-left:330px; cursor:pointer;">
-                        	</li>
-                        </ul>
-                    </div>
+                      </div>
+                    </div> 
+
                 </div>
             </div>
         </div>
     </div>
 <jsp:include page="${pageContext.request.contextPath }/mainFooter.jsp"></jsp:include>
 <script>
-
 </script>
 </body>
 </html>
