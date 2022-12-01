@@ -15,7 +15,7 @@ public class ProdVO {
 	private String useYn;
 	private int saleQty;
 	private String prodImgNm;
-	private String prodOriginFileNm;
+	private String prodFilePath;
 	public int getProdNo() {
 		return prodNo;
 	}
@@ -88,19 +88,21 @@ public class ProdVO {
 	public void setProdImgNm(String prodImgNm) {
 		this.prodImgNm = prodImgNm;
 	}
-	public String getProdImgPath() {
-		return prodOriginFileNm;
+	public String getProdFilePath() {
+		return prodFilePath;
 	}
-	public void prodOriginFileNm(String prodOriginFileNm) {
-		this.prodOriginFileNm = prodOriginFileNm;
+	public void setProdFilePath(String prodFilePath) {
+		this.prodFilePath = prodFilePath;
 	}
 	@Override
 	public String toString() {
 		return "ProdVO [prodNo=" + prodNo + ", prodCgcd=" + prodCgcd + ", prodNm=" + prodNm + ", prodPrice=" + prodPrice
 				+ ", prodQty=" + prodQty + ", inputDt=" + inputDt + ", updateDt=" + updateDt + ", prodUnit=" + prodUnit
 				+ ", prodVol=" + prodVol + ", useYn=" + useYn + ", saleQty=" + saleQty + ", prodImgNm=" + prodImgNm
-				+ ", prodOriginFileNm=" + prodOriginFileNm + "]";
+				+ ", prodFilePath=" + prodFilePath + "]";
 	}
+
+
 	
 	
 

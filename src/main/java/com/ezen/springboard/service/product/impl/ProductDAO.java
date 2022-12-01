@@ -33,8 +33,8 @@ public class ProductDAO {
 		
 		paramMap.put("prodVO", prodVO);
 		
-		if(prodFile.getProdOriginFileNm() != null &&
-			!prodFile.getProdOriginFileNm().equals("")) {
+		if(prodFile.getProdFilePath() != null &&
+			!prodFile.getProdFilePath().equals("")) {
 			paramMap.put("prodFile", prodFile);
 		}
 		
