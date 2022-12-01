@@ -312,7 +312,7 @@
 						}
 						
 						//로그인 처리
-						location.href="/index.jsp";
+						location.href="/";
 					},
 					error: function(e) {
 						console.log(e);
