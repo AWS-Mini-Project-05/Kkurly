@@ -32,6 +32,7 @@
                                     <div class="grade_bnenfit">
                                         <div class="user">
                                             <strong class="name">${loginUser.userNm }</strong>
+                                            <input type="hidden" id="userNo" value="${loginUser.userNo }">
                                             <span class="txt">님</span>
                                         </div>
                                         <div class="benefit">
@@ -139,18 +140,19 @@
 <jsp:include page="${pageContext.request.contextPath }/mainFooter.jsp"></jsp:include>
 <script>
   $(function() {
+		console.log("${loginUser.userNo }");
+		console.log("${loginUser.userPw }");
+	  
 	$("#btnUpdate").on("click", function() {
-		 if(session.getAttribute("userPw").equals("#userPw")) {
-			 location.href="/user/mypage_update_detail.do";
-			 } else {
-				alert("비밀번호가 틀렸습니다. 다시 확인해주세요.");
-				$("#userPw").focus();
-				return;
-			 }
-		 });
+		if("${loginUser.userPw }" == $("#userPw").val()) {
+			location.href="/user/mypage_update_detail.do";
+		} else {
+			alert("잘못된 비밀번호입니다.");
+			$("#userPw").focus();
+			return;
+		}
+	});
 });  
-
-
 </script>
 </body>
 </html>

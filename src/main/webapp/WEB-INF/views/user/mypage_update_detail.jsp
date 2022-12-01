@@ -29,7 +29,7 @@
       }
       
       .member_join {
-        width: 640px;
+        width: 850px;
         margin: 0 auto;
       }
       
@@ -59,7 +59,6 @@
       
       .member_join .tbl_comm {
         width: 100%;
-        border-top: 2px solid #333;
       }
       
       table {
@@ -281,259 +280,228 @@
 </head>
 <body>
 <jsp:include page="${pageContext.request.contextPath }/mainHeader.jsp"></jsp:include>
-    <div id="container">
-        <div id="main">
-            <div id="content">
-                <div id="myPageTop" class="page_aticle mypage_top">
-                    <h2 class="blind">마이페이지</h2>
-                    <div class="mypagetop_user">
-                        <div class="inner_mypagetop">
-                            
-                            <div class="grade_user">
-                                <div class="grade">
-                                    <span class="blind">등급</span>
-                                    <span class="ico_grade class0">
-                                        <span class="inner_grade">
-                                            <span class="in_grade">일반</span>
-                                        </span>
-                                    </span>
-                                    <div class="grade_bnenfit">
-                                        <div class="user">
-                                            <strong class="name">${loginUser.userNm }</strong>
-                                            <span class="txt">님</span>
-                                        </div>
-                                        <div class="benefit">
-                                            <strong class="tit"></strong>
-                                            적립 0.5%
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="next">
-                                    <a href="#" class="total_grade">전체등급 보기</a>
-                                    <a href="#" class="next_month">다음 달 예상등급 보기</a>
-                                </div>
-                            </div>
+<div id="container">
+  <div id="main">
+      <div id="content">
+          <div id="myPageTop" class="page_aticle mypage_top">
+              <h2 class="blind">마이페이지</h2>
+              <div class="mypagetop_user">
+                  <div class="inner_mypagetop">
+                      
+                      <div class="grade_user">
+                          <div class="grade">
+                              <span class="blind">등급</span>
+                              <span class="ico_grade class0">
+                                  <span class="inner_grade">
+                                      <span class="in_grade">일반</span>
+                                  </span>
+                              </span>
+                              <div class="grade_bnenfit">
+                                  <div class="user">
+                                      <strong class="name">${loginUser.userNm }</strong>
+                                      <input type="hidden" id="userNo" value="${loginUser.userNo }">
+                                      <span class="txt">님</span>
+                                  </div>
+                                  <div class="benefit">
+                                      <strong class="tit"></strong>
+                                      적립 0.5%
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="next">
+                              <a href="#" class="total_grade">전체등급 보기</a>
+                              <a href="#" class="next_month">다음 달 예상등급 보기</a>
+                          </div>
+                      </div>
 
-                            <ul class="list_mypage">
-                                <li class="user_reserve">
-                                    <div class="link">
-                                        <div class="tit">
-                                            적립금
-                                        </div>
-                                        <a href="#" class="info">
-                                            0 원
-                                            <img src="https://res.kurly.com/pc/service/common/1905/ico_arrow_56x56.png" alt="자세히보기">
-                                            <span class="date">소멸 예정 0원</span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li class="user_coupon">
-                                    <div class="link">
-                                        <div class="tit">
-                                            쿠폰
-                                        </div>
-                                        <a href="#" class="info">
-                                            0 개
-                                            <img src="https://res.kurly.com/pc/service/common/1905/ico_arrow_56x56.png" alt="자세히 보기">
-                                        </a>
-                                    </div>
-                                </li>
-                                <li class="user_kurlypass">
-                                    <div class="link">
-                                        <div class="tit">
-                                            껄리패스    
-                                        </div>
-                                        <a href="#" class="info info_link">
-                                            알아보기
-                                            <img src="https://res.kurly.com/pc/service/common/1905/ico_arrow_56x56.png" alt="자세히 보기">
-                                        </a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <a href="#" class="bnr_event" style="background-image: url(https://img-cf.kurly.com/shop/data/skin/designgj/img/banner/bb20c3b9d5542cfdfec3ef5bfefcafa5.jpg);">
-                        </a>
-                    </div>
-                </div>
-                <div class="page_aticle aticle_type2">
-                    <div id="snb" class="snb_my">
-                        <h2 class="tit_snb">마이껄리</h2>
-                        <div class="inner_sub">
-                          <ul class="list_menu">
-                                <li>
-                                    <a href="/user/mypage.do">주문내역</a>
-                                </li>
-                                <li>
-                                    <a href="/user/mypage_address.do">배송지 관리</a>
-                                </li>
-                                <li>
-                                    <a href="/user/mypage_qna.do">자주 묻는 질문</a>
-                                </li>
-                                <li class="on">
-                                    <a href="/user/mypage_update.do">개인 정보 수정</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-					<div id="container">
-                      <div id="main">
-                        <div id="content">
-                          <div class="page_aticle">
-                            <div class="type_form member_join">
-                              <form id="joinForm" action="/user/join.do" method="post">
-                                <div class="field_head">
-                                  <h3 class="tit">정보 수정</h3>
-                                  <p class="sub">
-                                    <span class="ico">*</span>
-                                    필수입력사항
-                                  </p>
-                                </div>
-                  
-                                <table class="tbl_comm">
-                                  <tbody>
-                                    <tr class="fst field_id">
-                                      <th><label for="userId">아이디</label>
-                                        <span class="ico">
-                                          *
-                                          <span class="screen_out">필수항목</span>
-                                        </span>
-                                      </th>
-                                      <td>
-                                        <input type="text" name="userId" id="userId" maxlength="16" required="" option="regId"
-                                          placeholder="아이디를 입력해주세요">
-                                        <button type="button" class="btn default" id="btnIdCheck" style="cursor:pointer">중복확인</button>
-                                      </td>
-                                    </tr>
-                  
-                                    <tr class="field_pw">
-                                      <th>
-                                        <label for="userPw">비밀번호</label>
-                                        <span class="ico">*
-                                          <span class="screen_out">필수항목</span>
-                                        </span>
-                                      </th>
-                                      <td>
-                                        <input type="password" name="userPw" id="userPw" required=""  maxlength="16"
-                                          class="reg_pw bad" placeholder="비밀번호를 입력해주세요">
-                                      </td>
-                                    </tr>
-                  
-                                    <tr class="member_pwd field_repw">
-                                      <th>
-                                        <label for="userPwCheck">비밀번호 확인</label>
-                                        
-                                        <span class="ico">
-                                          *
-                                          <span class="screen_out">필수항목</span>
-                                        </span>
-                                      </th>
-                                      <td>
-                                        <input type="password" id="userPwCheck" name="userPwCheck"  maxlength="16"
-                                          class="confirm_pw" placeholder="비밀번호를 한번 더 입력해주세요">
-                                          <p id="pwCheckResult" style="font-size: 0.8rem;"></p>
-                                      </td>
-                                    </tr>
-                  
-                                    <tr class="field_name">
-                                      <th>
-                                        <label for="userNm">이름</label>
-                                        <span class="ico">
-                                          *
-                                          <span class="screen_out">필수항목</span>
-                                        </span>
-                                      </th>
-                                      <td>
-                                        <input type="text" id="userNm" name="userNm" required="" label="이름" placeholder="이름을 입력해주세요">
-                                      </td>
-                                    </tr>
-                  
-                                    <tr class="field_email">
-                                      <th>
-                                        <label for="userMail">이메일</label>
-                                        <span class="ico">
-                                          *
-                                          <span class="screen_out">필수항목</span>
-                                        </span>
-                                      </th>
-                                      <td>
-                                        <input type="text" id="userEmail" name="userEmail" size="30" required="" option="Email" label="이메일"
-                                          placeholder="예: marketkkurly@kkurly.com">
-                                      </td>
-                                    </tr>
-                  
-                  
-                                    <tr class="field_phone">
-                                      <th>
-                                        <label for="userTel">전화번호</label>
-                                        <span class="ico">
-                                          *
-                                          <span class="screen_out">필수항목</span>
-                                        </span>
-                                      </th>
-                  
-                                      <td>
-                                        <div class="phone_num">
-                                          <input type="text" id="userTel" name="userTel" value="" pattern="[0-9]*" placeholder="숫자만 입력해주세요"
-                                            class="inp">
-                                        </div>
-                                      </td>
-                                    </tr>
-                  
-                                    <tr>
-                                      <th>
-                                        주소
-                                        <span class="ico">
-                                          *
-                                          <span class="screen_out">필수항목</span>
-                                        </span>
-                                      </th>
-                                      <td class="field_address" onclick="daum_address()">
-                                        <a href="#" id="addressSearch" class="search">
-                                          <span id="addressNo" class="address_no">주소검색</span>
-                                        </a>
-                                        <input type="text" id="userAdr" name="userAdr" placeholder="주소">
-                                        <input type="text" id="user_detail_address" name="user_detail_address" placeholder="상세주소">
-                                        <p class="txt_guide" style="display:block;">
-                                          <span class="txt txt_case1">배송지에 따라 상품 정보가 달라질 수 있습니다.</span>
-                                        </p>
-                                      </td>
-                                    </tr>
-                  
-                                    <tr class="birth field_birth">
-                                      <th>생년월일</th>
-                                      <td>
-                                        <div class="birth_day">
-                                          <input type="text" name="year" id="birth_year" pattern="[0-9]*" label="생년월일" size="4"
-                                            maxlength="4" placeholder="YYYY">
-                                          <span class="bar">
+                      <ul class="list_mypage">
+                          <li class="user_reserve">
+                              <div class="link">
+                                  <div class="tit">
+                                      적립금
+                                  </div>
+                                  <a href="#" class="info">
+                                      0 원
+                                      <img src="https://res.kurly.com/pc/service/common/1905/ico_arrow_56x56.png" alt="자세히보기">
+                                      <span class="date">소멸 예정 0원</span>
+                                  </a>
+                              </div>
+                          </li>
+                          <li class="user_coupon">
+                              <div class="link">
+                                  <div class="tit">
+                                      쿠폰
+                                  </div>
+                                  <a href="#" class="info">
+                                      0 개
+                                      <img src="https://res.kurly.com/pc/service/common/1905/ico_arrow_56x56.png" alt="자세히 보기">
+                                  </a>
+                              </div>
+                          </li>
+                          <li class="user_kurlypass">
+                              <div class="link">
+                                  <div class="tit">
+                                      껄리패스    
+                                  </div>
+                                  <a href="#" class="info info_link">
+                                      알아보기
+                                      <img src="https://res.kurly.com/pc/service/common/1905/ico_arrow_56x56.png" alt="자세히 보기">
+                                  </a>
+                              </div>
+                          </li>
+                      </ul>
+                  </div>
+                  <a href="#" class="bnr_event" style="background-image: url(https://img-cf.kurly.com/shop/data/skin/designgj/img/banner/bb20c3b9d5542cfdfec3ef5bfefcafa5.jpg);">
+                  </a>
+              </div>
+          </div>
+          <div class="page_aticle aticle_type2">
+              <div id="snb" class="snb_my">
+                  <h2 class="tit_snb">마이껄리</h2>
+                  <div class="inner_sub">
+                    <ul class="list_menu">
+                          <li>
+                              <a href="/user/mypage.do">주문내역</a>
+                          </li>
+                          <li>
+                              <a href="/user/mypage_address.do">배송지 관리</a>
+                          </li>
+                          <li>
+                              <a href="/user/mypage_qna.do">자주 묻는 질문</a>
+                          </li>
+                          <li class="on">
+                              <a href="/user/mypage_update.do">개인 정보 수정</a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+              <div id="viewOrderList" class="page_section section_orderlist">
+                  <div class="head_aticle">
+                      <h2 class="tit">
+                          개인 정보 수정
+                          <span class="tit_sub">
+                              개인 정보 수정이 가능합니다.
+                          </span>
+                      </h2>
+                  </div>
+                  <ul class="list_order">
+                    <li>
+                      <div id="container">
+                        <div id="main">
+                          <div id="content">
+                            <div class="page_aticle">
+                              <div class="type_form member_join">
+                                <form id="updateForm" action="/user/mypage_update_detail.do" method="post">
+                    
+                                  <table class="tbl_comm">
+                                    <tbody>
+                                      <tr class="fst field_id">
+                                        <th><label for="userId">아이디</label>
+                                        </th>
+                                        <td>
+                                          <input type="text" name="userId" id="userId" maxlength="16" required=""
+                                            value="${loginUser.userId }" readonly style="background-color:lightgray;">
+                                        </td>
+                                      </tr>
+                    
+                                      <tr class="field_pw">
+                                        <th>
+                                          <label for="userPw">비밀번호</label>
+                                          <span class="ico">*
+                                            <span class="screen_out">필수항목</span>
                                           </span>
-                                          <input type="text" name="month" id="birth_month" pattern="[0-9]*" label="생년월일" size="2"
-                                            maxlength="2" placeholder="MM">
-                                          <span class="bar"></span>
-                                          <input type="text" name="day" id="birth_day" pattern="[0-9]*" label="생년월일" size="2"
-                                            maxlength="2" placeholder="DD">
-                                            <input type="hidden" id="userBd" name="userBd">
-                                        </div>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                                <div id="formSubmit" class="form_footer" style="border-top: 1px solid #333;">
-                                  <button type="submit" class="btn active btn_join" style="cursor:pointer">수정하기</button>
-                                </div>
-                              </form>
+                                        </th>
+                                        <td>
+                                          <input type="password" name="userPw" id="userPw" required=""  maxlength="16"
+                                            class="reg_pw bad" placeholder="비밀번호를 입력해주세요">
+                                        </td>
+                                      </tr>
+                    
+                                      <tr class="member_pwd field_repw">
+                                        <th>
+                                          <label for="userPwCheck">비밀번호 확인</label>
+                                          
+                                          <span class="ico">
+                                            *
+                                            <span class="screen_out">필수항목</span>
+                                          </span>
+                                        </th>
+                                        <td>
+                                          <input type="password" id="userPwCheck" name="userPwCheck"  maxlength="16"
+                                            class="confirm_pw" placeholder="비밀번호를 한번 더 입력해주세요">
+                                            <p id="pwCheckResult" style="font-size: 0.8rem;"></p>
+                                        </td>
+                                      </tr>
+                    
+                                      <tr class="field_name">
+                                        <th>
+                                          <label for="userNm">이름</label>
+                                        </th>
+                                        <td>
+                                          <input type="text" id="userNm" name="userNm" required="" label="이름" value="${loginUser.userNm }">
+                                        </td>
+                                      </tr>
+                    
+                                      <tr class="field_email">
+                                        <th>
+                                          <label for="userMail">이메일</label>
+                                        </th>
+                                        <td>
+                                          <input type="text" id="userEmail" name="userEmail" size="30" required="" option="Email" label="이메일"
+                                            value="${loginUser.userEmail }">
+                                        </td>
+                                      </tr>
+                    
+                    
+                                      <tr class="field_phone">
+                                        <th>
+                                          <label for="userTel">전화번호</label>
+                                        </th>
+                    
+                                        <td>
+                                          <div class="phone_num">
+                                            <input type="text" id="userTel" name="userTel" pattern="[0-9]*" value="${loginUser.userTel }" class="inp">
+                                          </div>
+                                        </td>
+                                      </tr>
+                    
+                                    </tbody>
+                                  </table>
+                                  <div id="formSubmit" class="form_footer">
+                                    <button type="submit" class="btn active btn_join" style="cursor:pointer; margin-right:340px;">수정하기</button>
+                                  </div>
+                                </form>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </div> 
-
-                </div>
-            </div>
-        </div>
-    </div>
+                      </div> 
+                    </li>
+                  </ul>
+              </div>
+          </div>    
+      </div>
+  </div>
+</div>
 <jsp:include page="${pageContext.request.contextPath }/mainFooter.jsp"></jsp:include>
 <script>
+$(document).ready(function(){
+	//비밀번호 입력될때마다 유효성 검사
+	$("#userPwCheck").on("change", function() {
+		console.log($("#userId").val());
+		//비밀번호 확인까지 입력한 후 다시 비밀번호 재설정
+		if($("#userPw").val() == $("#userPwCheck").val()) {
+			let pwCheck = true;
+			$("#pwCheckResult").css("color", "green");
+			$("#pwCheckResult").text("비밀번호가 일치합니다.");
+		} else {
+			let pwCheck = false;
+			/* console.log("!!?"); */
+			$("#pwCheckResult").css("color", "red");
+			$("#pwCheckResult").text("비밀번호가 일치하지 않습니다.");
+		}
+	});
+});
 </script>
 </body>
 </html>

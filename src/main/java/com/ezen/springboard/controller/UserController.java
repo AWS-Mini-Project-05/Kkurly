@@ -6,7 +6,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -275,5 +274,14 @@ public class UserController {
 			return "findPwSuccess";
 		}
 	}
+	
+	// 정보 수정
+	@RequestMapping("/mypage_update_detail.do")
+	public String userUpdate(UserVO userVO) {
+		System.out.println(userVO);
+		userService.userUpdate(userVO);
 
+		return "/user/mypage";
+	}
+	
 }
