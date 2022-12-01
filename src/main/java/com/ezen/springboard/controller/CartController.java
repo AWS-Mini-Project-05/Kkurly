@@ -176,7 +176,7 @@ public class CartController {
 	}
 	
 	@RequestMapping("/order.do")
-	public String order(HttpSession session, @RequestParam("order") String tmpData) throws JsonProcessingException {
+	public String order(HttpSession session, @RequestParam("order") String tmpData, Model model) throws JsonProcessingException {
 		
 		ObjectMapper mapper = new ObjectMapper();
 //		
@@ -184,20 +184,46 @@ public class CartController {
 //		
 		Map<String, Object> listMap = mapper.readValue(tmpData, new TypeReference<Map<String, Object>>(){});
 		
-		System.out.println(listMap.toString());
-		System.out.println(listMap.get("userNo"));
-		System.out.println(listMap.get("prodInfo"));
+//		System.out.println(listMap.toString());
+//		System.out.println(listMap.get("userNo"));
+//		System.out.println(listMap.get("prodInfo"));
 		Object tmp = listMap.get("prodInfo");
 		String strTmp = String.valueOf(tmp);
 		
 		List<Map<String, String>> t = mapper.readValue(strTmp, new TypeReference<List<Map<String, String>>>(){});
 
+		List<ProdVO> prodList = new ArrayList<ProdVO>();
+		List<Integer> qtyList = new ArrayList<Integer>();
+		List<Integer> priceList = new ArrayList<Integer>();
+		
+		String cgCd = "";
+		String temp = "";
+		int prodPrice = 0;
+		int totalPrice = 0;
+		
 		for (Map<String, String> tt : t) {
-			System.out.print(tt.get("prodNo") + " ");
-			System.out.println(tt.get("prodQty"));
+//			System.out.print(tt.get("prodNo") + " ");
+//			System.out.println(tt.get("prodQty"));
+			CartVO cartVO = new CartVO();
+			
+			int prodNo = Integer.parseInt(String.valueOf(tt.get("prodNo")));
+			int prodQty = Integer.parseInt(String.valueOf(tt.get("prodQty")));
+			
+			ProdVO prod = cartService.getProd(prodNo);
+			cgCd = prod.getProdCgcd();
+			temp = cgCd.substring(0,3);
+			int price = prod.getProdPrice();
+			
+//			prodPrice += prod.getProdPrice();
+			priceList.add(price * prodQty);
+			prodList.add(prod);
+			qtyList.add(prodQty);
+			
 		}
 		
-		
+		model.addAttribute("prodList", prodList);
+		model.addAttribute("qtyList", qtyList);
+		model.addAttribute("priceList", priceList);
 		
 		return "/cart/order";
 	}

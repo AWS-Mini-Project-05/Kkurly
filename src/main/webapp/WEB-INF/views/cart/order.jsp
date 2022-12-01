@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -133,49 +134,22 @@ section {
 				class="btn-fold" value="unfold"></span>
 		</div>
 		<table class="prod-table" style="width: 1040px;">
-			<tr>
+			<c:forEach items="${prodList }" var="prod" varStatus="status">
+				<tr>
 				<td style="width: 9%;">
-					<img src="${pageContext.request.contextPath }/images/img-prod01.png" style="width: 62px; height: 80px;">
+					<img src="${pageContext.request.contextPath }${prod.prodImgPath}${prod.prodImgNm}" style="width: 62px; height: 80px;">
 				</td>
 				<td style="width: 68%;">
-					<p>[껄리] 이 육개장이 ㅇ러메나 맛있게</p>
+					<p>${prod.prodNm }</p>
 				</td>
 				<td style="width: 8%; text-align: right;">
-					2개
+					${qtyList[status.index] } 개
 				</td>
 				<td style="width: 15%; text-align: right; font-weight: bold;">
-					104,000원
+					${priceList[status.index] } 원
 				</td>
 			</tr>
-			<tr>
-				<td style="width: 9%;">
-					<img src="${pageContext.request.contextPath }/images/img-prod01.png" style="width: 62px; height: 80px;">
-				</td>
-				<td style="width: 68%;">
-					<p>[껄리] 이 육개장이 ㅇ러메나 맛있게</p>
-				</td>
-				<td style="width: 8%; text-align: right;">
-					2개
-				</td>
-				<td style="width: 15%; text-align: right; font-weight: bold;">
-					104,000원
-				</td>
-			</tr>
-			<tr>
-				<td style="width: 9%;">
-					<img src="${pageContext.request.contextPath }/images/img-prod01.png" style="width: 62px; height: 80px;">
-				</td>
-				<td style="width: 68%;">
-					<p>[껄리] 이 육개장이 ㅇ러메나 맛있게</p>
-				</td>
-				<td style="width: 8%; text-align: right;">
-					2개
-				</td>
-				<td style="width: 15%; text-align: right; font-weight: bold;">
-					104,000원
-				</td>
-			</tr>
-		
+			</c:forEach>	
 		</table>
 		
 	</div>
