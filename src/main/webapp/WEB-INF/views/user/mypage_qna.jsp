@@ -5,11 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>MY KKURLY</title>
-
    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/reset.css">
    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/common.css">
-   <link rel="stylesheet" href="${pageContext.request.contextPath }/css/mykurly_order_list.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath }/css/mykurly_qna.css">
    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+   <script src="js/show-hidden.js"></script>
+<style>
+
+</style>
 </head>
 <body>
 <jsp:include page="${pageContext.request.contextPath }/mainHeader.jsp"></jsp:include>
@@ -42,7 +45,7 @@
                                 </div>
                                 <div class="next">
                                     <a href="#" class="total_grade">전체등급 보기</a>
-                                    <a href="#" class="next_month">다음 달 예상등급 보기</a> <!-- 얼마나 구매했는지 알아야해요 .. -->
+                                    <a href="#" class="next_month">다음 달 예상등급 보기</a>
                                 </div>
                             </div>
 
@@ -91,14 +94,14 @@
                     <div id="snb" class="snb_my">
                         <h2 class="tit_snb">마이껄리</h2>
                         <div class="inner_sub">
-                            <ul class="list_menu">
-                                <li class="on">
+                           <ul class="list_menu">
+                                <li>
                                     <a href="/user/mypage.do">주문내역</a>
                                 </li>
                                 <li>
                                     <a href="/user/mypage_address.do">배송지 관리</a>
                                 </li>
-                                <li>
+                                <li class="on">
                                     <a href="/user/mypage_qna.do">자주 묻는 질문</a>
                                 </li>
                                 <li>
@@ -110,65 +113,49 @@
                     <div id="viewOrderList" class="page_section section_orderlist">
                         <div class="head_aticle">
                             <h2 class="tit">
-                                주문 내역
+                                자주하는 질문(FAQ)
                                 <span class="tit_sub">
-                                    지난 3년간의 주문 내역 조회가 가능합니다.
+                                    마켓껄리 제품 및 사이트에 궁금하신 사항을 FAQ를 통해 해결해 드립니다.
                                 </span>
                             </h2>
                         </div>
-                        <div class="search_date">
-                            <a href="#" class="btn_layer">
-                                전체기간
-                            </a>
-                            <ul class="layer_search">
-                                <li>
-                                    <a href="#" class="on">전체기간</a>
-                                </li>
-                                <li>
-                                    <a href="#">2022 년</a>
-                                </li>
-                                <li>
-                                    <a href="#">2021 년</a>
-                                </li>
-                                <li>
-                                    <a href="#">2020 년</a>
-                                </li>
-                        
-                            </ul>
-                        </div>
                         <ul class="list_order">
                             <li>
-                                <div class="date">2022.12.01</div> <!-- 날짜 데이터값 -->
                                 <div class="order_goods">
                                     <div class="name">
-                                        <a>(상품 제목)</a>
+                                        <a>마켓껄리는 어떤 회사인가요?</a>
+                                        <div id=detail>
+                                        	<hr>
+                                        	<a></a>
+                                        </div>
                                     </div>
-                                    <div class="order_info">
-                                        <div class="thumb">
-                                            <img src="https://img-cf.kurly.com/cdn-cgi/image/width=676,format=auto/shop/data/goods/1597052755228l0.jpg" alt="해당 주문 대표 상품 이미지">
+                                    <div class="name">
+                                        <a>상품은 어떻게 포장되나요?</a>
+										<div id=detail>
+                                        	<hr>
+                                        	<a></a>
                                         </div>
-                                        <div class="desc">
-                                            <dl>
-                                                <dt>주문번호</dt>
-                                                <dd>(주문번호 데이터)</dd>
-                                            </dl>
-                                            <dl>
-                                                <dt>결제금액</dt>
-                                                <dd>0원(총 금액 데이터)</dd>
-                                            </dl>
-                                            <dl>
-                                                <dt>주문상태</dt>
-                                                <dd class="status end">배송중</dd>
-                                            </dl>
+                                    </div>
+                             		<div class="name">
+                                        <a>교환(반품) 진행 시, 배송비가 부과되나요?</a>
+                                        <div id=detail>
+                                        	<hr>
+                                        	<a></a>
                                         </div>
+                                    </div>
+                                    <div class="name">
+                                        <a>샛별배송/낮(택배) 배송이 무엇인가요?</a>
+                                    </div>
+                                    <div class="name">
+                                        <a>제세공과금이 무엇인가요?</a>
                                     </div>
                                </div>
                             </li>
                         </ul>
                         <div class="layout-pagination">
                             <div class="pagediv">
-                                <a href="#viewOrderList" class="layout-pagination-button layout-pagination-first-page">맨 처음 페이지로 가기</a>
-                                <a href="#viewOrderList" class="layout-pagination-button layout-pagination-prev-page">이전 페이지로 가기</a>
+                                <a href="#" class="layout-pagination-button layout-pagination-first-page">맨 처음 페이지로 가기</a>
+                                <a href="#" class="layout-pagination-button layout-pagination-prev-page">이전 페이지로 가기</a>
                                 <span> 
                                     <strong class="layout-pagination-button layout-pagination-number __active" style="height: 32px;">
                                         1

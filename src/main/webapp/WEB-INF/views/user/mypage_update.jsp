@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="next">
                                     <a href="#" class="total_grade">전체등급 보기</a>
-                                    <a href="#" class="next_month">다음 달 예상등급 보기</a> <!-- 얼마나 구매했는지 알아야해요 .. -->
+                                    <a href="#" class="next_month">다음 달 예상등급 보기</a>
                                 </div>
                             </div>
 
@@ -91,8 +91,8 @@
                     <div id="snb" class="snb_my">
                         <h2 class="tit_snb">마이껄리</h2>
                         <div class="inner_sub">
-                            <ul class="list_menu">
-                                <li class="on">
+                          <ul class="list_menu">
+                                <li>
                                     <a href="/user/mypage.do">주문내역</a>
                                 </li>
                                 <li>
@@ -101,7 +101,7 @@
                                 <li>
                                     <a href="/user/mypage_qna.do">자주 묻는 질문</a>
                                 </li>
-                                <li>
+                                <li class="on">
                                     <a href="/user/mypage_update.do">개인 정보 수정</a>
                                 </li>
                             </ul>

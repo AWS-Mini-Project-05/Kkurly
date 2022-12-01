@@ -51,6 +51,26 @@ public class UserController {
 	public String pwSearchView() {
 		return "user/pwSearch";
 	}
+	
+	@GetMapping("/mypage.do")
+	public String mypageView() {
+		return "user/mypage";
+	}
+	
+	@GetMapping("/mypage_qna.do")
+	public String qnaView() {
+		return "user/mypage_qna";
+	}
+	
+	@GetMapping("/mypage_address.do")
+	public String addressView() {
+		return "user/mypage_address";
+	}
+	
+	@GetMapping("/mypage_update.do")
+	public String updateView() {
+		return "user/mypage_update";
+	}
 
 
 	//post방식은 해당 로직 처리
