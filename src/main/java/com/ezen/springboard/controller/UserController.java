@@ -175,7 +175,7 @@ public class UserController {
 		public String logout(HttpSession session) {
 			session.invalidate();
 			
-			return "redirect:/index.jsp";
+			return "redirect:/";
 		}
 
 
