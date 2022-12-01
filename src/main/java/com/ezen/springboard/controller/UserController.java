@@ -95,9 +95,6 @@ public class UserController {
 	@PostMapping(value="/test.do",
 	produces="application/text; charset=UTF8")
 	@ResponseBody
-//	@ResponseBody : 기존에는 return되는 jsp를 찾아서 response body를 HTML(화면 자체를 만들어서)로 만들어서 리턴
-//					@ResponseBody가 선언된 메소드를 리턴 값 자체가 response body가 됨.(Html로 구조를 만들지 않음)
-//					문자열을 리턴하면 요청을 호출한 곳에 문자열을 보내준다.
 	public String test(@RequestParam("id") String id) throws JsonProcessingException {
 		System.out.println(id);
 
@@ -118,9 +115,6 @@ public class UserController {
 
 		jsonMap.put("user", user);
 
-		// 리턴해줄 문자열
-		// writerWithDefaultPrettyPrinter() : Map을 예쁜 형태의 json 모양으로 변경해줌
-		// writervalueAsString() : json 모양으로 변경된 객체를 문자열로 변경
 		String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonMap);
 
 		return json;
@@ -209,7 +203,7 @@ public class UserController {
 	}
 	
 	
-	// id 찾기
+	//id 찾기
 	@PostMapping("/findId.do")
 	@ResponseBody
 	public String findId(UserVO userVO, HttpSession session) {

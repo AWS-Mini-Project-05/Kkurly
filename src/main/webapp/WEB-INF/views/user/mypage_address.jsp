@@ -118,27 +118,26 @@
                         </div>
                         <ul class="list_order">
                             <li>
-                                <div class="date">MAIN</div>
+                                <div class="date">기본</div>
                                 <div class="order_goods">
                                     <div class="name">
-                                        <a>(상품 제목)</a>
+                                        <a>집</a>
                                     </div>
                                     <div class="order_info">
                                         <div class="thumb">
-                                            <img src="https://img-cf.kurly.com/cdn-cgi/image/width=676,format=auto/shop/data/goods/1597052755228l0.jpg" alt="해당 주문 대표 상품 이미지">
                                         </div>
                                         <div class="desc">
                                             <dl>
-                                                <dt>주문번호</dt>
-                                                <dd>(주문번호 데이터)</dd>
+                                                <dt>주소</dt>
+                                                <dd>주소</dd>
                                             </dl>
                                             <dl>
-                                                <dt>결제금액</dt>
-                                                <dd>0원(총 금액 데이터)</dd>
+                                                <dt>전화번호</dt>
+                                                <dd>${loginUser.userTel }</dd>
                                             </dl>
                                             <dl>
-                                                <dt>주문상태</dt>
-                                                <dd class="status end">배송중</dd>
+                                                <dt>이름</dt>
+                                                <dd>${loginUser.userNm }</dd>
                                             </dl>
                                         </div>
                                     </div>
