@@ -32,7 +32,7 @@
 			#{userNm},
 			#{userTel},
 			#{userEmail},
-			#{userBD},
+			#{userBd},
 			NOW()
 		)
 	]]>
