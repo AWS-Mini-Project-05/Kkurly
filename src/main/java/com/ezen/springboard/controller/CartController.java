@@ -59,7 +59,7 @@ public class CartController {
 				tmp.prodNo  : 상품 번호  
 				tmp.prodQty : 구매 수량  
 				*/
-				//.out.print("prodNo : " + tmp.get("prodNo") + ", ");
+				//System.out.print("prodNo : " + tmp.get("prodNo") + ", ");
 				//System.out.println("prodQty : " + tmp.get("prodQty"));
 				CartVO cartVO = new CartVO();
 				
