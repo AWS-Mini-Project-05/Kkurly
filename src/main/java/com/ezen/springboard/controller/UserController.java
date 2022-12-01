@@ -228,6 +228,7 @@ public class UserController {
 		return "redirect:/";
 	}
 
+	// id 찾기
 	@PostMapping("/findId.do")
 	@ResponseBody
 	public String findId(UserVO userVO, HttpSession session) {
