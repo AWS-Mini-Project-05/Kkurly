@@ -51,6 +51,27 @@ public class UserController {
 	public String pwSearchView() {
 		return "user/pwSearch";
 	}
+	
+	@GetMapping("/mypage.do")
+	public String mypageView() {
+		return "user/mypage";
+	}
+	
+	@GetMapping("/mypage_qna.do")
+	public String qnaView() {
+		return "user/mypage_qna";
+	}
+	
+	@GetMapping("/mypage_address.do")
+	public String addressView() {
+		return "user/mypage_address";
+	}
+	
+	@GetMapping("/mypage_update.do")
+	public String updateView() {
+		return "user/mypage_update";
+	}
+
 
 	//post방식은 해당 로직 처리
 	//회원가입 진행
@@ -154,7 +175,7 @@ public class UserController {
 		public String logout(HttpSession session) {
 			session.invalidate();
 			
-			return "redirect:/index.jsp";
+			return "redirect:/";
 		}
 
 
@@ -182,6 +203,52 @@ public class UserController {
 
 		return "admin/manageUserDetail";
 	}
+	
+	
+	// id 찾기
+	@PostMapping("/findId.do")
+	@ResponseBody
+	public String findId(UserVO userVO, HttpSession session) {
+		//1. 이름 체크
+		int nmCheck = userService.idCheck(userVO.getUserNm());
+			
+		if(nmCheck < 1) {
+			return "nmFail";
+		} else {
+			UserVO findIdUser = userService.findId(userVO);
+				
+			//2. 이메일 체크
+			if(findIdUser == null) {
+				return "emailFail";
+			}
+				
+			session.setAttribute("findIdUser", findIdUser);
+			return "findIdSuccess";
+		}
+	}
+	
+	//pw 찾기
+	@PostMapping("/findPw.do")
+	@ResponseBody
+	public String findPw(UserVO userVO, HttpSession session) {
+		//1. 아이디 체크
+		int idCheck = userService.idCheck(userVO.getUserId());
+		
+		if(idCheck < 1) {
+			return "idFail";
+		} else {
+			UserVO findPwUser = userService.findPw(userVO);
+				
+			//2. 이름 체크
+			if(findPwUser == null) {
+				return "nmFail";
+			}
+				
+			session.setAttribute("findPwUser", findPwUser);
+			return "findPwSuccess";
+		}
+	}
+	
 
 
 }
