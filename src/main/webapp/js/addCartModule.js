@@ -10,10 +10,13 @@
 			
 			
 			//let tmpId = $(this).children("img").attr("src");
-			let tmpId = $(this).parent().prev().attr("src");
+			let tmpId = $(this).attr("id");
+			console.log(tmpId);
+			let prodNo = tmpId.substring(6);
+			console.log(prodNo);
 			
 			let tmpData = {
-					"prodNo" : tmpId,
+					"prodNo" : prodNo,
 					"prodQty" : "1"
 			}
 			let tmpArrayStr = new Array();

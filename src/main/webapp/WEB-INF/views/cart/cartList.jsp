@@ -511,6 +511,7 @@ input[type=checkbox]:checked + label {
 			let prodNo = $(this).val();   // prodNo
 
 			let prodQty = parseInt($("#result"+prodNo).text()) + 1;
+			updateItemInLocalStorage(prodNo, prodQty);
 			let prodPrice = parseInt($("#prod-price"+prodNo).prev().val());
 			$("#result"+prodNo).text(prodQty);
 			$("#prod-price"+prodNo).text(prodQty * prodPrice);
@@ -523,6 +524,7 @@ input[type=checkbox]:checked + label {
 			let prodNo = $(this).val();   // prodNo
 
 			let prodQty = parseInt($("#result"+prodNo).text());
+			updateItemInLocalStorage(prodNo, prodQty);
 			if (prodQty > 1) prodQty = prodQty- 1;
 			let prodPrice = parseInt($("#prod-price"+prodNo).prev().val());
 			//console.log(prodQty + " " +prodPrice);
@@ -608,6 +610,73 @@ input[type=checkbox]:checked + label {
 			
 			console.log(numOfProd);
 			$("#totalProd").text(numOfProd);
+		}
+		
+		
+		$(".product-function").on("click", function() {
+
+			let tmpId = $(this).parent().prev().attr("src");
+			
+			let tmpData = {
+					"prodNo" : tmpId,
+					"prodQty" : "1"
+			}
+			let tmpArrayStr = new Array();
+			
+			if (localStorage.getItem('kkurlyNonMembersBasket') == null) {
+				tmpArrayStr.push(tmpData);
+
+				localStorage.setItem("kkurlyNonMembersBasket", JSON.stringify(tmpArrayStr));
+			} else {
+				let tmpLocalStorage = localStorage.getItem('kkurlyNonMembersBasket');
+				
+				
+				
+				tmpArrayStr = JSON.parse(tmpLocalStorage);
+
+				// 장바구니 중복 확인 
+				for (let tmp of tmpArrayStr) {
+					if (tmp.prodNo === tmpData.prodNo) return;
+				}
+				
+				tmpArrayStr.push(tmpData);
+				
+				localStorage.setItem("kkurlyNonMembersBasket", JSON.stringify(tmpArrayStr));
+			}
+	
+		})
+		
+		
+		function delItemInLocalStorage(prodNo) {
+			let tmpLocalStorage = localStorage.getItem('kkurlyNonMembersBasket');
+			let tmpArrayStr = new Array();
+			
+			tmpArrayStr = JSON.parse(tmpLocalStorage);
+			
+			for (let idx in tmpArrayStr) {
+				if (tmpArrayStr[idx].prodNo === prodNo) {
+					tmpArrayStr.remove[idx];
+					break;
+				}
+			}
+			
+			localStorage.setItem("kkurlyNonMembersBasket", JSON.stringify(tmpArrayStr));
+		}
+		
+		function (prodNo, prodQty) {
+			let tmpLocalStorage = localStorage.getItem('kkurlyNonMembersBasket');
+			let tmpArrayStr = new Array();
+			
+			tmpArrayStr = JSON.parse(tmpLocalStorage);
+			
+			for (let idx in tmpArrayStr) {
+				if (tmpArrayStr[idx].prodNo === prodNo) {
+					tmpArrayStr[idx].prodQty = prodQty;
+					break;
+				}
+			}
+			
+			localStorage.setItem("kkurlyNonMembersBasket", JSON.stringify(tmpArrayStr));
 		}
 		
 	});
