@@ -17,8 +17,7 @@ public interface UserService {
 	UserVO login(UserVO userVO);
 	//id 찾기
 	UserVO findId(UserVO userVO);
-	//PW 찾기
+	//pw 찾기
 	UserVO findPw(UserVO userVO);
-	
 
 }

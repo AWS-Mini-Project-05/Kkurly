@@ -120,11 +120,13 @@
                         	<li>
                         		<a style="font-size:20px; margin-left:350px; color:purple;">비밀번호 입력</a>
                         		<hr>
-                    			<input type="password" name="userPw" id="userPw" option="regPass" onkeyup="pw_check()" maxlength="16"
+                        		<form id="insertPw">
+                    			<input type="password" name="userPw" id="userPw" option="regPass" maxlength="16"
                         class="reg_pw bad" placeholder="비밀번호를 입력해주세요" style="margin-left:270px; font-size:20px; text-align:center; margin-top:20px;">
+                        		</form>
                         	</li>
                         	<li>
-                        	<input type="submit" value="확인" 
+                        	<input type="submit" value="확인" id="btnUpdate"
                         	style="text-align:center; background-color:#5f0080; color:white; border:1px solid white; height:40px; width:150px; border-radius: 5px;
                         	font-size:15px; margin-top:20px; margin-left:330px; cursor:pointer;">
                         	</li>
@@ -136,7 +138,30 @@
     </div>
 <jsp:include page="${pageContext.request.contextPath }/mainFooter.jsp"></jsp:include>
 <script>
-
+/* $(function() {
+	$("#btnUpdate").on("click", function() {
+		$.ajax({
+			url: "/user/mypage_update.do",
+			type: "post",
+			data: $("#userPw"),
+			success: function(obj) {
+				
+				//비밀번호 체크
+				if(obj =="pwFail") {
+					alert("비밀번호가 틀렸습니다. 다시 확인해주세요.");
+					$("#userPw").focus();
+					console.log($("#userPw").val());
+					return;
+				}
+				
+				location.href="/user/mypage_update_detail.do";
+			},
+			error: function(e) {
+				console.log(e);
+			}
+		});
+	});
+}); */
 </script>
 </body>
 </html>
