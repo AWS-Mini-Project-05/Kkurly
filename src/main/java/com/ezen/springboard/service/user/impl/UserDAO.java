@@ -19,7 +19,8 @@ public class UserDAO {
 	}
 	
 	public int join(UserVO userVO) {
-		return mybatis.insert("UserDAO.join", userVO);
+		mybatis.insert("UserDAO.join",userVO);
+		return mybatis.insert("UserDAO.joinAdr", userVO);
 	}
 	
 	public UserVO login(UserVO userVO) {

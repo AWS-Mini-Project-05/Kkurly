@@ -77,6 +77,10 @@ public class UserController {
 	//회원가입 진행
 	@PostMapping(value="/join.do", produces="application/text; charset=UTF-8")
 	public String join(UserVO userVO, Model model) {
+		
+		String userSub = userVO.getUser_detail_address();
+		userVO.setUserAdr(userVO.getUserAdr()+" "+userSub);
+		System.out.println(userVO);
 		int joinResult = userService.join(userVO);
 		
 		if(joinResult == 0) {

@@ -421,7 +421,7 @@
                       <a href="#" id="addressSearch" class="search">
                         <span id="addressNo" class="address_no">주소검색</span>
                       </a>
-                      <input type="text" id="user_address" name="user_address" placeholder="주소">
+                      <input type="text" id="userAdr" name="userAdr" placeholder="주소">
                       <input type="text" id="user_detail_address" name="user_detail_address" placeholder="상세주소">
                       <p class="txt_guide" style="display:block;">
                         <span class="txt txt_case1">배송지에 따라 상품 정보가 달라질 수 있습니다.</span>
@@ -442,7 +442,7 @@
                         <span class="bar"></span>
                         <input type="text" name="day" id="birth_day" pattern="[0-9]*" label="생년월일" size="2"
                           maxlength="2" placeholder="DD">
-                          <input type="hidden" id="userBD">
+                          <input type="hidden" id="userBd" name="userBd">
                       </div>
                     </td>
                   </tr>
@@ -596,9 +596,16 @@
 			}
 		});
         
-        //회원가입 진행
+      $("#birth_day").on("keyup", function(e){
+    	  	let year = $("#birth_year").val();
+			let month = $("#birth_month").val();
+			let day = $("#birth_day").val();
+			$("#userBd").val(year + month + day);
+      });
+      
+     	//회원가입 진행
 		$("#joinForm").on("submit", function(e) {
-			//서브밋이 실행될 때 구현할 동작
+		 	//서브밋이 실행될 때 구현할 동작
 			//아이디 중복체크가 안됐거나 중복된 아이디를 사용했을 때
 			if(!checkId) {
 				alert("아이디 중복체크를 진행하세요.");
@@ -650,7 +657,7 @@
 
 	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
 	               
-	                document.getElementById("user_address").value = addr;
+	                document.getElementById("userAdr").value = addr;
 	                
 
 	                //주소 검색이 완료된 후 변하는 css 목록

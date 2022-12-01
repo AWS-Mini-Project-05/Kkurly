@@ -38,6 +38,25 @@
 	]]>
 	</insert>
 	
+	<insert id="joinAdr" parameterType="user">
+	<![CDATA[
+		INSERT INTO TB_USER_ADR
+		VALUES (
+			(
+				SELECT IFNULL(MAX(A.USER_NO), 0)
+					FROM TB_USER A
+			),
+			(
+				SELECT IFNULL(MAX(B.ADR_NO),0) + 1
+				FROM TB_USER_ADR B
+			),
+			#{userAdr},
+			'Y',
+			'Y'
+		)
+	]]>
+	</insert>
+	
 	<select id="login" parameterType="user" resultType="user">
 	<![CDATA[
 		SELECT USER_ID
