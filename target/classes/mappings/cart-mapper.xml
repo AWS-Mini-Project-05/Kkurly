@@ -25,7 +25,7 @@
 		LIMIT 1
 	</select>
 	 -->
-	<select id="getProd" parameterType="int" resultType="cart">
+	<select id="getProd" parameterType="int" resultType="prod">
 		SELECT * 
 		FROM TB_PROD
 		WHERE PROD_NO = #{prodNo}

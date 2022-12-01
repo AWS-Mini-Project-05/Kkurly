@@ -248,7 +248,7 @@ input[type=checkbox]:checked + label {
 			<c:forEach items="${coldList }" var="cold" varStatus="status">
 				<tr class="prod-prod" style="height:110px;">
 				<td style="width:4%">
-					<input type="image" class="cold-prod-table prod-table" src="${pageContext.request.contextPath }/images/click-off.png" value="off">
+					<input type="image" class="cold-prod-table prod-table" id="${cold.prodNo }" src="${pageContext.request.contextPath }/images/click-off.png" value="off">
 				</td>
 				<td style="width:9%">
 					<img src="${pageContext.request.contextPath }${cold.prodImgPath }${cold.prodImgNm}" style="width: 62px; height: 80px;">
@@ -270,7 +270,7 @@ input[type=checkbox]:checked + label {
 					<span id="prod-price${cold.prodNo }" class="allPrice">${cold.prodPrice }</span> 원
 				</td>
 				<td style="width:13%; text-align: right; padding-right: 1.2%">
-					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png">
+					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png" value="${cold.prodNo }">
 				</td>
 				</tr>
 			</c:forEach>
@@ -286,7 +286,7 @@ input[type=checkbox]:checked + label {
 			<c:forEach items="${frozenList }" var="frozen" varStatus="status">
 				<tr class="prod-prod" style="height:110px;">
 				<td style="width:4%">
-					<input type="image" class="frozen-prod-table prod-table" src="${pageContext.request.contextPath }/images/click-off.png" value="off">
+					<input type="image" class="frozen-prod-table prod-table" id="${frozen.prodNo}" src="${pageContext.request.contextPath }/images/click-off.png" value="off">
 				</td>
 				<td style="width:9%">
 					<img src="${pageContext.request.contextPath }${frozen.prodImgPath }${frozen.prodImgNm}" style="width: 62px; height: 80px;">
@@ -308,7 +308,7 @@ input[type=checkbox]:checked + label {
 					<span id="prod-price${frozen.prodNo }" class="allPrice">${frozen.prodPrice }</span> 원
 				</td>
 				<td style="width:13%; text-align: right; padding-right: 1.2%">
-					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png">
+					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png" value="${frozen.prodNo }">
 				</td>
 				</tr>
 			</c:forEach>
@@ -325,7 +325,7 @@ input[type=checkbox]:checked + label {
 			<c:forEach items="${normalList }" var="normal" varStatus="status">
 				<tr class="prod-prod" style="height:110px;">
 				<td style="width:4%">
-					<input type="image" class="normal-prod-table prod-table" src="${pageContext.request.contextPath }/images/click-off.png" value="off">
+					<input type="image" class="normal-prod-table prod-table" id="${normal.prodNo }" src="${pageContext.request.contextPath }/images/click-off.png" value="off">
 				</td>
 				<td style="width:9%">
 					<img src="${pageContext.request.contextPath }${normal.prodImgPath }${normal.prodImgNm}" style="width: 62px; height: 80px;">
@@ -347,7 +347,7 @@ input[type=checkbox]:checked + label {
 					<span id="prod-price${normal.prodNo }" class="allPrice">${normal.prodPrice }</span> 원
 				</td>
 				<td style="width:13%; text-align: right; padding-right: 1.2%">
-					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png">
+					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png" value="${normal.prodNo }">
 				</td>
 				</tr>
 			</c:forEach>	
@@ -474,8 +474,8 @@ input[type=checkbox]:checked + label {
 		$(".prod-table").click(function(e) {
 			e.preventDefault();
 			
-/* 			console.log($(this).val());
-			console.log($(".prod-table").length); */
+ 			console.log($(this).val());
+			//console.log($(".prod-table").length); */
 			if ($(this).val() == "on") {
 				$(this).attr("src", "${pageContext.request.contextPath }/images/click-off.png");
 				$(this).val("off");
@@ -511,6 +511,7 @@ input[type=checkbox]:checked + label {
 			let prodNo = $(this).val();   // prodNo
 
 			let prodQty = parseInt($("#result"+prodNo).text()) + 1;
+			updateItemInLocalStorage(prodNo, prodQty);
 			let prodPrice = parseInt($("#prod-price"+prodNo).prev().val());
 			$("#result"+prodNo).text(prodQty);
 			$("#prod-price"+prodNo).text(prodQty * prodPrice);
@@ -523,6 +524,7 @@ input[type=checkbox]:checked + label {
 			let prodNo = $(this).val();   // prodNo
 
 			let prodQty = parseInt($("#result"+prodNo).text());
+			updateItemInLocalStorage(prodNo, prodQty);
 			if (prodQty > 1) prodQty = prodQty- 1;
 			let prodPrice = parseInt($("#prod-price"+prodNo).prev().val());
 			//console.log(prodQty + " " +prodPrice);
@@ -534,7 +536,9 @@ input[type=checkbox]:checked + label {
 		$(".del-prod").on("click", function() {
 						
 			//$(this).parent().parent("tr").parent("table").hide();
+			delItemInLocalStorage($(this).val());
 			$(this).parent().parent("tr").remove();
+			
 			
 			//console.log($(this).parent().parent());
 			//console.log($(this).parent().parent().children("tr"));
@@ -551,13 +555,15 @@ input[type=checkbox]:checked + label {
 			
 			$(".prod-table").each(function(index, item){
 				if($(this).val() == "on") {
+					delItemInLocalStorage($(this).attr("id"));
 					$(this).parent().parent("tr").remove();
+					
 				}
 			});
 			
 			countNumOfSelect();
 			countNumOfTotal();
-			console.log($(".prod-table").length);
+			//console.log($(".prod-table").length);
 			
 			if (selectAllFlag == true) {
 				$(".btn-img-all").attr("src", "${pageContext.request.contextPath }/images/click-off.png");
@@ -608,6 +614,75 @@ input[type=checkbox]:checked + label {
 			
 			console.log(numOfProd);
 			$("#totalProd").text(numOfProd);
+		}
+		
+		
+		$(".product-function").on("click", function() {
+
+			let tmpId = $(this).parent().prev().attr("src");
+			
+			let tmpData = {
+					"prodNo" : tmpId,
+					"prodQty" : "1"
+			}
+			let tmpArrayStr = new Array();
+			
+			if (localStorage.getItem('kkurlyNonMembersBasket') == null) {
+				tmpArrayStr.push(tmpData);
+
+				localStorage.setItem("kkurlyNonMembersBasket", JSON.stringify(tmpArrayStr));
+			} else {
+				let tmpLocalStorage = localStorage.getItem('kkurlyNonMembersBasket');
+				
+				
+				
+				tmpArrayStr = JSON.parse(tmpLocalStorage);
+
+				// 장바구니 중복 확인 
+				for (let tmp of tmpArrayStr) {
+					if (tmp.prodNo === tmpData.prodNo) return;
+				}
+				
+				tmpArrayStr.push(tmpData);
+				
+				localStorage.setItem("kkurlyNonMembersBasket", JSON.stringify(tmpArrayStr));
+			}
+	
+		})
+		
+		
+		function delItemInLocalStorage(prodNo) {
+			let tmpLocalStorage = localStorage.getItem('kkurlyNonMembersBasket');
+			let tmpArrayStr = new Array();
+			
+			tmpArrayStr = JSON.parse(tmpLocalStorage);
+			
+			for (let idx in tmpArrayStr) {
+				console.log(idx);
+			
+				if (tmpArrayStr[idx].prodNo == prodNo) {
+					tmpArrayStr.splice(idx, 1);
+					break;
+				}
+			}
+			
+			localStorage.setItem("kkurlyNonMembersBasket", JSON.stringify(tmpArrayStr));
+		}
+		
+		function updateItemInLocalStorage(prodNo, prodQty) {
+			let tmpLocalStorage = localStorage.getItem('kkurlyNonMembersBasket');
+			let tmpArrayStr = new Array();
+			
+			tmpArrayStr = JSON.parse(tmpLocalStorage);
+			
+			for (let idx in tmpArrayStr) {
+				if (tmpArrayStr[idx].prodNo == prodNo) {
+					tmpArrayStr[idx].prodQty = prodQty;
+					break;
+				}
+			}
+			
+			localStorage.setItem("kkurlyNonMembersBasket", JSON.stringify(tmpArrayStr));
 		}
 		
 	});
