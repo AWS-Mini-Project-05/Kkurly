@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -209,6 +210,7 @@
   }
 
   .product-name {
+  	height : 42px;
     font-size: 15px;
     line-height: 1.45;
     font-weight: bold;
@@ -340,14 +342,15 @@
 		<span class="recommend">이 상품 어때요?</span>
 
 		<div class="images">
+		
 			<!-- 상품 1 -->
+			<c:forEach items="${prodList}" var="prod" begin="0" end="3">
 			<div class="main-images-box">
 				<div class="image-container">
-					<img
-						src="https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1637922344768l0.jpeg"
-						alt="상품 이미지" loading="lazy">
+					<img src="https://product-image.kurly.com/cdn-cgi/image/width=676,format=auto/product/image/0609129d-c63c-4206-bc22-a628d0606178.jpg" alt="상품 이미지" loading="lazy">
 					<div>
 						<button type="button" class="product-function" >
+						<input type="hidden" value="${prod.prodNo }" id="tmpId">
 							<img
 								src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iNDUiIHZpZXdCb3g9IjAgMCA0NSA0NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBmaWxsPSIjMkEwMDM4IiBvcGFjaXR5PSIuNSIgY3g9IjIyLjUiIGN5PSIyMi41IiByPSIyMi41Ii8+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEuMDMgMTQuMzgpIiBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0ibTIwLjQ2IDIuOTEtMi4xNyA5LjIzSDUuODdMMy43MSAyLjkxeiIvPgogICAgICAgICAgICA8Y2lyY2xlIHN0cm9rZS13aWR0aD0iMS4yIiBjeD0iMTYuMzUiIGN5PSIxNi44NiIgcj0iMS43Ii8+CiAgICAgICAgICAgIDxjaXJjbGUgc3Ryb2tlLXdpZHRoPSIxLjIiIGN4PSI3LjgyIiBjeT0iMTYuODYiIHI9IjEuNyIvPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0iTTAgMGgzLjAybDEuNDEgNS45OCIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
 								alt="장바구니 아이콘">
@@ -355,105 +358,19 @@
 					</div>
 				</div>
 				<div class="product-info">
-					<h3 class="product-name">씻어나온 완전미 고시히카리 쌀 4kg</h3>
+					<h3 class="product-name">${prod.prodNm }</h3>
 					<div class="content-row">
 						<div class="product-price">
 							<div>
-								<span class="discount-rate">15%</span><span class="sales-price">17,750<span
-									class="won"> 원</span></span>
-							</div>
-							<span class="dimmed-price">20,900<span class="won">
-									원</span></span>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- 상품 2 -->
-			<div class="main-images-box">
-				<div class="image-container">
-					<img
-						src="https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1601002334585l0.jpg"
-						alt="상품 이미지" loading="lazy">
-					<div>
-						<button type="button" class="product-function">
-							<img
-								src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iNDUiIHZpZXdCb3g9IjAgMCA0NSA0NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBmaWxsPSIjMkEwMDM4IiBvcGFjaXR5PSIuNSIgY3g9IjIyLjUiIGN5PSIyMi41IiByPSIyMi41Ii8+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEuMDMgMTQuMzgpIiBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0ibTIwLjQ2IDIuOTEtMi4xNyA5LjIzSDUuODdMMy43MSAyLjkxeiIvPgogICAgICAgICAgICA8Y2lyY2xlIHN0cm9rZS13aWR0aD0iMS4yIiBjeD0iMTYuMzUiIGN5PSIxNi44NiIgcj0iMS43Ii8+CiAgICAgICAgICAgIDxjaXJjbGUgc3Ryb2tlLXdpZHRoPSIxLjIiIGN4PSI3LjgyIiBjeT0iMTYuODYiIHI9IjEuNyIvPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0iTTAgMGgzLjAybDEuNDEgNS45OCIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
-								alt="장바구니 아이콘">
-						</button>
-					</div>
-				</div>
-				<div class="product-info">
-					<h3 class="product-name">[프레지덩] 스프레더블 치즈</h3>
-					<div class="content-row">
-						<div class="product-price">
-							<div>
-								<span class="sales-price">4,900<span class="won">
+								<span class="sales-price">${prod.prodPrice }<span class="won">
 										원</span></span>
 							</div>
-							</span>
 						</div>
 					</div>
 				</div>
 			</div>
-
-
-			<!-- 상품 3 -->
-			<div class="main-images-box">
-				<div class="image-container">
-					<img
-						src="https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1569990684227l0.jpg"
-						alt="상품 이미지" loading="lazy">
-					<div>
-						<button type="button" class="product-function">
-							<img
-								src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iNDUiIHZpZXdCb3g9IjAgMCA0NSA0NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBmaWxsPSIjMkEwMDM4IiBvcGFjaXR5PSIuNSIgY3g9IjIyLjUiIGN5PSIyMi41IiByPSIyMi41Ii8+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEuMDMgMTQuMzgpIiBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0ibTIwLjQ2IDIuOTEtMi4xNyA5LjIzSDUuODdMMy43MSAyLjkxeiIvPgogICAgICAgICAgICA8Y2lyY2xlIHN0cm9rZS13aWR0aD0iMS4yIiBjeD0iMTYuMzUiIGN5PSIxNi44NiIgcj0iMS43Ii8+CiAgICAgICAgICAgIDxjaXJjbGUgc3Ryb2tlLXdpZHRoPSIxLjIiIGN4PSI3LjgyIiBjeT0iMTYuODYiIHI9IjEuNyIvPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0iTTAgMGgzLjAybDEuNDEgNS45OCIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
-								alt="장바구니 아이콘">
-						</button>
-					</div>
-				</div>
-				<div class="product-info">
-					<h3 class="product-name">[퀴네] 아메리칸 시저 드레싱</h3>
-					<div class="content-row">
-						<div class="product-price">
-							<div>
-								<span class="discount-rate">10%</span><span class="sales-price">3,150<span
-									class="won"> 원</span></span>
-							</div>
-							<span class="dimmed-price">3,500<span class="won">
-									원</span></span>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- 상품 4 -->
-			<div class="main-images-box">
-				<div class="image-container">
-					<img
-						src="https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1653037363118l0.jpeg"
-						alt="상품 이미지" loading="lazy">
-					<div>
-						<button type="button" class="product-function">
-							<img
-								src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iNDUiIHZpZXdCb3g9IjAgMCA0NSA0NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBmaWxsPSIjMkEwMDM4IiBvcGFjaXR5PSIuNSIgY3g9IjIyLjUiIGN5PSIyMi41IiByPSIyMi41Ii8+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEuMDMgMTQuMzgpIiBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0ibTIwLjQ2IDIuOTEtMi4xNyA5LjIzSDUuODdMMy43MSAyLjkxeiIvPgogICAgICAgICAgICA8Y2lyY2xlIHN0cm9rZS13aWR0aD0iMS4yIiBjeD0iMTYuMzUiIGN5PSIxNi44NiIgcj0iMS43Ii8+CiAgICAgICAgICAgIDxjaXJjbGUgc3Ryb2tlLXdpZHRoPSIxLjIiIGN4PSI3LjgyIiBjeT0iMTYuODYiIHI9IjEuNyIvPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0iTTAgMGgzLjAybDEuNDEgNS45OCIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
-								alt="장바구니 아이콘">
-						</button>
-					</div>
-				</div>
-				<div class="product-info">
-					<h3 class="product-name">[신선설농탕] 고기 사골곰탕</h3>
-					<div class="content-row">
-						<div class="product-price">
-							<div>
-								<span class="sales-price">8,700<span class="won">
-										원</span></span>
-							</div>
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
+			</c:forEach>
+			
 		</div>
 
 
@@ -471,13 +388,13 @@
 
 		<div class="images">
 			<!-- 상품 1 -->
+			<c:forEach items="${prodList}" var="prod" begin="4" end="7">
 			<div class="main-images-box">
 				<div class="image-container">
-					<img
-						src="https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1637922344768l0.jpeg"
-						alt="상품 이미지" loading="lazy">
+					<img src="https://product-image.kurly.com/cdn-cgi/image/width=676,format=auto/product/image/b63d74e4-96c1-49c2-beec-1ad651cd4901.jpg" alt="상품 이미지" loading="lazy">
 					<div>
-						<button type="button" class="product-function">
+						<button type="button" class="product-function" >
+						<input type="hidden" value="${prod.prodNo }" id="tmpId">
 							<img
 								src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iNDUiIHZpZXdCb3g9IjAgMCA0NSA0NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBmaWxsPSIjMkEwMDM4IiBvcGFjaXR5PSIuNSIgY3g9IjIyLjUiIGN5PSIyMi41IiByPSIyMi41Ii8+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEuMDMgMTQuMzgpIiBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0ibTIwLjQ2IDIuOTEtMi4xNyA5LjIzSDUuODdMMy43MSAyLjkxeiIvPgogICAgICAgICAgICA8Y2lyY2xlIHN0cm9rZS13aWR0aD0iMS4yIiBjeD0iMTYuMzUiIGN5PSIxNi44NiIgcj0iMS43Ii8+CiAgICAgICAgICAgIDxjaXJjbGUgc3Ryb2tlLXdpZHRoPSIxLjIiIGN4PSI3LjgyIiBjeT0iMTYuODYiIHI9IjEuNyIvPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0iTTAgMGgzLjAybDEuNDEgNS45OCIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
 								alt="장바구니 아이콘">
@@ -485,105 +402,18 @@
 					</div>
 				</div>
 				<div class="product-info">
-					<h3 class="product-name">씻어나온 완전미 고시히카리 쌀 4kg</h3>
+					<h3 class="product-name">${prod.prodNm }</h3>
 					<div class="content-row">
 						<div class="product-price">
 							<div>
-								<span class="discount-rate">15%</span><span class="sales-price">17,750<span
-									class="won"> 원</span></span>
-							</div>
-							<span class="dimmed-price">20,900<span class="won">
-									원</span></span>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- 상품 2 -->
-			<div class="main-images-box">
-				<div class="image-container">
-					<img
-						src="https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1601002334585l0.jpg"
-						alt="상품 이미지" loading="lazy">
-					<div>
-						<button type="button" class="product-function">
-							<img
-								src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iNDUiIHZpZXdCb3g9IjAgMCA0NSA0NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBmaWxsPSIjMkEwMDM4IiBvcGFjaXR5PSIuNSIgY3g9IjIyLjUiIGN5PSIyMi41IiByPSIyMi41Ii8+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEuMDMgMTQuMzgpIiBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0ibTIwLjQ2IDIuOTEtMi4xNyA5LjIzSDUuODdMMy43MSAyLjkxeiIvPgogICAgICAgICAgICA8Y2lyY2xlIHN0cm9rZS13aWR0aD0iMS4yIiBjeD0iMTYuMzUiIGN5PSIxNi44NiIgcj0iMS43Ii8+CiAgICAgICAgICAgIDxjaXJjbGUgc3Ryb2tlLXdpZHRoPSIxLjIiIGN4PSI3LjgyIiBjeT0iMTYuODYiIHI9IjEuNyIvPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0iTTAgMGgzLjAybDEuNDEgNS45OCIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
-								alt="장바구니 아이콘">
-						</button>
-					</div>
-				</div>
-				<div class="product-info">
-					<h3 class="product-name">[프레지덩] 스프레더블 치즈</h3>
-					<div class="content-row">
-						<div class="product-price">
-							<div>
-								<span class="sales-price">4,900<span class="won">
+								<span class="sales-price">${prod.prodPrice }<span class="won">
 										원</span></span>
 							</div>
-							</span>
 						</div>
 					</div>
 				</div>
 			</div>
-
-
-			<!-- 상품 3 -->
-			<div class="main-images-box">
-				<div class="image-container">
-					<img
-						src="https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1569990684227l0.jpg"
-						alt="상품 이미지" loading="lazy">
-					<div>
-						<button type="button" class="product-function">
-							<img
-								src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iNDUiIHZpZXdCb3g9IjAgMCA0NSA0NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBmaWxsPSIjMkEwMDM4IiBvcGFjaXR5PSIuNSIgY3g9IjIyLjUiIGN5PSIyMi41IiByPSIyMi41Ii8+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEuMDMgMTQuMzgpIiBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0ibTIwLjQ2IDIuOTEtMi4xNyA5LjIzSDUuODdMMy43MSAyLjkxeiIvPgogICAgICAgICAgICA8Y2lyY2xlIHN0cm9rZS13aWR0aD0iMS4yIiBjeD0iMTYuMzUiIGN5PSIxNi44NiIgcj0iMS43Ii8+CiAgICAgICAgICAgIDxjaXJjbGUgc3Ryb2tlLXdpZHRoPSIxLjIiIGN4PSI3LjgyIiBjeT0iMTYuODYiIHI9IjEuNyIvPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0iTTAgMGgzLjAybDEuNDEgNS45OCIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
-								alt="장바구니 아이콘">
-						</button>
-					</div>
-				</div>
-				<div class="product-info">
-					<h3 class="product-name">[퀴네] 아메리칸 시저 드레싱</h3>
-					<div class="content-row">
-						<div class="product-price">
-							<div>
-								<span class="discount-rate">10%</span><span class="sales-price">3,150<span
-									class="won"> 원</span></span>
-							</div>
-							<span class="dimmed-price">3,500<span class="won">
-									원</span></span>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- 상품 4 -->
-			<div class="main-images-box">
-				<div class="image-container">
-					<img
-						src="https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1653037363118l0.jpeg"
-						alt="상품 이미지" loading="lazy">
-					<div>
-						<button type="button" class="product-function">
-							<img
-								src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iNDUiIHZpZXdCb3g9IjAgMCA0NSA0NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBmaWxsPSIjMkEwMDM4IiBvcGFjaXR5PSIuNSIgY3g9IjIyLjUiIGN5PSIyMi41IiByPSIyMi41Ii8+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEuMDMgMTQuMzgpIiBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0ibTIwLjQ2IDIuOTEtMi4xNyA5LjIzSDUuODdMMy43MSAyLjkxeiIvPgogICAgICAgICAgICA8Y2lyY2xlIHN0cm9rZS13aWR0aD0iMS4yIiBjeD0iMTYuMzUiIGN5PSIxNi44NiIgcj0iMS43Ii8+CiAgICAgICAgICAgIDxjaXJjbGUgc3Ryb2tlLXdpZHRoPSIxLjIiIGN4PSI3LjgyIiBjeT0iMTYuODYiIHI9IjEuNyIvPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0iTTAgMGgzLjAybDEuNDEgNS45OCIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
-								alt="장바구니 아이콘">
-						</button>
-					</div>
-				</div>
-				<div class="product-info">
-					<h3 class="product-name">[신선설농탕] 고기 사골곰탕</h3>
-					<div class="content-row">
-						<div class="product-price">
-							<div>
-								<span class="sales-price">8,700<span class="won">
-										원</span></span>
-							</div>
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
+			</c:forEach>
 		</div>
 
 
@@ -601,13 +431,13 @@
 
 		<div class="images">
 			<!-- 상품 1 -->
+			<c:forEach items="${prodList}" var="prod" begin="8" end="11">
 			<div class="main-images-box">
 				<div class="image-container">
-					<img
-						src="https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1637922344768l0.jpeg"
-						alt="상품 이미지" loading="lazy">
+					<img src="https://product-image.kurly.com/cdn-cgi/image/width=676,format=auto/product/image/7d0689e9-367c-4239-ac22-bc2ea58b7682.jpg" alt="상품 이미지" loading="lazy">
 					<div>
-						<button type="button" class="product-function">
+						<button type="button" class="product-function" >
+						<input type="hidden" value="${prod.prodNo }" id="tmpId">
 							<img
 								src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iNDUiIHZpZXdCb3g9IjAgMCA0NSA0NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBmaWxsPSIjMkEwMDM4IiBvcGFjaXR5PSIuNSIgY3g9IjIyLjUiIGN5PSIyMi41IiByPSIyMi41Ii8+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEuMDMgMTQuMzgpIiBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0ibTIwLjQ2IDIuOTEtMi4xNyA5LjIzSDUuODdMMy43MSAyLjkxeiIvPgogICAgICAgICAgICA8Y2lyY2xlIHN0cm9rZS13aWR0aD0iMS4yIiBjeD0iMTYuMzUiIGN5PSIxNi44NiIgcj0iMS43Ii8+CiAgICAgICAgICAgIDxjaXJjbGUgc3Ryb2tlLXdpZHRoPSIxLjIiIGN4PSI3LjgyIiBjeT0iMTYuODYiIHI9IjEuNyIvPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0iTTAgMGgzLjAybDEuNDEgNS45OCIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
 								alt="장바구니 아이콘">
@@ -615,111 +445,25 @@
 					</div>
 				</div>
 				<div class="product-info">
-					<h3 class="product-name">씻어나온 완전미 고시히카리 쌀 4kg</h3>
+					<h3 class="product-name">${prod.prodNm }</h3>
 					<div class="content-row">
 						<div class="product-price">
 							<div>
-								<span class="discount-rate">15%</span><span class="sales-price">17,750<span
-									class="won"> 원</span></span>
-							</div>
-							<span class="dimmed-price">20,900<span class="won">
-									원</span></span>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- 상품 2 -->
-			<div class="main-images-box">
-				<div class="image-container">
-					<img
-						src="https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1601002334585l0.jpg"
-						alt="상품 이미지" loading="lazy">
-					<div>
-						<button type="button" class="product-function">
-							<img
-								src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iNDUiIHZpZXdCb3g9IjAgMCA0NSA0NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBmaWxsPSIjMkEwMDM4IiBvcGFjaXR5PSIuNSIgY3g9IjIyLjUiIGN5PSIyMi41IiByPSIyMi41Ii8+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEuMDMgMTQuMzgpIiBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0ibTIwLjQ2IDIuOTEtMi4xNyA5LjIzSDUuODdMMy43MSAyLjkxeiIvPgogICAgICAgICAgICA8Y2lyY2xlIHN0cm9rZS13aWR0aD0iMS4yIiBjeD0iMTYuMzUiIGN5PSIxNi44NiIgcj0iMS43Ii8+CiAgICAgICAgICAgIDxjaXJjbGUgc3Ryb2tlLXdpZHRoPSIxLjIiIGN4PSI3LjgyIiBjeT0iMTYuODYiIHI9IjEuNyIvPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0iTTAgMGgzLjAybDEuNDEgNS45OCIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
-								alt="장바구니 아이콘">
-						</button>
-					</div>
-				</div>
-				<div class="product-info">
-					<h3 class="product-name">[프레지덩] 스프레더블 치즈</h3>
-					<div class="content-row">
-						<div class="product-price">
-							<div>
-								<span class="sales-price">4,900<span class="won">
+								<span class="sales-price">${prod.prodPrice }<span class="won">
 										원</span></span>
 							</div>
-							</span>
 						</div>
 					</div>
 				</div>
 			</div>
-
-
-			<!-- 상품 3 -->
-			<div class="main-images-box">
-				<div class="image-container">
-					<img
-						src="https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1569990684227l0.jpg"
-						alt="상품 이미지" loading="lazy">
-					<div>
-						<button type="button" class="product-function">
-							<img
-								src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iNDUiIHZpZXdCb3g9IjAgMCA0NSA0NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBmaWxsPSIjMkEwMDM4IiBvcGFjaXR5PSIuNSIgY3g9IjIyLjUiIGN5PSIyMi41IiByPSIyMi41Ii8+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEuMDMgMTQuMzgpIiBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0ibTIwLjQ2IDIuOTEtMi4xNyA5LjIzSDUuODdMMy43MSAyLjkxeiIvPgogICAgICAgICAgICA8Y2lyY2xlIHN0cm9rZS13aWR0aD0iMS4yIiBjeD0iMTYuMzUiIGN5PSIxNi44NiIgcj0iMS43Ii8+CiAgICAgICAgICAgIDxjaXJjbGUgc3Ryb2tlLXdpZHRoPSIxLjIiIGN4PSI3LjgyIiBjeT0iMTYuODYiIHI9IjEuNyIvPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0iTTAgMGgzLjAybDEuNDEgNS45OCIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
-								alt="장바구니 아이콘">
-						</button>
-					</div>
-				</div>
-				<div class="product-info">
-					<h3 class="product-name">[퀴네] 아메리칸 시저 드레싱</h3>
-					<div class="content-row">
-						<div class="product-price">
-							<div>
-								<span class="discount-rate">10%</span><span class="sales-price">3,150<span
-									class="won"> 원</span></span>
-							</div>
-							<span class="dimmed-price">3,500<span class="won">
-									원</span></span>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- 상품 4 -->
-			<div class="main-images-box">
-				<div class="image-container">
-					<img
-						src="https://img-cf.kurly.com/cdn-cgi/image/width=400,format=auto/shop/data/goods/1653037363118l0.jpeg"
-						alt="상품 이미지" loading="lazy">
-					<div>
-						<button type="button" class="product-function">
-							<img
-								src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iNDUiIHZpZXdCb3g9IjAgMCA0NSA0NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBmaWxsPSIjMkEwMDM4IiBvcGFjaXR5PSIuNSIgY3g9IjIyLjUiIGN5PSIyMi41IiByPSIyMi41Ii8+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEuMDMgMTQuMzgpIiBzdHJva2U9IiNGRkYiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0ibTIwLjQ2IDIuOTEtMi4xNyA5LjIzSDUuODdMMy43MSAyLjkxeiIvPgogICAgICAgICAgICA8Y2lyY2xlIHN0cm9rZS13aWR0aD0iMS4yIiBjeD0iMTYuMzUiIGN5PSIxNi44NiIgcj0iMS43Ii8+CiAgICAgICAgICAgIDxjaXJjbGUgc3Ryb2tlLXdpZHRoPSIxLjIiIGN4PSI3LjgyIiBjeT0iMTYuODYiIHI9IjEuNyIvPgogICAgICAgICAgICA8cGF0aCBzdHJva2Utd2lkdGg9IjEuNCIgZD0iTTAgMGgzLjAybDEuNDEgNS45OCIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
-								alt="장바구니 아이콘">
-						</button>
-					</div>
-				</div>
-				<div class="product-info">
-					<h3 class="product-name">[신선설농탕] 고기 사골곰탕</h3>
-					<div class="content-row">
-						<div class="product-price">
-							<div>
-								<span class="sales-price">8,700<span class="won">
-										원</span></span>
-							</div>
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
+			</c:forEach>
 		</div>
 
 
 	</div>
 
 </body>
+<script src="${pageContext.request.contextPath }/js/addCartModule.js"></script>
 <script>
 	var swiper = new Swiper(".mySwiper", {
 
@@ -752,9 +496,9 @@
 				prev.style.opacity = 0;
 			})
 	
+
 			
-			
-	$(function() {
+	/* $(function() {
 		$(".product-function").on("click", function() {
 			
 			//localStorage.setItem("kkurlyNonMembersBasket", "prod-ex");
@@ -836,10 +580,10 @@
 			let str = JSON.stringify(Object.fromEntries(map));
 			
 			console.log(str);
-			 */
+			 
 		})
 	}); 
-	
+	 */
 	/* const hasDuplicate = (arrayObj, colName) => {
 		   var hash = Object.create(null);
 		   return arrayObj.some((arr) => {

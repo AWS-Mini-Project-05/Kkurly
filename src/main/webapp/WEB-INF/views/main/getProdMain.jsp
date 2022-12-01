@@ -367,7 +367,7 @@
     flex-grow: 1;
   }
 
-  .cart-button {
+  .product-function {
     display: block;
     padding: 0px 10px;
     text-align: center;
@@ -380,7 +380,7 @@
     border: 0px none;
   }
 </style>
-
+<script src="${pageContext.request.contextPath }/js/addCartModule.js"></script>
 <body>
   <div id="container">
 
@@ -485,8 +485,9 @@
                 class="btns-span"><img
                   src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIHN0cm9rZT0iI0NDQyIgc3Ryb2tlLXdpZHRoPSIxLjYiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTEyLjY2NiAyM2EzLjMzMyAzLjMzMyAwIDEgMCA2LjY2NiAwIi8+CiAgICAgICAgPHBhdGggZD0iTTI1Ljk5OCAyMi43MzhINmwuMDEzLS4wM2MuMDc2LS4xMzUuNDcxLS43MDQgMS4xODYtMS43MDlsLjc1LTEuMDV2LTYuNjM1YzAtNC40ODUgMy40MzgtOC4xNCA3Ljc0MS04LjMwOEwxNiA1YzQuNDQ2IDAgOC4wNSAzLjcyMiA4LjA1IDguMzE0djYuNjM0bDEuNzA3IDIuNDExYy4xNzMuMjUzLjI1NC4zOC4yNDIuMzh6IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwvZz4KPC9zdmc+Cg=="
                   alt="" class="btns-img"></span></button>
-            <div class="btn-cart"><button class="cart-button" type="button" radius="3"><span class="btns-span">장바구니
-                  담기</span></button></div>
+            <div class="btn-cart"><button class="product-function" type="button" radius="3">
+            <input type="hidden" value="${prod.prodNo }" id="tmpId${prod.prodNo }">
+            <span class="btns-span">장바구니 담기</span></button></div>
           </div>
         </div>
       </section>
@@ -537,16 +538,56 @@
 		}
 	});
 
+	let likeCheck = ${likeCheck};
+	console.log(likeCheck);
+	if(likeCheck){
+		let likeBtn = document.getElementById("likeBtn");
+		likeBtn.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0yNS44MDcgNy44NjNhNS43NzcgNS43NzcgMCAwIDAtOC4xNzIgMEwxNiA5LjQ5N2wtMS42MzUtMS42MzRhNS43NzkgNS43NzkgMCAxIDAtOC4xNzMgOC4xNzJsMS42MzQgMS42MzQgNy40NjYgNy40NjdhMSAxIDAgMCAwIDEuNDE1IDBzMCAwIDAgMGw3LjQ2Ni03LjQ2N2gwbDEuNjM0LTEuNjM0YTUuNzc3IDUuNzc3IDAgMCAwIDAtOC4xNzJ6IiBmaWxsPSIjRkY1QTVBIiBzdHJva2U9IiNGRjVBNUEiIHN0cm9rZS13aWR0aD0iMS42IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K";
+		likeBtn.alt = "like";
+	}
+	
 	// 하트 버튼 눌렀을 때 버튼 그림 전환
 	function likeBtn() {
 		let likeBtn = document.getElementById("likeBtn");
-		if (likeBtn.alt != "like") {
-
+		if (likeBtn.alt!="like") {
 			likeBtn.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0yNS44MDcgNy44NjNhNS43NzcgNS43NzcgMCAwIDAtOC4xNzIgMEwxNiA5LjQ5N2wtMS42MzUtMS42MzRhNS43NzkgNS43NzkgMCAxIDAtOC4xNzMgOC4xNzJsMS42MzQgMS42MzQgNy40NjYgNy40NjdhMSAxIDAgMCAwIDEuNDE1IDBzMCAwIDAgMGw3LjQ2Ni03LjQ2N2gwbDEuNjM0LTEuNjM0YTUuNzc3IDUuNzc3IDAgMCAwIDAtOC4xNzJ6IiBmaWxsPSIjRkY1QTVBIiBzdHJva2U9IiNGRjVBNUEiIHN0cm9rZS13aWR0aD0iMS42IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K";
 			likeBtn.alt = "like";
+			
+			$.ajax ({
+				  url	: "/main/insertLike.do", // 요청이 전송될 URL 주소
+				  type	: "GET", // http 요청 방식 (default: ‘GET’)
+				  data  : {"prodNo" : ${prod.prodNo}}, // 요청 시 포함되어질 데이터
+				  success : function(obj) {
+				    console.log("LikE!");
+				    if(obj == null || obj == ""){
+				    	console.log("ok");
+					    return;
+				    } else {
+				    	alert(obj);
+					    location.href="/user/login.do";	
+				    }
+				  },
+				  error	: function(e) {
+					  console.log(e);
+				  } 
+				});
+
+			
 		} else {
 			likeBtn.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0yNS44MDcgNy44NjNhNS43NzcgNS43NzcgMCAwIDAtOC4xNzIgMEwxNiA5LjQ5N2wtMS42MzUtMS42MzRhNS43NzkgNS43NzkgMCAxIDAtOC4xNzMgOC4xNzJsMS42MzQgMS42MzQgNy40NjYgNy40NjdhMSAxIDAgMCAwIDEuNDE1IDBzMCAwIDAgMGw3LjQ2Ni03LjQ2N2gwbDEuNjM0LTEuNjM0YTUuNzc3IDUuNzc3IDAgMCAwIDAtOC4xNzJ6IiBzdHJva2U9IiM1RjAwODAiIHN0cm9rZS13aWR0aD0iMS42IiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K";
 			likeBtn.alt = "not like";
+			
+			$.ajax ({
+				  url	: "/main/deleteLike.do", // 요청이 전송될 URL 주소
+				  type	: "GET", // http 요청 방식 (default: ‘GET’)
+				  data  : {"prodNo" : ${prod.prodNo}}, // 요청 시 포함되어질 데이터
+				  success : function(obj) {
+				    console.log("Not LikE!");
+				  },
+				  error	: function(e) {
+					  console.log(e);
+				  } 
+				});
 		}
 	};
 </script>
