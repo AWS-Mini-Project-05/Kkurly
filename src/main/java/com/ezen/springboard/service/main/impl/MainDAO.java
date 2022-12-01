@@ -69,4 +69,8 @@ public class MainDAO {
 		
 		mybatis.delete("MainDAO.deleteLike",map);
 	}
+	
+	public List<ProdVO> getUserLikeList(int userNo){
+		return mybatis.selectList("MainDAO.getUserLikeList",userNo);
+	}
 }

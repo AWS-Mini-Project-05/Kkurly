@@ -29,4 +29,6 @@ public interface MainService {
 	List<UserLikeVO> getLikeList(UserLikeVO likeVO);
 	
 	void deleteLike(int userNo, int prodNo);
+	
+	List<ProdVO> getUserLikeList(int userNo);
 }

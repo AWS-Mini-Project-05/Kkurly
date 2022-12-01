@@ -336,7 +336,7 @@ nav {
 				</div>
 				<div id="nav-icon">
 					<div class="icon-adr"></div>
-					<button class="icon-like"></button>
+					<button class="icon-like" onclick="location.href =  '/main/getUserLikeList.do?userNo=${loginUser.userNo}';"></button>
 					<form action="/cart/cartList.do" method="post" class="localContainer" id="localContainer" style="display:none;">
           				<input type="hidden" class="localInput" id="tmp" name="tmp">
           			</form>

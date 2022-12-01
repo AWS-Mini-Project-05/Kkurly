@@ -70,4 +70,9 @@ public class MainServiceImpl implements MainService {
 		return mainDAO.getRandomProdList();
 	}
 
+	@Override
+	public List<ProdVO> getUserLikeList(int userNo) {
+		return mainDAO.getUserLikeList(userNo);
+	}
+
 }

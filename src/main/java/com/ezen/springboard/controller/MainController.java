@@ -179,4 +179,21 @@ public class MainController {
 		System.out.println("===== 로그인 유저 번호 : " + userNo + " ======");
 		mainService.deleteLike(userNo, Integer.parseInt(prodNo) );
 	}
+	
+	@RequestMapping("/getUserLikeList.do")
+	public String getUserLikeList(@RequestParam(value = "userNo", required = false, defaultValue = "0") int userNo, Model model) {
+		if(userNo == 0) {
+//			System.out.println("로그인해주세요;;");
+			model.addAttribute("loginMsg",true);
+		} else {
+//			model.addAttribute("loginMsg","");
+			List<ProdVO> prodList = mainService.getUserLikeList(userNo);
+		
+			model.addAttribute("prodList",prodList);
+			model.addAttribute("cnt", prodList.size());
+			model.addAttribute("cgNm","찜한 상품");
+		}
+		
+		return "/main/categoriesMain";
+	}
 }

@@ -73,4 +73,12 @@
 		AND PROD_NO = ${prodNo}
 	</delete>
 	
+	<select id="getUserLikeList" parameterType="int" resultType="prod">
+		SELECT B.*
+		FROM TB_USER_LIKE A
+		INNER JOIN TB_PROD B
+		ON A.PROD_NO = B.PROD_NO
+		WHERE A.USER_NO = #{userNo};
+	</select>
+	
 </mapper>

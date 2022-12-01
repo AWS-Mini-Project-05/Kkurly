@@ -162,7 +162,15 @@
 }
 </style>
 <script src="${pageContext.request.contextPath }/js/addCartModule.js"></script>
-
+<script>
+	/* $(function(){ */
+		console.log("${loginMsg}");
+		if(${loginMsg}){
+			alert("로그인 후 이용이 가능한 서비스 입니다.");
+			location.href="/user/login.do";
+		}
+	/* }); */
+</script>
 <body>
 	<div id="container">
 
