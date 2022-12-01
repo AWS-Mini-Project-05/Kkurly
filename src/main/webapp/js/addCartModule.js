@@ -12,8 +12,8 @@
 			//let tmpId = $(this).children("img").attr("src");
 			let tmpId = $(this).attr("id");
 			//console.log(tmpId);
-			let prodNo = tmpId.substring(5);
-			console.log(prodNo);
+			let prodNo = tmpId.substring(6);
+			//console.log(prodNo);
 			
 			let tmpData = {
 					"prodNo" : prodNo,
