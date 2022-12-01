@@ -12,7 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ezen.springboard.VO.CartVO;
+import com.ezen.springboard.VO.ProdVO;
+import com.ezen.springboard.VO.UserVO;
 import com.ezen.springboard.service.cart.CartService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -33,9 +34,9 @@ public class CartController {
 		
 		List<Map<String, Object>> listMap = mapper.readValue(tmpData, new TypeReference<List<Map<String, Object>>>(){});
 		
-		List<CartVO> coldList = new ArrayList<CartVO>();
-		List<CartVO> frozenList = new ArrayList<CartVO>();
-		List<CartVO> normalList = new ArrayList<CartVO>();
+		List<ProdVO> coldList = new ArrayList<ProdVO>();
+		List<ProdVO> frozenList = new ArrayList<ProdVO>();
+		List<ProdVO> normalList = new ArrayList<ProdVO>();
 		
 		List<Integer> coldQtyList = new ArrayList<Integer>();
 		List<Integer> frozenQtyList = new ArrayList<Integer>();
@@ -53,13 +54,13 @@ public class CartController {
 				tmp.prodNo  : 상품 번호  
 				tmp.prodQty : 구매 수량  
 				*/
-				System.out.print("prodNo : " + tmp.get("prodNo") + ", ");
-				System.out.println("prodQty : " + tmp.get("prodQty"));
+				//.out.print("prodNo : " + tmp.get("prodNo") + ", ");
+				//System.out.println("prodQty : " + tmp.get("prodQty"));
 				
 				int prodNo = Integer.parseInt(String.valueOf(tmp.get("prodNo")));
 				int prodQty = Integer.parseInt(String.valueOf(tmp.get("prodQty")));
 				
-				CartVO prod = cartService.getProd(prodNo);
+				ProdVO prod = cartService.getProd(prodNo);
 				cgCd = prod.getProdCgcd();
 				temp = cgCd.substring(0,3);
 				
@@ -77,6 +78,8 @@ public class CartController {
 			}
 			
 			// 로그인 확인 
+			//UserVO getUserId = session.getAttribute("loginUser");
+			System.out.println(session.getAttribute("loginUser"));
 			
 
 			totalPrice = prodPrice;

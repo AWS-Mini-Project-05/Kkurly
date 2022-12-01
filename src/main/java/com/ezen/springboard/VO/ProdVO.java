@@ -14,14 +14,10 @@ public class ProdVO {
 	private String prodVol;
 	private String useYn;
 	private int saleQty;
+	private String prodImgNm;
+	private String prodImgPath;
 	public int getProdNo() {
 		return prodNo;
-	}
-	@Override
-	public String toString() {
-		return "ProdVO [prodNo=" + prodNo + ", prodCgcd=" + prodCgcd + ", prodNm=" + prodNm + ", prodPrice=" + prodPrice
-				+ ", prodQty=" + prodQty + ", inputDt=" + inputDt + ", updateDt=" + updateDt + ", prodUnit=" + prodUnit
-				+ ", prodVol=" + prodVol + ", useYn=" + useYn + ", saleQty=" + saleQty + "]";
 	}
 	public void setProdNo(int prodNo) {
 		this.prodNo = prodNo;
@@ -86,6 +82,24 @@ public class ProdVO {
 	public void setSaleQty(int saleQty) {
 		this.saleQty = saleQty;
 	}
-
-
+	public String getProdImgNm() {
+		return prodImgNm;
+	}
+	public void setProdImgNm(String prodImgNm) {
+		this.prodImgNm = prodImgNm;
+	}
+	public String getProdImgPath() {
+		return prodImgPath;
+	}
+	public void setProdImgPath(String prodImgPath) {
+		this.prodImgPath = prodImgPath;
+	}
+	@Override
+	public String toString() {
+		return "ProdVO [prodNo=" + prodNo + ", prodCgcd=" + prodCgcd + ", prodNm=" + prodNm + ", prodPrice=" + prodPrice
+				+ ", prodQty=" + prodQty + ", inputDt=" + inputDt + ", updateDt=" + updateDt + ", prodUnit=" + prodUnit
+				+ ", prodVol=" + prodVol + ", useYn=" + useYn + ", saleQty=" + saleQty + ", prodImgNm=" + prodImgNm
+				+ ", prodImgPath=" + prodImgPath + "]";
+	}
+	
 }
