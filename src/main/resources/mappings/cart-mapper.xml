@@ -5,8 +5,53 @@
 
 <mapper namespace="CartDAO">
 	<!-- 쿼리 작성 영역 -->
-	<select id="idCheck" parameterType="String" resultType="integer">
-		SELECT COUNT(*) FROM T_USER WHERE USER_ID = #{id}
+	<!-- 
+	<select id="getProdList" parameterType="String" resultType="prod">
+		SELECT * 
+		FROM TB_PROD
+		WHERE PROD_CG_CD LIKE CONCAT('%', #{cd})
 	</select>
+	
+	<select id="getProdCnt" parameterType="String" resultType="Integer">
+		SELECT COUNT(*) 
+		FROM TB_PROD
+		WHERE PROD_CG_CD LIKE CONCAT('%', #{cd})
+	</select>
+	
+	<select id="getCgNm" parameterType="String" resultType="String">
+		SELECT CD_NM
+		FROM TB_CD
+		WHERE CD = #{cd}
+		LIMIT 1
+	</select>
+	 -->
+	<select id="getProd" parameterType="int" resultType="prod">
+		SELECT * 
+		FROM TB_PROD
+		WHERE PROD_NO = #{prodNo}
+	</select>
+	
+	<select id="getCartList" parameterType="int" resultType="cart">
+		SELECT *
+		FROM TB_CART
+		WHERE USER_NO = #{userNo}
+	</select>
+	
+	<insert id="insertCart" parameterType="cart">
+		INSERT INTO 
+		TB_CART (
+				CART_NO,
+				QTY,
+				PROD_NO,
+				USER_NO
+		) VALUES (
+				(SELECT IFNULL(MAX(A.CART_NO), 0) + 1 
+					FROM TB_CART A
+					WHERE A.USER_NO = #{userNo})
+				, #{qty}
+				, #{prodNo}
+				, #{userNo}
+		)
+	</insert>
 	
 </mapper>

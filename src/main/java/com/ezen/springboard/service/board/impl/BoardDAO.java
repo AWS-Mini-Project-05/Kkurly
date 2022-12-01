@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class BoardDAO {
-	@Autowired
-	private SqlSessionTemplate mybatis;
+	/*
+	 * @Autowired private SqlSessionTemplate mybatis;
+	 */
 }
