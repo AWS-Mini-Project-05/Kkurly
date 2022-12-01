@@ -335,8 +335,10 @@ nav {
 				<div id="nav-icon">
 					<div class="icon-adr"></div>
 					<button class="icon-like"></button>
-					<button class="icon-cart"
-						onclick="location.href='/cart/cartList.do'"></button>
+					<form action="/cart/cartList.do" method="post" class="localContainer" id="localContainer" style="display:none;">
+          				<input type="hidden" class="localInput" id="tmp" name="tmp">
+          			</form>
+					<button class="icon-cart"></button>
 				</div>
 			</div>
 			<div id="nav-header">
@@ -423,10 +425,25 @@ nav {
 				</ul>
 				<div id="blank"></div>
 
-			</div>
-
 		</div>
 	</nav>
+  
+  <script>
+  	$(function() {
+  		$(".icon-cart").on("click", function() {
+  			
+  			let tmpStorage = JSON.parse(localStorage.getItem('kkurlyNonMembersBasket'));
+  			let tmpData = JSON.stringify(tmpStorage);
+  			
+  			console.log(tmpData);
+  			
+  			$("#tmp").val(tmpData);
+  			$("#localContainer").submit();
+  			
+
+  		});
+  	});
+  </script>
 </body>
 <script>
 	document.getElementById("nav-header-cg").addEventListener("mouseover",

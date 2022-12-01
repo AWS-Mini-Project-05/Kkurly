@@ -1,5 +1,7 @@
 package com.ezen.springboard.service.cart;
 
-public class CartService {
+import com.ezen.springboard.VO.CartVO;
 
+public interface CartService {
+	CartVO getProd(int prodNo);
 }
