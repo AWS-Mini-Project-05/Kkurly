@@ -176,9 +176,28 @@ public class CartController {
 	}
 	
 	@RequestMapping("/order.do")
-	public String order(HttpSession session) {
+	public String order(HttpSession session, @RequestParam("order") String tmpData) throws JsonProcessingException {
 		
-		//System.out.println(session.getAttribute("loginUser"));
+		ObjectMapper mapper = new ObjectMapper();
+//		
+//		Map<String, List<Map<String, Object>>> listMap = mapper.readValue(tmpData, new TypeReference<Map<String, <List<Map<String, Object>>>>>(){});
+//		
+		Map<String, Object> listMap = mapper.readValue(tmpData, new TypeReference<Map<String, Object>>(){});
+		
+		System.out.println(listMap.toString());
+		System.out.println(listMap.get("userNo"));
+		System.out.println(listMap.get("prodInfo"));
+		Object tmp = listMap.get("prodInfo");
+		String strTmp = String.valueOf(tmp);
+		
+		List<Map<String, String>> t = mapper.readValue(strTmp, new TypeReference<List<Map<String, String>>>(){});
+
+		for (Map<String, String> tt : t) {
+			System.out.print(tt.get("prodNo") + " ");
+			System.out.println(tt.get("prodQty"));
+		}
+		
+		
 		
 		return "/cart/order";
 	}

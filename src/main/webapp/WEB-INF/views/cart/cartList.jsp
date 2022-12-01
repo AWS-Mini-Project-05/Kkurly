@@ -443,7 +443,18 @@ input[type=checkbox]:checked + label {
 				<td><input type="button" onclick="location.href='/cart/order.do'"></td>
 			</tr>
 		</table> -->
-		<input type="button" onclick="location.href='/cart/order.do'" id="table-order" value="주문하기">
+		<c:choose>
+			<c:when test="${loginUser eq null}">
+				<input type="button" onclick="location.href='/user/login.do'" id="table-order" value="주문 전 로그인">
+			</c:when>
+			<c:otherwise>
+				<form action="/cart/order.do" method="post" class="orderContainer" id="orderContainer" style="display:none;">
+          				<input type="hidden" class="orderInput" id="order" name="order">
+          		</form>
+				<input type="button" id="table-order" value="주문하기">
+			</c:otherwise>
+		</c:choose>
+		
 	</div>
 <!-- select-bottom -->
 	<div id="select-bottom">
@@ -878,6 +889,47 @@ input[type=checkbox]:checked + label {
 				}
 			});
 		}
+		
+		$("#table-order").on("click", function() {
+			let userNo = ${loginUser.userNo};
+			let arrProdNo = new Array();
+			let arrProdQty = new Array();
+			
+			let prodInfo = new Array();
+			
+			$(".prod-table").each(function(index, item){
+				if($(this).val() == "on") {
+					let prodNo = $(this).attr("id");
+					let prodQty = $("#result"+prodNo).text();
+					
+					console.log("No: " + prodNo + ", Qty: " + prodQty);
+				
+					let tmp = {
+						"prodNo": prodNo,
+						"prodQty": prodQty
+					};
+					prodInfo.push(JSON.stringify(tmp));
+					
+				}
+			});
+
+			
+			let tmpJson = {
+				"userNo" : userNo,
+				"prodInfo": prodInfo
+			};
+			
+			//let jsonParse = JSON.parse(tmpJson);
+  			let tmpData = JSON.stringify(tmpJson);
+  			
+  			console.log(tmpJson);
+  			console.log(tmpData);
+  			
+  			$("#order").val(tmpData);
+  			$("#orderContainer").submit();
+			
+			
+		});
 		
 	});
 
