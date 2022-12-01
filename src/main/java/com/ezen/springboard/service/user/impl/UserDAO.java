@@ -13,22 +13,43 @@ import com.ezen.springboard.VO.UserVO;
 public class UserDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
-	
-	public int idCheck(String id) {
-		return mybatis.selectOne("UserDAO.idCheck", id);
+
+	public void updateUser(Map<String, Object> paramMap) {
+
+		mybatis.update("UserDAO.updateUser", paramMap);
+	}
+
+	public void deleteUser(int no) {
+		mybatis.delete("UserDAO.deleteUser", no);
+	}
+
+	public int idCheck(String userId) {
+		return mybatis.selectOne("UserDAO.idCheck", userId);
+	}
+
+	public int join(UserVO userVO) {
+		mybatis.insert("UserDAO.join", userVO);
+		return mybatis.insert("UserDAO.joinAdr", userVO);
+	}
+
+	public UserVO login(UserVO userVO) {
+		return mybatis.selectOne("UserDAO.login", userVO);
 	}
 
 	public List<UserVO> manageUser(Map<String, String> paramMap) {
 		return mybatis.selectList("UserDAO.manageUser", paramMap);
 	}
+
 	public UserVO getUser(int userNo) {
-		return mybatis.selectOne("UserDAO.getUser",userNo);
+		return mybatis.selectOne("UserDAO.getUser", userNo);
 	}
-	public void updateUser(Map<String, Object> paramMap) {
-		
-		mybatis.update("UserDAO.updateUser",paramMap);
+
+	public UserVO findId(UserVO userVO) {
+		return mybatis.selectOne("UserDAO.findId", userVO);
 	}
-	public void deleteUser(int no) {
-		mybatis.delete("UserDAO.deleteUser",no);
+
+	public UserVO findPw(UserVO userVO) {
+		return mybatis.selectOne("UserDAO.findPw", userVO);
 	}
+
 }

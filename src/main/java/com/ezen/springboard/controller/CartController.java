@@ -35,17 +35,6 @@ public class CartController {
 		
 		List<Map<String, Object>> listMap = mapper.readValue(tmpData, new TypeReference<List<Map<String, Object>>>(){});
 		
-		for (Map<String, Object> tmp : listMap) {
-			/*
-			tmp.prodNo  : 상품 번호  
-			tmp.prodQty : 구매 수량  
-			*/
-			System.out.print("prodNo : " + tmp.get("prodNo") + ", ");
-			System.out.print("prodQty : " + tmp.get("prodQty"));
-		}
-		int prodNo = 10;
-		//CartVO prod = cartService.getProd(prodNo);
-		
 		List<CartVO> coldList = new ArrayList<CartVO>();
 		List<CartVO> frozenList = new ArrayList<CartVO>();
 		List<CartVO> normalList = new ArrayList<CartVO>();
@@ -59,6 +48,23 @@ public class CartController {
 		String temp = "";
 		int prodPrice = 0;
 		int totalPrice = 0;
+		
+		if(listMap == null) {
+			System.out.println("잡았다");
+		}
+		try {
+		for (Map<String, Object> tmp : listMap) {
+			/*
+			tmp.prodNo  : 상품 번호  
+			tmp.prodQty : 구매 수량  
+			*/
+			System.out.print("prodNo : " + tmp.get("prodNo") + ", ");
+			System.out.print("prodQty : " + tmp.get("prodQty"));
+		}
+		int prodNo = 10;
+		//CartVO prod = cartService.getProd(prodNo);
+		
+		
 		
 	// DB -> 장바구니 테스트 코드	
 		for (int i = 10; i<= 17; i++) {
@@ -76,6 +82,9 @@ public class CartController {
 				frozenList.add(prod);
 				frozenQtyList.add(1);
 			}	
+		}
+		} catch (Exception e) {
+			
 		}
 		
 		totalPrice = prodPrice;

@@ -17,6 +17,8 @@
 		<typeAlias type="com.ezen.springboard.VO.ProdFileVO" alias ="prodFile"></typeAlias>
 		<typeAlias type="com.ezen.springboard.VO.CateVO" alias ="cate"></typeAlias>
 		<typeAlias type="com.ezen.springboard.VO.OrderVO" alias ="order"></typeAlias>
+		<typeAlias type="com.ezen.springboard.VO.UserLikeVO" alias ="like"></typeAlias>
+		<typeAlias type="com.ezen.springboard.VO.CartVO" alias ="cart"></typeAlias>
 	</typeAliases>
 	
 	<!-- 사용할 SQL 매퍼 위치 지정 -->
@@ -26,5 +28,6 @@
 		<mapper resource="mappings/prod-mapper.xml"></mapper>
 		<mapper resource="mappings/main-mapper.xml"></mapper>
 		<mapper resource="mappings/order-mapper.xml"></mapper>
+		<mapper resource="mappings/cart-mapper.xml"></mapper>
 	</mappers>
 </configuration>

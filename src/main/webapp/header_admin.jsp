@@ -25,7 +25,7 @@
     <div id="container1">
         <ul>
             <li class="ali">
-             <a href="/index.jsp"><img alt="" src="/images/KKURLY_LOGO.png" width="150px" class="a"></a>
+             <a href="/"><img alt="" src="/images/KKURLY_LOGO.png" width="150px" class="a"></a>
             </li>
         </ul>
         <ul>

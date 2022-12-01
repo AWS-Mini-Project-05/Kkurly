@@ -13,44 +13,29 @@ import com.ezen.springboard.service.user.UserService;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDAO userDAO;
-	
-	@Override
-	public int idCheck(String userId) {
-		return userDAO.idCheck(userId);
-	}
-	
-	@Override
-	public int join(UserVO userVO) {
-		return userDAO.join(userVO);
-	}
-	
-	@Override
-	public UserVO login(UserVO userVO) {
-		return userDAO.login(userVO);
-	}
-	
 
 	@Override
 	public List<UserVO> manageUser(Map<String, String> paramMap) {
 		return userDAO.manageUser(paramMap);
 	}
+
 	@Override
 	public void updateUser(Map<String, Object> paramMap) {
-		
+
 		userDAO.updateUser(paramMap);
 	}
+
 	@Override
 	public void deleteUser(int no) {
 		userDAO.deleteUser(no);
 	}
-
 
 	@Override
 	public UserVO getUser(int userNo) {
 
 		return userDAO.getUser(userNo);
 	}
-	
+
 	@Override
 	public UserVO findId(UserVO userVO) {
 		return userDAO.findId(userVO);
@@ -60,7 +45,20 @@ public class UserServiceImpl implements UserService {
 	public UserVO findPw(UserVO userVO) {
 		return userDAO.findPw(userVO);
 	}
-	
-	
+
+	@Override
+	public int idCheck(String userId) {
+		return userDAO.idCheck(userId);
+	}
+
+	@Override
+	public int join(UserVO userVO) {
+		return userDAO.join(userVO);
+	}
+
+	@Override
+	public UserVO login(UserVO userVO) {
+		return userDAO.login(userVO);
+	}
 
 }
