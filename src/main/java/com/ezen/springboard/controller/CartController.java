@@ -9,8 +9,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezen.springboard.VO.CartVO;
 import com.ezen.springboard.VO.ProdVO;
@@ -180,6 +182,31 @@ public class CartController {
 		
 		return "/cart/order";
 	}
+	
+	@PostMapping("/deleteItemCart.do")
+	@ResponseBody
+	public String deleteItemCart(String prodNo, HttpSession session) {
+		UserVO tmpUser = (UserVO)session.getAttribute("loginUser");
+		int userNo = tmpUser.getUserNo();
+		int prod = Integer.parseInt(prodNo);
+		
+		cartService.deleteItem(prod, userNo);
+		
+		return "good";
+	}
 
+	@PostMapping("/updateItemCart.do")
+	@ResponseBody
+	public String updateItemCart(String prodNo, String prodQty, HttpSession session) {
+		
+		UserVO tmpUser = (UserVO)session.getAttribute("loginUser");
+		int userNo = tmpUser.getUserNo();
+		int prod = Integer.parseInt(prodNo);
+		int qty = Integer.parseInt(prodQty);
+		
+		cartService.updateItem(prod, qty, userNo);
+		
+		return "good";
+	}
 	
 }

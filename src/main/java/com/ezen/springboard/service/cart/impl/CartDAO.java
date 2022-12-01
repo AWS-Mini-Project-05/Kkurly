@@ -29,4 +29,19 @@ public class CartDAO {
 		
 		mybatis.selectOne("CartDAO.insertCart", cartVO);
 	}
+	
+	public void deleteItem(int prodNo, int userNo) {
+		Map<String, Integer> pMap = new HashMap<String, Integer>();
+		pMap.put("prodNo", prodNo);
+		pMap.put("userNo", userNo);
+		mybatis.delete("CartDAO.deleteItem", pMap);
+	}
+	
+	public void updateItem(int prodNo, int prodQty, int userNo) {
+		Map<String, Integer> pMap = new HashMap<String, Integer>();
+		pMap.put("prodNo", prodNo);
+		pMap.put("prodQty", prodQty);
+		pMap.put("userNo", userNo);
+		mybatis.update("CartDAO.updateItem", pMap);
+	}
 }

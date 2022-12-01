@@ -233,7 +233,14 @@ input[type=checkbox]:checked + label {
  		<!-- <span><input type="checkbox" id="btn-img-all" class="btn-img-all"><label for="btn-img-all">a</label></span> -->		
  		<span><input type="button" class="btn-txt-all" value="전체선택">(<span id="selectProd">0</span>/<span id="totalProd">0</span>)</span>
  		<span style="line-height" class="vertical-line">|</span>
- 		<span><input type="button" class="btn-txt-delete" value="선택삭제"></span>
+ 		<c:choose>
+			<c:when test="${loginUser eq null}">
+			<span><input type="button" class="btn-txt-delete" value="선택삭제"></span>
+			</c:when>
+			<c:otherwise>
+			<span><input type="button" class="btn-txt-delete-user" name="del" value="삭제"></span>
+			</c:otherwise>
+		</c:choose>
 	</div>
 <!-- content -->
 	<div id="content">
@@ -259,9 +266,19 @@ input[type=checkbox]:checked + label {
 				<td style="width:14%;">
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
-							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png" value="${cold.prodNo }"/></td>
-							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result${cold.prodNo }">${coldQtyList[status.index] }</span></td>
-							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png" value="${cold.prodNo }"/></td>
+							<c:choose>
+								<c:when test="${loginUser eq null}">
+								<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png" value="${cold.prodNo }"/></td>
+								<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result${cold.prodNo }">${coldQtyList[status.index] }</span></td>
+								<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png" value="${cold.prodNo }"/></td>
+								</c:when>
+								<c:otherwise>
+								<td><input type="image" class="minus-btn-user" src="${pageContext.request.contextPath }/images/minus.png" value="${cold.prodNo }"/></td>
+								<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result${cold.prodNo }">${coldQtyList[status.index] }</span></td>
+								<td><input type="image" class="plus-btn-user" src="${pageContext.request.contextPath }/images/plus.png" value="${cold.prodNo }"/></td>
+								</c:otherwise>
+							</c:choose>
+							
 						</tr>
 					</table>
 				</td>
@@ -270,7 +287,14 @@ input[type=checkbox]:checked + label {
 					<span id="prod-price${cold.prodNo }" class="allPrice">${cold.prodPrice }</span> 원
 				</td>
 				<td style="width:13%; text-align: right; padding-right: 1.2%">
-					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png" value="${cold.prodNo }">
+					<c:choose>
+						<c:when test="${loginUser eq null}">
+						<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png" value="${cold.prodNo }">
+						</c:when>
+						<c:otherwise>
+						<input type="image" class="del-prod-user" src="${pageContext.request.contextPath }/images/delete.png" value="${cold.prodNo }">
+						</c:otherwise>
+					</c:choose>
 				</td>
 				</tr>
 			</c:forEach>
@@ -297,9 +321,19 @@ input[type=checkbox]:checked + label {
 				<td style="width:14%;">
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
-							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png" value="${frozen.prodNo }"/></td>
-							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result${frozen.prodNo }">${frozenQtyList[status.index] }</span></td>
-							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png" value="${frozen.prodNo }"/></td>
+							<c:choose>
+								<c:when test="${loginUser eq null}">
+								<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png" value="${frozen.prodNo }"/></td>
+								<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result${frozen.prodNo }">${frozenQtyList[status.index] }</span></td>
+								<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png" value="${frozen.prodNo }"/></td>
+								</c:when>
+								<c:otherwise>
+								<td><input type="image" class="minus-btn-user" src="${pageContext.request.contextPath }/images/minus.png" value="${frozen.prodNo }"/></td>
+								<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result${frozen.prodNo }">${frozenQtyList[status.index] }</span></td>
+								<td><input type="image" class="plus-btn-user" src="${pageContext.request.contextPath }/images/plus.png" value="${frozen.prodNo }"/></td>
+								</c:otherwise>
+							</c:choose>
+							
 						</tr>
 					</table>
 				</td>
@@ -308,7 +342,14 @@ input[type=checkbox]:checked + label {
 					<span id="prod-price${frozen.prodNo }" class="allPrice">${frozen.prodPrice }</span> 원
 				</td>
 				<td style="width:13%; text-align: right; padding-right: 1.2%">
-					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png" value="${frozen.prodNo }">
+					<c:choose>
+						<c:when test="${loginUser eq null}">
+						<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png" value="${frozen.prodNo }">
+						</c:when>
+						<c:otherwise>
+						<input type="image" class="del-prod-user" src="${pageContext.request.contextPath }/images/delete.png" value="${frozen.prodNo }">
+						</c:otherwise>
+					</c:choose>
 				</td>
 				</tr>
 			</c:forEach>
@@ -336,9 +377,19 @@ input[type=checkbox]:checked + label {
 				<td style="width:14%;">
 					<table class="count-prod" style="border: 1px solid #e6e6e6; align-items: center; border-radius: 6%;">
 						<tr>
-							<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png" value="${normal.prodNo }"/></td>
-							<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result${normal.prodNo }">${normalQtyList[status.index] }</span></td>
-							<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png" value="${normal.prodNo }"/></td>
+							<c:choose>
+								<c:when test="${loginUser eq null}">
+								<td><input type="image" class="minus-btn" src="${pageContext.request.contextPath }/images/minus.png" value="${normal.prodNo }"/></td>
+								<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result${normal.prodNo }">${normalQtyList[status.index] }</span></td>
+								<td><input type="image" class="plus-btn" src="${pageContext.request.contextPath }/images/plus.png" value="${normal.prodNo }"/></td>
+								</c:when>
+								<c:otherwise>
+								<td><input type="image" class="minus-btn-user" src="${pageContext.request.contextPath }/images/minus.png" value="${normal.prodNo }"/></td>
+								<td style="width: 30px; text-align: center; font-size: 15px;"><span id="result${normal.prodNo }">${normalQtyList[status.index] }</span></td>
+								<td><input type="image" class="plus-btn-user" src="${pageContext.request.contextPath }/images/plus.png" value="${normal.prodNo }"/></td>
+								</c:otherwise>
+							</c:choose>
+							
 						</tr>
 					</table>
 				</td>
@@ -347,7 +398,14 @@ input[type=checkbox]:checked + label {
 					<span id="prod-price${normal.prodNo }" class="allPrice">${normal.prodPrice }</span> 원
 				</td>
 				<td style="width:13%; text-align: right; padding-right: 1.2%">
-					<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png" value="${normal.prodNo }">
+					<c:choose>
+						<c:when test="${loginUser eq null}">
+						<input type="image" class="del-prod" src="${pageContext.request.contextPath }/images/delete.png" value="${normal.prodNo }">
+						</c:when>
+						<c:otherwise>
+						<input type="image" class="del-prod-user" src="${pageContext.request.contextPath }/images/delete.png" value="${normal.prodNo }">
+						</c:otherwise>
+					</c:choose>
 				</td>
 				</tr>
 			</c:forEach>	
@@ -417,7 +475,7 @@ input[type=checkbox]:checked + label {
 	
 		$(".btn-img-all").click(function() {
 			if (selectAllFlag == false) {
-				$(".btn-img-all").attr("src", "${pageContext.request.contextPath }/images/click-on.png");
+				$(".btn-img-all").attr("src", "${pageContext.request.contextPath }/images/click-off.png");
 				selectAllFlag = true;
 				$(".prod-table").each(function(index, item){
 					$(this).val("off");
@@ -438,7 +496,7 @@ input[type=checkbox]:checked + label {
 		
 		$(".btn-txt-all").click(function() {
 			if (selectAllFlag == false) {
-				$(".btn-img-all").attr("src", "${pageContext.request.contextPath }/images/click-on.png");
+				$(".btn-img-all").attr("src", "${pageContext.request.contextPath }/images/click-off.png");
 				selectAllFlag = true;
 				$(".prod-table").each(function(index, item){
 					$(this).val("off");
@@ -533,17 +591,77 @@ input[type=checkbox]:checked + label {
 			$(".allPrice").trigger("change");
 		});
 		
+		$(".plus-btn-user").on("click", function() {
+			let prodNo = $(this).val();   // prodNo
+
+			let prodQty = parseInt($("#result"+prodNo).text()) + 1;
+			updateItemInLocalStorage(prodNo, prodQty);
+			updateItemInCartDB(prodNo, prodQty);
+			let prodPrice = parseInt($("#prod-price"+prodNo).prev().val());
+			$("#result"+prodNo).text(prodQty);
+			$("#prod-price"+prodNo).text(prodQty * prodPrice);
+			$(".allPrice").trigger("change");
+		})
+		
+
+		$(".minus-btn-user").on("click", function() {
+			
+			let prodNo = $(this).val();   // prodNo
+
+			let prodQty = parseInt($("#result"+prodNo).text());
+			
+			if (prodQty > 1) prodQty = prodQty- 1;
+			let prodPrice = parseInt($("#prod-price"+prodNo).prev().val());
+			updateItemInLocalStorage(prodNo, prodQty);
+			updateItemInCartDB(prodNo, prodQty);
+			//console.log(prodQty + " " +prodPrice);
+			$("#result"+prodNo).text(prodQty);
+			$("#prod-price"+prodNo).text(prodQty * prodPrice);
+			$(".allPrice").trigger("change");
+		});
+		
 		$(".del-prod").on("click", function() {
 						
 			//$(this).parent().parent("tr").parent("table").hide();
+			
+			//let prodprice = $("#prod-price" + $(this).val()).text();
+			//console.log("price" + prodprice);
+			
+			
+			//let t = parseInt($(".prodPrice").text()) -  parseInt(prodprice);
+			//$(".prodPrice").text(t);
+			//if (t==0) $(".prodPrice").text("0");
+			
 			delItemInLocalStorage($(this).val());
-			$(this).parent().parent("tr").remove();
-			
-			
 			//console.log($(this).parent().parent());
 			//console.log($(this).parent().parent().children("tr"));
 			//console.log($(this).parent().parent("tr").length);
 			//console.log($(".normal-table").children("tr"));
+			$(this).parent().parent("tr").remove();
+			
+			$(".allPrice").trigger("change");
+			if ($(".allPrice").length == 0) {
+				$(".prodPrice").text(0);
+				$(".num-price").trigger("change");
+			}
+			
+			countNumOfSelect();
+			countNumOfTotal();
+			
+		})
+		
+		$(".del-prod-user").on("click", function() {
+			console.log("del prod user: " + $(this).val());
+			
+			delItemInLocalStorage($(this).val());
+			delItemInCartDB($(this).val());
+			$(this).parent().parent("tr").remove();
+			
+			$(".allPrice").trigger("change");
+			if ($(".allPrice").length == 0) {
+				$(".prodPrice").text(0);
+				$(".num-price").trigger("change");
+			}
 			
 			countNumOfSelect();
 			countNumOfTotal();
@@ -556,10 +674,50 @@ input[type=checkbox]:checked + label {
 			$(".prod-table").each(function(index, item){
 				if($(this).val() == "on") {
 					delItemInLocalStorage($(this).attr("id"));
+					delItemInCartDB($(this).attr("id"));
 					$(this).parent().parent("tr").remove();
 					
 				}
 			});
+			
+			$(".allPrice").trigger("change");
+			if ($(".allPrice").length == 0) {
+				$(".prodPrice").text(0);
+				$(".num-price").trigger("change");
+			}
+			
+			countNumOfSelect();
+			countNumOfTotal();
+			//console.log($(".prod-table").length);
+			
+			if (selectAllFlag == true) {
+				$(".btn-img-all").attr("src", "${pageContext.request.contextPath }/images/click-off.png");
+				selectAllFlag = false;
+				/* $(".prod-table").each(function(index, item){
+					$(this).val("on");
+				});
+				$(".prod-table").click(); */
+			}
+			
+		});
+		
+		$(".btn-txt-delete-user").on("click", function() {
+			console.log("btn test user");
+			
+			$(".prod-table").each(function(index, item){
+				if($(this).val() == "on") {
+					delItemInLocalStorage($(this).attr("id"));
+					delItemInCartDB($(this).attr("id"));
+					$(this).parent().parent("tr").remove();
+					
+				}
+			});
+			
+			$(".allPrice").trigger("change");
+			if ($(".allPrice").length == 0) {
+				$(".prodPrice").text(0);
+				$(".num-price").trigger("change");
+			}
 			
 			countNumOfSelect();
 			countNumOfTotal();
@@ -579,10 +737,12 @@ input[type=checkbox]:checked + label {
 		$(".allPrice").on("change", function() {
 			
 			let total = 0;
+
 			//console.log($(".allPrice").length);
 			$(".allPrice").each(function(index, item){
 				total += parseInt($(this).text());
 			});
+
 			//console.log(total);
 			$(".prodPrice").text(total);
 			$(".num-price").trigger("change");
@@ -669,6 +829,24 @@ input[type=checkbox]:checked + label {
 			localStorage.setItem("kkurlyNonMembersBasket", JSON.stringify(tmpArrayStr));
 		}
 		
+		function delItemInCartDB(prodNo) {
+			
+			$.ajax({
+				url: "/cart/deleteItemCart.do",
+				type: "post",
+				data: (
+						"prodNo=" + prodNo
+					  ),
+				success: function(obj) {
+					console.log(obj);
+				},
+				error: function(e) {
+					console.log(e);
+				}
+			});
+			
+		}
+		
 		function updateItemInLocalStorage(prodNo, prodQty) {
 			let tmpLocalStorage = localStorage.getItem('kkurlyNonMembersBasket');
 			let tmpArrayStr = new Array();
@@ -683,6 +861,22 @@ input[type=checkbox]:checked + label {
 			}
 			
 			localStorage.setItem("kkurlyNonMembersBasket", JSON.stringify(tmpArrayStr));
+		}
+		
+		function updateItemInCartDB(prodNo, prodQty) {
+			$.ajax({
+				url: "/cart/updateItemCart.do",
+				type: "post",
+				data: (
+						"prodNo=" + prodNo + "&prodQty=" + prodQty
+					  ),
+				success: function(obj) {
+					console.log(obj);
+				},
+				error: function(e) {
+					console.log(e);
+				}
+			});
 		}
 		
 	});

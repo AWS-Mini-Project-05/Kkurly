@@ -11,4 +11,8 @@ public interface CartService {
 	List<CartVO> getCartList(int userNo);
 	
 	void insertCart(CartVO cartVO);
+	
+	void deleteItem(int prodNo, int userNo);
+	
+	void updateItem(int prodNo, int prodQty, int userNo);
 }

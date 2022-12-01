@@ -54,4 +54,16 @@
 		)
 	</insert>
 	
+	<delete id="deleteItem" parameterType="map">
+		DELETE FROM TB_CART
+		WHERE PROD_NO=#{prodNo} AND USER_NO=#{userNo}
+	</delete>
+	
+	<update id="updateItem" parameterType="map">
+		UPDATE TB_CART
+		SET QTY=#{prodQty}
+		WHERE USER_NO=#{userNo} AND PROD_NO=#{prodNo}
+	</update>
+	
+	
 </mapper>
