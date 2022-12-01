@@ -103,8 +103,21 @@
 		SELECT * FROM TB_USER 
 		WHERE USER_NO =#{userNo}
 	</select>
+	<update id="updateUser" parameterType="map">
+		UPDATE TB_USER
+		SET 
+		USER_ID = #{userVO.userId},
+		USER_NM = #{userVO.userNm},
+		USER_EMAIL = #{userVO.userEmail},
+		USER_NICK = #{userVO.userNick},
+		USE_YN = #{userVO.useYn}
+		WHERE USER_NO = #{userNo}
+	</update>
+	<delete id="deleteUser" parameterType="int">
+		DELETE FROM TB_USER
+		WHERE USER_NO = #{no}
 	
-
+	</delete>
 	
 	
 </mapper>

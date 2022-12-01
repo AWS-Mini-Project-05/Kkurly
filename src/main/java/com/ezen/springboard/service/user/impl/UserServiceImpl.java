@@ -34,6 +34,15 @@ public class UserServiceImpl implements UserService {
 	public List<UserVO> manageUser(Map<String, String> paramMap) {
 		return userDAO.manageUser(paramMap);
 	}
+	@Override
+	public void updateUser(Map<String, Object> paramMap) {
+		
+		userDAO.updateUser(paramMap);
+	}
+	@Override
+	public void deleteUser(int no) {
+		userDAO.deleteUser(no);
+	}
 
 
 	@Override
