@@ -110,80 +110,58 @@
                     <div id="viewOrderList" class="page_section section_orderlist">
                         <div class="head_aticle">
                             <h2 class="tit">
-                                주문 내역
+                                개인 정보 수정
                                 <span class="tit_sub">
-                                    지난 3년간의 주문 내역 조회가 가능합니다.
+                                    개인 정보 수정이 가능합니다.
                                 </span>
                             </h2>
                         </div>
-                        <div class="search_date">
-                            <a href="#" class="btn_layer">
-                                전체기간
-                            </a>
-                            <ul class="layer_search">
-                                <li>
-                                    <a href="#" class="on">전체기간</a>
-                                </li>
-                                <li>
-                                    <a href="#">2022 년</a>
-                                </li>
-                                <li>
-                                    <a href="#">2021 년</a>
-                                </li>
-                                <li>
-                                    <a href="#">2020 년</a>
-                                </li>
-                        
-                            </ul>
-                        </div>
                         <ul class="list_order">
-                            <li>
-                                <div class="date">2022.12.01</div> <!-- 날짜 데이터값 -->
-                                <div class="order_goods">
-                                    <div class="name">
-                                        <a>(상품 제목)</a>
-                                    </div>
-                                    <div class="order_info">
-                                        <div class="thumb">
-                                            <img src="https://img-cf.kurly.com/cdn-cgi/image/width=676,format=auto/shop/data/goods/1597052755228l0.jpg" alt="해당 주문 대표 상품 이미지">
-                                        </div>
-                                        <div class="desc">
-                                            <dl>
-                                                <dt>주문번호</dt>
-                                                <dd>(주문번호 데이터)</dd>
-                                            </dl>
-                                            <dl>
-                                                <dt>결제금액</dt>
-                                                <dd>0원(총 금액 데이터)</dd>
-                                            </dl>
-                                            <dl>
-                                                <dt>주문상태</dt>
-                                                <dd class="status end">배송중</dd>
-                                            </dl>
-                                        </div>
-                                    </div>
-                               </div>
-                            </li>
+                        	<li>
+                        		<a style="font-size:20px; margin-left:350px; color:purple;">비밀번호 입력</a>
+                        		<hr>
+                        		<form id="insertPw">
+                    			<input type="password" name="userPw" id="userPw" option="regPass" maxlength="16"
+                        class="reg_pw bad" placeholder="비밀번호를 입력해주세요" style="margin-left:270px; font-size:20px; text-align:center; margin-top:20px;">
+                        		</form>
+                        	</li>
+                        	<li>
+                        	<input type="submit" value="확인" id="btnUpdate"
+                        	style="text-align:center; background-color:#5f0080; color:white; border:1px solid white; height:40px; width:150px; border-radius: 5px;
+                        	font-size:15px; margin-top:20px; margin-left:330px; cursor:pointer;">
+                        	</li>
                         </ul>
-                        <div class="layout-pagination">
-                            <div class="pagediv">
-                                <a href="#viewOrderList" class="layout-pagination-button layout-pagination-first-page">맨 처음 페이지로 가기</a>
-                                <a href="#viewOrderList" class="layout-pagination-button layout-pagination-prev-page">이전 페이지로 가기</a>
-                                <span> 
-                                    <strong class="layout-pagination-button layout-pagination-number __active" style="height: 32px;">
-                                        1
-                                    </strong>
-                                </span>
-                                <a href="#viewOrderList" class="layout-pagination-button layout-pagination-next-page">다음 페이지로 가기</a>
-                                <a href="#viewOrderList" class="layout-pagination-button layout-pagination-last-page">맨 끝 페이지로 가기</a>
-                            </div>
-                        </div>
-                        
                     </div>
-                </div>
+                </div>    
             </div>
         </div>
     </div>
 <jsp:include page="${pageContext.request.contextPath }/mainFooter.jsp"></jsp:include>
+<script>
+/* $(function() {
+	$("#btnUpdate").on("click", function() {
+		$.ajax({
+			url: "/user/mypage_update.do",
+			type: "post",
+			data: $("#userPw"),
+			success: function(obj) {
+				
+				//비밀번호 체크
+				if(obj =="pwFail") {
+					alert("비밀번호가 틀렸습니다. 다시 확인해주세요.");
+					$("#userPw").focus();
+					console.log($("#userPw").val());
+					return;
+				}
+				
+				location.href="/user/mypage_update_detail.do";
+			},
+			error: function(e) {
+				console.log(e);
+			}
+		});
+	});
+}); */
+</script>
 </body>
 </html>

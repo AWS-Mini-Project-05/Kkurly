@@ -95,13 +95,13 @@
                                 <li>
                                     <a href="/user/mypage.do">주문내역</a>
                                 </li>
-                                <li class="on">
+                                <li>
                                     <a href="/user/mypage_address.do">배송지 관리</a>
                                 </li>
                                 <li>
                                     <a href="/user/mypage_qna.do">자주 묻는 질문</a>
                                 </li>
-                                <li>
+                                <li class="on">
                                     <a href="/user/mypage_update.do">개인 정보 수정</a>
                                 </li>
                             </ul>
@@ -110,59 +110,35 @@
                     <div id="viewOrderList" class="page_section section_orderlist">
                         <div class="head_aticle">
                             <h2 class="tit">
-                                배송지 관리
+                                개인 정보 수정
                                 <span class="tit_sub">
-                                    내 배송지를 설정 가능합니다.
+                                    개인 정보 수정이 가능합니다.
                                 </span>
                             </h2>
                         </div>
                         <ul class="list_order">
-                            <li>
-                                <div class="date">기본</div>
-                                <div class="order_goods">
-                                    <div class="name">
-                                        <a>집</a>
-                                    </div>
-                                    <div class="order_info">
-                                        <div class="thumb">
-                                        </div>
-                                        <div class="desc">
-                                            <dl>
-                                                <dt>주소</dt>
-                                                <dd>주소</dd>
-                                            </dl>
-                                            <dl>
-                                                <dt>전화번호</dt>
-                                                <dd>${loginUser.userTel }</dd>
-                                            </dl>
-                                            <dl>
-                                                <dt>이름</dt>
-                                                <dd>${loginUser.userNm }</dd>
-                                            </dl>
-                                        </div>
-                                    </div>
-                               </div>
-                            </li>
+                        	<li>
+                        		<a style="font-size:20px; margin-left:350px; color:purple;">비밀번호 입력</a>
+                        		<hr>
+                        		<form id="insertPw">
+                    			<input type="password" name="userPw" id="userPw" option="regPass" onkeyup="pw_check()" maxlength="16"
+                        class="reg_pw bad" placeholder="비밀번호를 입력해주세요" style="margin-left:270px; font-size:20px; text-align:center; margin-top:20px;">
+                        		</form>
+                        	</li>
+                        	<li>
+                        	<input type="submit" value="확인" id="btnUpdate"
+                        	style="text-align:center; background-color:#5f0080; color:white; border:1px solid white; height:40px; width:150px; border-radius: 5px;
+                        	font-size:15px; margin-top:20px; margin-left:330px; cursor:pointer;">
+                        	</li>
                         </ul>
-                        <div class="layout-pagination">
-                            <div class="pagediv">
-                                <a href="#viewOrderList" class="layout-pagination-button layout-pagination-first-page">맨 처음 페이지로 가기</a>
-                                <a href="#viewOrderList" class="layout-pagination-button layout-pagination-prev-page">이전 페이지로 가기</a>
-                                <span> 
-                                    <strong class="layout-pagination-button layout-pagination-number __active" style="height: 32px;">
-                                        1
-                                    </strong>
-                                </span>
-                                <a href="#viewOrderList" class="layout-pagination-button layout-pagination-next-page">다음 페이지로 가기</a>
-                                <a href="#viewOrderList" class="layout-pagination-button layout-pagination-last-page">맨 끝 페이지로 가기</a>
-                            </div>
-                        </div>
-                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
 <jsp:include page="${pageContext.request.contextPath }/mainFooter.jsp"></jsp:include>
+<script>
+
+</script>
 </body>
 </html>

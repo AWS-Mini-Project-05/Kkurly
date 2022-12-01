@@ -228,7 +228,17 @@ public class UserController {
 		return "redirect:/";
 	}
 
+<<<<<<< HEAD
 	// id 찾기
+=======
+		model.addAttribute("user", user);
+
+		return "admin/manageUserDetail";
+	}
+	
+	
+	//id 찾기
+>>>>>>> soo
 	@PostMapping("/findId.do")
 	@ResponseBody
 	public String findId(UserVO userVO, HttpSession session) {

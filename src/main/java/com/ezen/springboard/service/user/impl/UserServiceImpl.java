@@ -46,6 +46,7 @@ public class UserServiceImpl implements UserService {
 		return userDAO.findPw(userVO);
 	}
 
+<<<<<<< HEAD
 	@Override
 	public int idCheck(String userId) {
 		return userDAO.idCheck(userId);
@@ -60,5 +61,7 @@ public class UserServiceImpl implements UserService {
 	public UserVO login(UserVO userVO) {
 		return userDAO.login(userVO);
 	}
+=======
+>>>>>>> soo
 
 }

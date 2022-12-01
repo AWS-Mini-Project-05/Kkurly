@@ -386,7 +386,7 @@
                       </span>
                     </th>
                     <td>
-                      <input type="text" id="userEmail" name="userEmail" size="30" required="" option="regEmail" label="이메일"
+                      <input type="text" id="userEmail" name="userEmail" size="30" required="" option="Email" label="이메일"
                         placeholder="예: marketkkurly@kkurly.com">
                     </td>
                   </tr>
