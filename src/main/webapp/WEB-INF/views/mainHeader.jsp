@@ -27,7 +27,9 @@ nav {
 	height: 150px;
 	/* position: fixed; */
 }
-
+#sysPage {
+	display:none;
+}
 .nav-top {
 	position: relative;
 	width: 1050px;
@@ -45,6 +47,7 @@ nav {
 	-webkit-box-align: center;
 	align-items: center;
 	font-size: 11.3px;
+	te
 }
 
 .nav-login {
@@ -54,7 +57,9 @@ nav {
 	padding: 3px 10px;
 	font-weight: bold;
 	color: #333333;
+    text-decoration: none;
 }
+
 
 .nav-login-down {
 	width: 8px;
@@ -310,13 +315,10 @@ nav {
 			<c:choose>
 				<c:when test="${loginUser eq null}">
 				<a href="/user/join.do" class="nav-login">회원가입</a> <a> | </a> <a href="/user/login.do" class="nav-login">로그인</a>
-				<a> | </a> <a class="nav-login" href="/product/searchProduct.do">
-					관리자페이지 </a>
 				</c:when>
 				<c:otherwise>
-				<a href="/user/mypage.do" class="nav-login">${loginUser.userId }님</a> <a> | </a> <a href="/user/logout.do" class="nav-login">로그아웃</a>
-				<a> | </a> <a class="nav-login" href="/product/searchProduct.do">
-					관리자페이지 </a>
+				<a href="/user/mypage.do" class="nav-login">${loginUser.userId }님</a> <a> | </a> <a href="/user/logout.do" class="nav-login" >&emsp;로그아웃</a>
+				<a class="nav-login" id="sysPage" href="/product/searchProduct.do" >|&emsp;관리자페이지 </a>
 				</c:otherwise>
 			</c:choose>
 			</div>
@@ -430,6 +432,7 @@ nav {
   
   <script>
   	$(function() {
+  		
   		$(".icon-cart").on("click", function() {
   			
   			let tmpStorage = JSON.parse(localStorage.getItem('kkurlyNonMembersBasket'));
@@ -446,6 +449,7 @@ nav {
   </script>
 </body>
 <script>
+	
 	document.getElementById("nav-header-cg").addEventListener("mouseover",
 			function() {
 				document.getElementById("cg-sub").style.display = "flex";
@@ -465,6 +469,7 @@ nav {
     console.log(prodNm);
     window.location.href="/main/search.do?prodNm="+prodNm;
   }
+  
 </script>
 
 </html>

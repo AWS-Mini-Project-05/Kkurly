@@ -462,6 +462,16 @@
 </body>
 <script src="${pageContext.request.contextPath }/js/addCartModule.js"></script>
 <script>
+
+	$(function() {
+		if(${sysCheck}){
+			  $("#sysPage").show();
+			  console.log($("#sysPage"));
+		  } else {
+			 $("#sysPage").hide();
+		  }
+	});
+
 	var swiper = new Swiper(".mySwiper", {
 
 		pagination : {

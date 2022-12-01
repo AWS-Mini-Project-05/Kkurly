@@ -224,7 +224,6 @@ public class UserController {
 	@GetMapping("/logout.do")
 	public String logout(HttpSession session) {
 		session.invalidate();
-
 		return "redirect:/";
 	}
 
