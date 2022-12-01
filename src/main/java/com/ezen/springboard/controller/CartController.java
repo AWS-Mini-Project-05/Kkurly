@@ -40,7 +40,8 @@ public class CartController {
 			tmp.prodNo  : 상품 번호  
 			tmp.prodQty : 구매 수량  
 			*/
-			
+			System.out.print("prodNo : " + tmp.get("prodNo") + ", ");
+			System.out.print("prodQty : " + tmp.get("prodQty"));
 		}
 		int prodNo = 10;
 		//CartVO prod = cartService.getProd(prodNo);
@@ -59,7 +60,7 @@ public class CartController {
 		int prodPrice = 0;
 		int totalPrice = 0;
 		
-		
+	// DB -> 장바구니 테스트 코드	
 		for (int i = 10; i<= 17; i++) {
 			CartVO prod = cartService.getProd(i);
 			cgCd = prod.getProdCgcd();
