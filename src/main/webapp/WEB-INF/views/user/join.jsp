@@ -329,7 +329,7 @@
                       </span>
                     </th>
                     <td>
-                      <input type="text" name="userId" id="userId" maxlength="16" required="" option="regId" onkeyup="id_check()"
+                      <input type="text" name="userId" id="userId" maxlength="16" required="" option="regId"
                         placeholder="아이디를 입력해주세요">
                       <button type="button" class="btn default" id="btnIdCheck" style="cursor:pointer">중복확인</button>
                     </td>
@@ -343,7 +343,7 @@
                       </span>
                     </th>
                     <td>
-                      <input type="password" name="userPw" id="userPw" required="" option="regPass" onkeyup="pw_check()" maxlength="16"
+                      <input type="password" name="userPw" id="userPw" required=""  maxlength="16"
                         class="reg_pw bad" placeholder="비밀번호를 입력해주세요">
                     </td>
                   </tr>
@@ -351,14 +351,16 @@
                   <tr class="member_pwd field_repw">
                     <th>
                       <label for="userPwCheck">비밀번호 확인</label>
+                      
                       <span class="ico">
                         *
                         <span class="screen_out">필수항목</span>
                       </span>
                     </th>
                     <td>
-                      <input type="password" id="userPwCheck" name="userPwCheck" option="regPass" onkeyup="pw2_check()" maxlength="16"
+                      <input type="password" id="userPwCheck" name="userPwCheck"  maxlength="16"
                         class="confirm_pw" placeholder="비밀번호를 한번 더 입력해주세요">
+                        <p id="pwCheckResult" style="font-size: 0.8rem;"></p>
                     </td>
                   </tr>
 
@@ -558,6 +560,7 @@
 	                  if(obj == 'duplicatedId') {
 	                     alert("중복된 아이디입니다.");
 	                     $("#userId").focus();
+	                     $("#userId").val("");
 	                  } else {
 	                     if(confirm("사용가능한 아이디입니다. " + $("#userId").val() + 
 	                           "를(을) 사용하시겠습니까?")) {
@@ -573,12 +576,39 @@
 	         });
 		
         //id 중복체크 후 다시 id를 변경했을 때
-        $("#userId").on("change", function() {
+        $("#userId").on("keyup", function() {
            checkId = false;
            $('.field_id .btn').attr("disabled", false);
         }); 
 
-
+      //비밀번호 입력될때마다 유효성 검사
+		$("#userPwCheck").on("change", function() {
+			//비밀번호 확인까지 입력한 후 다시 비밀번호 재설정
+			if($("#userPw").val() == $("#userPwCheck").val()) {
+				let pwCheck = true;
+				$("#pwCheckResult").css("color", "green");
+				$("#pwCheckResult").text("비밀번호가 일치합니다.");
+			} else {
+				let pwCheck = false;
+				/* console.log("!!?"); */
+				$("#pwCheckResult").css("color", "red");
+				$("#pwCheckResult").text("비밀번호가 일치하지 않습니다.");
+			}
+		});
+        
+        //회원가입 진행
+		$("#joinForm").on("submit", function(e) {
+			//서브밋이 실행될 때 구현할 동작
+			//아이디 중복체크가 안됐거나 중복된 아이디를 사용했을 때
+			if(!checkId) {
+				alert("아이디 중복체크를 진행하세요.");
+				$("#userId").focus();
+				e.preventDefault();
+				return;
+			}
+			
+		});
+        
 	    $('#addressSearch').click(function(){
 	        new daum.Postcode({
 	            oncomplete: function(data) {
