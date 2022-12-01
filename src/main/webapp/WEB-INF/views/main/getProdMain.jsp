@@ -367,7 +367,7 @@
     flex-grow: 1;
   }
 
-  .cart-button {
+  .product-function {
     display: block;
     padding: 0px 10px;
     text-align: center;
@@ -485,8 +485,9 @@
                 class="btns-span"><img
                   src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIHN0cm9rZT0iI0NDQyIgc3Ryb2tlLXdpZHRoPSIxLjYiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTEyLjY2NiAyM2EzLjMzMyAzLjMzMyAwIDEgMCA2LjY2NiAwIi8+CiAgICAgICAgPHBhdGggZD0iTTI1Ljk5OCAyMi43MzhINmwuMDEzLS4wM2MuMDc2LS4xMzUuNDcxLS43MDQgMS4xODYtMS43MDlsLjc1LTEuMDV2LTYuNjM1YzAtNC40ODUgMy40MzgtOC4xNCA3Ljc0MS04LjMwOEwxNiA1YzQuNDQ2IDAgOC4wNSAzLjcyMiA4LjA1IDguMzE0djYuNjM0bDEuNzA3IDIuNDExYy4xNzMuMjUzLjI1NC4zOC4yNDIuMzh6IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwvZz4KPC9zdmc+Cg=="
                   alt="" class="btns-img"></span></button>
-            <div class="btn-cart"><button class="product-function" type="button" radius="3"><span class="btns-span">장바구니
-                  담기</span></button></div>
+            <div class="btn-cart"><button class="product-function" type="button" radius="3">
+            <input type="hidden" value="${prod.prodNo }" id="tmpId">
+            <span class="btns-span">장바구니 담기</span></button></div>
           </div>
         </div>
       </section>
