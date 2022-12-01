@@ -110,35 +110,15 @@
                     <div id="viewOrderList" class="page_section section_orderlist">
                         <div class="head_aticle">
                             <h2 class="tit">
-                                주문 내역
+                                배송지 관리
                                 <span class="tit_sub">
-                                    지난 3년간의 주문 내역 조회가 가능합니다.
+                                    내 배송지를 설정 가능합니다.
                                 </span>
                             </h2>
                         </div>
-                        <div class="search_date">
-                            <a href="#" class="btn_layer">
-                                전체기간
-                            </a>
-                            <ul class="layer_search">
-                                <li>
-                                    <a href="#" class="on">전체기간</a>
-                                </li>
-                                <li>
-                                    <a href="#">2022 년</a>
-                                </li>
-                                <li>
-                                    <a href="#">2021 년</a>
-                                </li>
-                                <li>
-                                    <a href="#">2020 년</a>
-                                </li>
-                        
-                            </ul>
-                        </div>
                         <ul class="list_order">
                             <li>
-                                <div class="date">2022.12.01</div> <!-- 날짜 데이터값 -->
+                                <div class="date">MAIN</div>
                                 <div class="order_goods">
                                     <div class="name">
                                         <a>(상품 제목)</a>
