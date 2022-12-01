@@ -46,22 +46,5 @@ public class UserServiceImpl implements UserService {
 		return userDAO.findPw(userVO);
 	}
 
-<<<<<<< HEAD
-	@Override
-	public int idCheck(String userId) {
-		return userDAO.idCheck(userId);
-	}
-
-	@Override
-	public int join(UserVO userVO) {
-		return userDAO.join(userVO);
-	}
-
-	@Override
-	public UserVO login(UserVO userVO) {
-		return userDAO.login(userVO);
-	}
-=======
->>>>>>> soo
 
 }

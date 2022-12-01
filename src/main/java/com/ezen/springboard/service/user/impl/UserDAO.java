@@ -52,10 +52,4 @@ public class UserDAO {
 		return mybatis.selectOne("UserDAO.findPw", userVO);
 	}
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> soo
 }
