@@ -170,7 +170,7 @@
 
 		<div class="cg-nav">
 			<div class="cg-nav-total">총 ${cnt}건</div>
-			<ul class="cg-nav-ul">
+			<!-- <ul class="cg-nav-ul">
 				<li class="cg-nav-li"><a href="/" class="cg-nav-recommend">추천순</a>
 				</li>
 				<li class="cg-nav-li"><a href="/" class="css-19ce13b eudxpx30">신상품순</a></li>
@@ -180,7 +180,7 @@
 						가격순</a></li>
 				<li class="cg-nav-li"><a href="/" class="css-19ce13b eudxpx30">높은
 						가격순</a></li>
-			</ul>
+			</ul> -->
 		</div>
 
 		<div class="cg-img">
@@ -217,7 +217,7 @@
 								$('#${prod.prodNo}').text(price);
 							</script>
 						</div>
-						<p class="cg-img-title">기도메타 가보자고</p>
+						<p class="cg-img-title">껄리의 추천 상품 !</p>
 						<%-- <input type="hidden" value="${prod.prodNo }"> --%>
 					</div>
 				</a>

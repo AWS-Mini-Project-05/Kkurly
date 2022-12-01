@@ -419,8 +419,8 @@ nav {
 					</div>
 				</div>
 				<ul id="nav-header-ul">
-					<li class="nav-header-li"><span class="nav-header-txt">신상품</span></li>
-					<li class="nav-header-li"><span class="nav-header-txt">베스트</span></li>
+					<li class="nav-header-li"><span class="nav-header-txt" onclick="location.href='/main/getBestProdList.do'">신상품</span></li>
+					<li class="nav-header-li"><span class="nav-header-txt" onclick="location.href='/main/getTopSaleProdList.do'">베스트</span></li>
 					<li class="nav-header-li"><span class="nav-header-txt">특가/혜택</span></li>
 				</ul>
 				<div id="blank"></div>

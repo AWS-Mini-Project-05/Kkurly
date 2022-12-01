@@ -63,6 +63,41 @@ public class MainController {
 		return "main/categoriesMain";
 	}
 	
+	@RequestMapping("/getBestProdList.do")
+	public String getBestProdList(Model model) {
+
+		System.out.println("=============== 신상품 리스트 ===============");
+
+		List<ProdVO> prodList = mainService.getBestProdList();
+
+		for (ProdVO element : prodList) {
+			System.out.println(element);
+		}
+		
+		model.addAttribute("prodList",prodList);
+		model.addAttribute("cnt", prodList.size());
+		model.addAttribute("cgNm","신상품");
+
+		return "main/categoriesMain";
+	}
+	
+	@RequestMapping("/getTopSaleProdList.do")
+	public String getTopSaleProdList(Model model) {
+
+		System.out.println("=============== 베스트 상품 리스트 ===============");
+
+		List<ProdVO> prodList = mainService.getTopSaleProdList();
+
+		for (ProdVO element : prodList) {
+			System.out.println(element);
+		}
+		
+		model.addAttribute("prodList",prodList);
+		model.addAttribute("cnt", prodList.size());
+		model.addAttribute("cgNm","베스트");
+
+		return "main/categoriesMain";
+	}
 	
 	@RequestMapping("/getLikeList.do")
 	public String getLikeList(@RequestParam("prodNo") int prodNo,HttpSession session) {

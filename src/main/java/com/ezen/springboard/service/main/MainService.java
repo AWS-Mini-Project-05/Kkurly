@@ -12,6 +12,12 @@ public interface MainService {
 	
 	List<ProdVO> getProdList(String prodNm);
 	
+	List<ProdVO> getBestProdList();
+	
+	List<ProdVO> getTopSaleProdList();
+	
+	List<ProdVO> getRandomProdList();
+	
 //	int getProdCnt(String cd);
 	
 	String getCgNm (String cd);

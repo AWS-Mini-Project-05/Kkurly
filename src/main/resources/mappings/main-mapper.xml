@@ -17,6 +17,24 @@
 		WHERE PROD_NM LIKE CONCAT('%', #{prodNm}, '%')
 	</select>
 	
+	<select id="getBestProdList" resultType="prod">
+		SELECT *
+		FROM TB_PROD
+		ORDER BY INPUT_DT DESC LIMIT 8
+	</select>
+	
+	<select id="getTopSaleProdList" resultType="prod">
+		SELECT *
+		FROM TB_PROD
+		ORDER BY SALE_QTY DESC LIMIT 8
+	</select>
+	
+	<select id="getRandomProdList" resultType="prod">
+		SELECT *
+		FROM TB_PROD
+		ORDER BY rand() DESC LIMIT 12
+	</select>
+	
 	<!-- <select id="getProdCnt" parameterType="String" resultType="Integer">
 		SELECT COUNT(*) 
 		FROM TB_PROD
