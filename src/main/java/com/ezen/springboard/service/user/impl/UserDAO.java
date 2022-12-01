@@ -52,4 +52,9 @@ public class UserDAO {
 		return mybatis.selectOne("UserDAO.findPw", userVO);
 	}
 
+	public void userUpdate(UserVO userVO) {
+		mybatis.update("UserDAO.userUpdate", userVO);
+	}
+
+
 }

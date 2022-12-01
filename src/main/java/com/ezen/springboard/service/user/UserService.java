@@ -28,4 +28,8 @@ public interface UserService {
 
 	// PW 찾기
 	UserVO findPw(UserVO userVO);
+	
+	// 정보 수정
+	public void userUpdate(UserVO userVO);
+	
 }
