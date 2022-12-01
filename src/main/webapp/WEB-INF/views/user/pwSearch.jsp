@@ -250,7 +250,7 @@
                 고객님의<br>비밀번호를 확인해주세요.
             </p>
             <p class="info">
-                비밀번호: 
+               	비밀번호: ${findPwUser.userPw }
             </p>
             <a href="/user/login.do" class="btn_type1">
                 <span class="txt_type">로그인 하기</span>
