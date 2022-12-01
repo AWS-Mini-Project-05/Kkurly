@@ -78,7 +78,7 @@ public class MainController {
 		model.addAttribute("cnt", prodList.size());
 		model.addAttribute("cgNm","신상품");
 
-		return "main/categoriesMain";
+		return "/main/categoriesMain";
 	}
 	
 	@RequestMapping("/getTopSaleProdList.do")
@@ -96,7 +96,7 @@ public class MainController {
 		model.addAttribute("cnt", prodList.size());
 		model.addAttribute("cgNm","베스트");
 
-		return "main/categoriesMain";
+		return "/main/categoriesMain";
 	}
 	
 	@RequestMapping("/getLikeList.do")
@@ -147,7 +147,7 @@ public class MainController {
 		model.addAttribute("temp",temp);
 		model.addAttribute("likeCheck",likeCheck);
 		
-		return "main/getProdMain";
+		return "/main/getProdMain";
 	}
 	
 	// 상세화면에서 하트 클릭 시 좋아요 목록 추가
