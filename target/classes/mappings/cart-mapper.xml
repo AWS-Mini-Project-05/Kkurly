@@ -38,7 +38,7 @@
 	</select>
 	
 	<insert id="insertCart" parameterType="cart">
-		INSERT INTO 
+		INSERT IGNORE INTO 
 		TB_CART (
 				CART_NO,
 				QTY,

@@ -46,7 +46,13 @@ public class CartController {
 		List<Integer> coldQtyList = new ArrayList<Integer>();
 		List<Integer> frozenQtyList = new ArrayList<Integer>();
 		List<Integer> normalQtyList = new ArrayList<Integer>();
-		
+//		
+//		System.out.println("cartList.do");
+//		try {
+//			System.out.println("- " + tmpUser);
+//		} catch (Exception e) {
+//			
+//		}
 		
 		String cgCd = "";
 		String temp = "";
@@ -54,6 +60,7 @@ public class CartController {
 		int totalPrice = 0;
 		
 		try {
+			System.out.println("try");
 			for (Map<String, Object> tmp : listMap) {
 				/*
 				tmp.prodNo  : 상품 번호  
@@ -95,9 +102,17 @@ public class CartController {
 			//UserVO getUserId = session.getAttribute("loginUser");
 			//System.out.println(session.getAttribute("loginUser"));
 			
-			//System.out.println(tmpUser.getUserId());
+//			System.out.println("user check");
 			if (tmpUser != null && tmpUser.getUserId() != "") {
-				System.out.println("login");
+//				System.out.println("login");
+				
+				normalList.clear();
+				coldList.clear();
+				frozenList.clear();
+				normalQtyList.clear();
+				coldQtyList.clear();
+				frozenQtyList.clear();
+				prodPrice = 0;
 				
 				int userNo = tmpUser.getUserNo();
 				List<CartVO> cartList = cartService.getCartList(userNo);
@@ -152,7 +167,7 @@ public class CartController {
 			// output : 상품 정보 리스트 
 			
 		} catch (Exception e) {
-			
+			System.out.println("try error : " + e);
 		}
 		
 		return "/cart/cartList";
@@ -161,7 +176,7 @@ public class CartController {
 	@RequestMapping("/order.do")
 	public String order(HttpSession session) {
 		
-		System.out.println(session.getAttribute("loginUser"));
+		//System.out.println(session.getAttribute("loginUser"));
 		
 		return "/cart/order";
 	}
