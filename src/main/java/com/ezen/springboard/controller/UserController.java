@@ -203,6 +203,7 @@ public class UserController {
 
 		return "admin/manageUserDetail";
 	}
+<<<<<<< HEAD
 	
 	
 	// id 찾기
@@ -251,4 +252,30 @@ public class UserController {
 	
 
 
+=======
+	//유저 정보 수정
+	@GetMapping("updateUser.do")
+	public String updateUserView(@RequestParam("userNo") int userNo,Model model) {
+		UserVO user = userService.getUser(userNo);
+		
+		model.addAttribute("user", user);
+		
+		return "admin/updateUser";
+	}
+	@PostMapping("updateUser.do")
+	public String updateUser(@RequestParam("userNo") int no,UserVO user) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("userNo", no);
+		paramMap.put("userVO", user);
+		userService.updateUser(paramMap);
+		
+		return "redirect:manageUser.do";
+	}
+	@GetMapping("deleteUser.do")
+	public String deleteUser(@RequestParam("userNo") int no) {
+		userService.deleteUser(no);
+		return "redirect:manageUser.do";
+	}
+ 	
+>>>>>>> refs/heads/iyr
 }

@@ -15,9 +15,14 @@
 		<typeAlias type="com.ezen.springboard.VO.UserVO" alias ="user"></typeAlias>
 		<typeAlias type="com.ezen.springboard.VO.ProdVO" alias ="prod"></typeAlias>
 		<typeAlias type="com.ezen.springboard.VO.ProdFileVO" alias ="prodFile"></typeAlias>
+<<<<<<< HEAD
 		<typeAlias type="com.ezen.springboard.VO.CartVO" alias ="cart"></typeAlias>
 		<typeAlias type="com.ezen.springboard.VO.UserLikeVO" alias ="like"></typeAlias>
 		
+=======
+		<typeAlias type="com.ezen.springboard.VO.CateVO" alias ="cate"></typeAlias>
+		<typeAlias type="com.ezen.springboard.VO.OrderVO" alias ="order"></typeAlias>
+>>>>>>> refs/heads/iyr
 	</typeAliases>
 	
 	<!-- 사용할 SQL 매퍼 위치 지정 -->
@@ -26,6 +31,10 @@
 		<mapper resource="mappings/user-mapper.xml"></mapper>
 		<mapper resource="mappings/prod-mapper.xml"></mapper>
 		<mapper resource="mappings/main-mapper.xml"></mapper>
+<<<<<<< HEAD
 		<mapper resource="mappings/cart-mapper.xml"></mapper>
+=======
+		<mapper resource="mappings/order-mapper.xml"></mapper>
+>>>>>>> refs/heads/iyr
 	</mappers>
 </configuration>

@@ -32,6 +32,7 @@ public class UserDAO {
 	public UserVO getUser(int userNo) {
 		return mybatis.selectOne("UserDAO.getUser",userNo);
 	}
+<<<<<<< HEAD
 	
 	public UserVO findId(UserVO userVO) {
 		return mybatis.selectOne("UserDAO.findId", userVO);
@@ -43,4 +44,13 @@ public class UserDAO {
 
 
 
+=======
+	public void updateUser(Map<String, Object> paramMap) {
+		
+		mybatis.update("UserDAO.updateUser",paramMap);
+	}
+	public void deleteUser(int no) {
+		mybatis.delete("UserDAO.deleteUser",no);
+	}
+>>>>>>> refs/heads/iyr
 }

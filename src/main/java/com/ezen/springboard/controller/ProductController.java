@@ -2,7 +2,6 @@ package com.ezen.springboard.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ezen.springboard.VO.CateVO;
 import com.ezen.springboard.VO.ProdFileVO;
 import com.ezen.springboard.VO.ProdVO;
+import com.ezen.springboard.VO.UserVO;
 import com.ezen.springboard.service.product.ProductService;
 
 import common.FileUtils;
@@ -29,18 +30,28 @@ public class ProductController {
 	@Autowired
 	private ProductService prodService;
 
-	//페이지만 이동하는 로직
-	@RequestMapping("/searchProduct.do")
-	public String searchProduct(Model model) {
-		List<ProdVO> prodList = prodService.searchProduct();
+	//상품 목록 및 검색
 
+	@RequestMapping("/searchProduct.do")
+
+	public String searchProduct(Model model, @RequestParam Map<String, String> paramMap) {
+		List<ProdVO> prodList = prodService.searchProduct(paramMap);
+		
 
 		model.addAttribute("prodList", prodList);
+
+		
+		if(paramMap.get("searchCondition") != null && !paramMap.get("searchCondition").equals(""))
+			model.addAttribute("searchCondition", paramMap.get("searchCondition"));
+		
+		if(paramMap.get("searchKeyword") != null && !paramMap.get("searchKeyword").equals(""))
+			model.addAttribute("searchKeyword", paramMap.get("searchKeyword"));
+		
 
 		return "admin/searchProduct";
 	}
 
-
+	
 
 	//post 방식은 해당 로직 처리
 	@PostMapping("/prodNameCheck.do")
@@ -65,16 +76,20 @@ public class ProductController {
 
 	//새 상품 등록
 	@PostMapping("/prodInsert.do")
-	public String prodInsert(ProdVO prodVO, MultipartFile[] uploadFiles,
+	public String prodInsert(ProdVO prodVO, MultipartFile uploadFiles,
 			HttpServletRequest request) throws IOException {
 
-
-		List<ProdFileVO> fileList = new ArrayList<>();
-
-		//파일업로드 기능 구현
-		if(uploadFiles.length > 0) {
-			String attachPath = request.getSession().getServletContext().getRealPath("/")
+		ProdFileVO prodFile = new ProdFileVO();
+		
+		//getOriginalFileName() : 업로드한 파일의 파일명 
+		if(!uploadFiles.getOriginalFilename().equals("") &&
+			uploadFiles.getOriginalFilename() != null) {
+//			String attachPath = request.getSession().getServletContext().getRealPath("/") 
+//					+ "/upload/";
+			String attachPath = request.getSession().getServletContext().getRealPath("/") 
 					+ "/upload/";
+			
+			
 
 			File directory = new File(attachPath);
 
@@ -83,31 +98,45 @@ public class ProductController {
 				directory.mkdir();
 			}
 
-		//multipartFile 배열에서 파일들을 꺼내 DB 형식에 맞게 변경한다.
-			for (MultipartFile file : uploadFiles) {
-				//getOriginalFileName() : 업로드한 파일의 파일명
-				if(!file.getOriginalFilename().equals("") &&
-				   file.getOriginalFilename() != null) {
-					ProdFileVO prodFile = new ProdFileVO();
+			
+			//multipartFile 배열에서 파일들을 꺼내 DB 형식에 맞게 변경한다.
+			
+			prodFile = FileUtils.parseFileInfo(uploadFiles, attachPath);
 
-					prodFile = FileUtils.parseFileInfo(file, attachPath);
-
-					fileList.add(prodFile);
-				}
-			}
 		}
 
-		prodService.prodInsert(prodVO, fileList);
+
+		prodService.prodInsert(prodVO, prodFile);
+		
 
 		//등록 후 게시글 목록으로 이동
 		return "redirect:searchProduct.do";
+
+	}	
+	
+	//관리자 페이지 체크용 임시파일
+	@GetMapping("/prodInsert.do")
+	public String prodInsert2(Model model) {
+		List<CateVO> cateVO = prodService.prodInsert2();
+		
+		model.addAttribute("cateVO",cateVO);
+		return "admin/prodInsert";
+	}
+	//한건 조회
+	@GetMapping("searchProductDetail.do")
+	public String prodDetail(int prodNo,Model model) {
+			ProdVO prodVO= prodService.prodDetail(prodNo);
+			
+			model.addAttribute("prodVO",prodVO);
+		return "admin/searchProductDetail";
+	}
+	@GetMapping("prodDelete.do")
+	public String prodDelete(int prodNo) {
+		
+		prodService.prodDelete(prodNo);
+		
+		return "redirect:searchProduct.do";
 	}
 
-		//관리자 페이지 체크용 임시파일
-		@GetMapping("/prodInsert.do")
-		public String prodInsert() {
-
-			return "admin/prodInsert";
-		}
 
 }

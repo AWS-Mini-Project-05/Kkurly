@@ -41,6 +41,7 @@ public class UserServiceImpl implements UserService {
 
 		return userDAO.getUser(userNo);
 	}
+<<<<<<< HEAD
 	
 	@Override
 	public UserVO findId(UserVO userVO) {
@@ -53,5 +54,16 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	
+=======
+	@Override
+	public void updateUser(Map<String, Object> paramMap) {
+		
+		userDAO.updateUser(paramMap);
+	}
+	@Override
+	public void deleteUser(int no) {
+		userDAO.deleteUser(no);
+	}
+>>>>>>> refs/heads/iyr
 
 }

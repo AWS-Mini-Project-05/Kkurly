@@ -8,6 +8,7 @@ import com.ezen.springboard.VO.UserVO;
 public interface UserService {
 	public UserVO getUser(int userNo);
 	List<UserVO> manageUser(Map<String, String> paramMap);
+<<<<<<< HEAD
 	
 	//id중복체크
 	int idCheck(String userId);
@@ -21,4 +22,8 @@ public interface UserService {
 	UserVO findPw(UserVO userVO);
 	
 
+=======
+	void updateUser(Map<String, Object> paramMap);
+	void deleteUser(int no);
+>>>>>>> refs/heads/iyr
 }
