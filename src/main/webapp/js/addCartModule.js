@@ -15,37 +15,39 @@
 			let prodNo = tmpId.substring(6);
 			//console.log(prodNo);
 			
-			let tmpData = {
-					"prodNo" : prodNo,
-					"prodQty" : "1"
-			}
-			let tmpArrayStr = new Array();
+			if (prodNo != null && prodNo !="") {
 			
-			if (localStorage.getItem('kkurlyNonMembersBasket') == null) {
-				tmpArrayStr.push(tmpData);
-				//tmpArrayStr.push(tmpData);
-				localStorage.setItem("kkurlyNonMembersBasket", JSON.stringify(tmpArrayStr));
-			} else {
-				let tmpLocalStorage = localStorage.getItem('kkurlyNonMembersBasket');
-				
-				
-				
-				tmpArrayStr = JSON.parse(tmpLocalStorage);
-				//if (hasDuplicate(tmpArrayStr, "prodNo") == true) return;
-				// 장바구니 중복 확인 
-				for (let tmp of tmpArrayStr) {
-					//console.log(tmp.prodNo);
-					if (tmp.prodNo === tmpData.prodNo) return;
+				let tmpData = {
+						"prodNo" : prodNo,
+						"prodQty" : "1"
 				}
-				//console.log(tmpArrayStr);
+				let tmpArrayStr = new Array();
 				
-				tmpArrayStr.push(tmpData);
-				
-				//console.log(tmpArrayStr);
-				
-				localStorage.setItem("kkurlyNonMembersBasket", JSON.stringify(tmpArrayStr));
+				if (localStorage.getItem('kkurlyNonMembersBasket') == null) {
+					tmpArrayStr.push(tmpData);
+					//tmpArrayStr.push(tmpData);
+					localStorage.setItem("kkurlyNonMembersBasket", JSON.stringify(tmpArrayStr));
+				} else {
+					let tmpLocalStorage = localStorage.getItem('kkurlyNonMembersBasket');
+					
+					
+					
+					tmpArrayStr = JSON.parse(tmpLocalStorage);
+					//if (hasDuplicate(tmpArrayStr, "prodNo") == true) return;
+					// 장바구니 중복 확인 
+					for (let tmp of tmpArrayStr) {
+						//console.log(tmp.prodNo);
+						if (tmp.prodNo === tmpData.prodNo) return;
+					}
+					//console.log(tmpArrayStr);
+					
+					tmpArrayStr.push(tmpData);
+					
+					//console.log(tmpArrayStr);
+					
+					localStorage.setItem("kkurlyNonMembersBasket", JSON.stringify(tmpArrayStr));
+				}
 			}
-			
 			 
 			 
 			/* 

@@ -474,8 +474,8 @@ input[type=checkbox]:checked + label {
 		$(".prod-table").click(function(e) {
 			e.preventDefault();
 			
-/* 			console.log($(this).val());
-			console.log($(".prod-table").length); */
+ 			console.log($(this).val());
+			//console.log($(".prod-table").length); */
 			if ($(this).val() == "on") {
 				$(this).attr("src", "${pageContext.request.contextPath }/images/click-off.png");
 				$(this).val("off");
@@ -654,7 +654,7 @@ input[type=checkbox]:checked + label {
 			tmpArrayStr = JSON.parse(tmpLocalStorage);
 			
 			for (let idx in tmpArrayStr) {
-				if (tmpArrayStr[idx].prodNo === prodNo) {
+				if (tmpArrayStr[idx].prodNo == prodNo) {
 					tmpArrayStr.remove[idx];
 					break;
 				}
@@ -663,14 +663,14 @@ input[type=checkbox]:checked + label {
 			localStorage.setItem("kkurlyNonMembersBasket", JSON.stringify(tmpArrayStr));
 		}
 		
-		function (prodNo, prodQty) {
+		function updateItemInLocalStorage(prodNo, prodQty) {
 			let tmpLocalStorage = localStorage.getItem('kkurlyNonMembersBasket');
 			let tmpArrayStr = new Array();
 			
 			tmpArrayStr = JSON.parse(tmpLocalStorage);
 			
 			for (let idx in tmpArrayStr) {
-				if (tmpArrayStr[idx].prodNo === prodNo) {
+				if (tmpArrayStr[idx].prodNo == prodNo) {
 					tmpArrayStr[idx].prodQty = prodQty;
 					break;
 				}
