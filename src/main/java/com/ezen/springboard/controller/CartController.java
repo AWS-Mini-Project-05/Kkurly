@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ezen.springboard.VO.CartVO;
 import com.ezen.springboard.VO.ProdVO;
 import com.ezen.springboard.VO.UserVO;
 import com.ezen.springboard.service.cart.CartService;
@@ -25,6 +26,8 @@ public class CartController {
 	
 	@Autowired
 	private CartService cartService;
+	
+	
 
 	
 	@RequestMapping("/cartList.do")
@@ -33,6 +36,8 @@ public class CartController {
 		ObjectMapper mapper = new ObjectMapper();
 		
 		List<Map<String, Object>> listMap = mapper.readValue(tmpData, new TypeReference<List<Map<String, Object>>>(){});
+		
+		UserVO tmpUser = (UserVO)session.getAttribute("loginUser");
 		
 		List<ProdVO> coldList = new ArrayList<ProdVO>();
 		List<ProdVO> frozenList = new ArrayList<ProdVO>();
@@ -56,6 +61,7 @@ public class CartController {
 				*/
 				//.out.print("prodNo : " + tmp.get("prodNo") + ", ");
 				//System.out.println("prodQty : " + tmp.get("prodQty"));
+				CartVO cartVO = new CartVO();
 				
 				int prodNo = Integer.parseInt(String.valueOf(tmp.get("prodNo")));
 				int prodQty = Integer.parseInt(String.valueOf(tmp.get("prodQty")));
@@ -75,12 +81,51 @@ public class CartController {
 					frozenList.add(prod);
 					frozenQtyList.add(prodQty);
 				}	
+				
+				if (tmpUser != null && tmpUser.getUserId() != "") {
+					int userNo = tmpUser.getUserNo();
+					cartVO.setProdNo(prodNo);
+					cartVO.setQty(prodQty);
+					cartVO.setUserNo(userNo);
+					cartService.insertCart(cartVO);
+				}
 			}
 			
 			// 로그인 확인 
 			//UserVO getUserId = session.getAttribute("loginUser");
-			System.out.println(session.getAttribute("loginUser"));
+			//System.out.println(session.getAttribute("loginUser"));
 			
+			//System.out.println(tmpUser.getUserId());
+			if (tmpUser != null && tmpUser.getUserId() != "") {
+				System.out.println("login");
+				
+				int userNo = tmpUser.getUserNo();
+				List<CartVO> cartList = cartService.getCartList(userNo);
+				
+				for (CartVO t : cartList) {
+					int prodNo = t.getProdNo();
+					int prodQty = t.getQty();
+					
+					ProdVO prod = cartService.getProd(prodNo);
+					cgCd = prod.getProdCgcd();
+					temp = cgCd.substring(0,3);
+					
+					prodPrice += prod.getProdPrice();
+					if(temp.equals("T01")) {
+						normalList.add(prod);
+						normalQtyList.add(prodQty);
+					} else if (temp.equals("T02")){
+						coldList.add(prod);
+						coldQtyList.add(prodQty);
+					} else {
+						frozenList.add(prod);
+						frozenQtyList.add(prodQty);
+					}
+				}
+				
+			} else {
+				System.out.println("non");
+			}
 
 			totalPrice = prodPrice;
 			
