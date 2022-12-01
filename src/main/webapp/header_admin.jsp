@@ -35,7 +35,7 @@
         </ul>
         <ul>
             <li class="ali">
-                <a href="/order/orderList.do?option=''" class="a">주문 목록 검색</a>
+                <a href="/order/orderList.do?option=" class="a">주문 목록 검색</a>
             </li>
         </ul>
         <ul>
@@ -65,7 +65,7 @@
         </ul>
           <ul>
             <li>
-                <a href="/user/mypage.do" class="a">님 반갑습니다.</a>
+                <a href="/user/mypage.do" class="a">${loginUser.userId }님 반갑습니다.</a>
             </li>
         </ul>
           <ul>
