@@ -159,15 +159,15 @@ section {
 		<table id="ordererTb">
 			<tr>
 				<th>보내는 분 </th>
-				<td>신상품</td>
+				<td>${userVO.userNm }</td>
 			</tr>
 			<tr>
 				<th>휴대폰</th>
-				<td>010-01234-4321</td>
+				<td>${userVO.userTel }</td>
 			</tr>
 			<tr>
 				<th>이메일</th>
-				<td>kkurly@naver.net</td>
+				<td>${userVO.userEmail }</td>
 			</tr>
 			<tr>
 				<th></th>
@@ -187,7 +187,7 @@ section {
 					<p style="font-size: 14px; background-color: #D8D8D8; border-radius: 5%; width: 70px; text-align: center;">
 						기본배송지
 					</p>
-					서울 서초구 서초대로77길 54 서초더블유타워 13층
+					임시 주소지
 				</td>
 			</tr>
 			<tr>
@@ -226,7 +226,7 @@ section {
 				</tr>
 				<tr style="font-size: 13px; color: #A4A4A4;">
 					<td class="priceTxt subTxt">└ 상품금액 </td>
-					<td class="priceNum">105,370</td>
+					<td class="priceNum">${prodPrice }</td>
 					<td>원 </td>
 				</tr>
 				<tr style="font-size: 13px; color: #A4A4A4;">

@@ -213,6 +213,7 @@ public class CartController {
 			cgCd = prod.getProdCgcd();
 			temp = cgCd.substring(0,3);
 			int price = prod.getProdPrice();
+			prodPrice += price;
 			
 //			prodPrice += prod.getProdPrice();
 			priceList.add(price * prodQty);
@@ -221,9 +222,15 @@ public class CartController {
 			
 		}
 		
+		UserVO userVO = (UserVO)session.getAttribute("loginUser");
+		
+		//System.out.println(userVO.toString());
+		
 		model.addAttribute("prodList", prodList);
 		model.addAttribute("qtyList", qtyList);
 		model.addAttribute("priceList", priceList);
+		model.addAttribute("userVO", userVO);
+		model.addAttribute("prodPrice", prodPrice);
 		
 		return "/cart/order";
 	}
