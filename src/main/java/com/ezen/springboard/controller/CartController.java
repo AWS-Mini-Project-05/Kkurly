@@ -112,9 +112,12 @@ public class CartController {
 	}
 	
 	@RequestMapping("/order.do")
-	public String order() {
+	public String order(HttpSession session) {
+		
+		System.out.println(session.getAttribute("loginUser"));
+		
 		return "/cart/order";
 	}
-	
+
 	
 }
