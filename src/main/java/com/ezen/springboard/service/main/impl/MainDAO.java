@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ezen.springboard.VO.ProdVO;
+import com.ezen.springboard.VO.UserLikeVO;
 
 @Repository
 public class MainDAO {
@@ -42,5 +43,18 @@ public class MainDAO {
 		map.put("prodNo", prodNo);
 		
 		mybatis.insert("MainDAO.insertLike",map);
+	}
+	
+	public List<UserLikeVO> getLikeList(UserLikeVO likeVO){
+		return mybatis.selectList("MainDAO.getLikeList",likeVO);
+	}
+	
+	public void deleteLike(int userNo, int prodNo) {
+		Map<String,Integer> map = new HashMap();
+		
+		map.put("userNo", userNo);
+		map.put("prodNo", prodNo);
+		
+		mybatis.delete("MainDAO.deleteLike",map);
 	}
 }

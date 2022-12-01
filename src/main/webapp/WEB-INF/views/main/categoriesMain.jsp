@@ -184,7 +184,7 @@
 		<div class="cg-img">
 
 			<c:forEach items="${prodList}" var="prod">
-				<a href="/main/getProdMain.do?prodNo=${prod.prodNo}"
+				<a href="/main/getLikeList.do?prodNo=${prod.prodNo}"
 					class="cg-img-a">
 					<div class="cg-img-div">
 						<div class="cg-img-div-sub">

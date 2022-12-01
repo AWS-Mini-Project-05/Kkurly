@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezen.springboard.VO.ProdVO;
+import com.ezen.springboard.VO.UserLikeVO;
 import com.ezen.springboard.VO.UserVO;
 import com.ezen.springboard.service.main.MainService;
 
@@ -62,9 +63,38 @@ public class MainController {
 		return "main/categoriesMain";
 	}
 	
+	
+	@RequestMapping("/getLikeList.do")
+	public String getLikeList(@RequestParam("prodNo") int prodNo,HttpSession session) {
+		
+		UserVO user = (UserVO) session.getAttribute("loginUser");
+		boolean likeCheck = false;
+		
+		if(user != null) {
+			System.out.println("===== Like 목록 확인 =====");
+			
+			int userNo = user.getUserNo();
+			UserLikeVO likeVO = new UserLikeVO();
+			likeVO.setProdNo(prodNo);
+			likeVO.setUserNo(userNo);
+			
+			List<UserLikeVO> list = mainService.getLikeList(likeVO);
+			
+			// 해당 상품을 좋아요 했는지 확인 후 참, 거짓값 저장
+			for(int i = 0; i < list.size(); i++) {
+				if(list.get(i).getProdNo() == prodNo) {
+					likeCheck = true;
+				}
+			}
+		} 
+		
+		return "redirect:/main/getProdMain.do?prodNo=" + prodNo + "&likeCheck=" + likeCheck ;
+	}
+	
 	// 상품 클릭 시 상품 상세 화면 출력
 	@RequestMapping("/getProdMain.do")
-	public String getProdMain(@RequestParam("prodNo") int prodNo, Model model) {
+	public String getProdMain(@RequestParam("prodNo") int prodNo, 
+			@RequestParam(value = "likeCheck") boolean likeCheck , Model model) {
 		ProdVO prod = mainService.getProd(prodNo);
 		
 		String cgCd = prod.getProdCgcd();
@@ -80,7 +110,7 @@ public class MainController {
 		
 		model.addAttribute("prod", prod);
 		model.addAttribute("temp",temp);
-		
+		model.addAttribute("likeCheck",likeCheck);
 		
 		return "main/getProdMain";
 	}
@@ -89,6 +119,7 @@ public class MainController {
 	@RequestMapping(value = "/insertLike.do", produces="application/text; charset=UTF-8")
 	@ResponseBody
 	public String insertLike(@RequestParam("prodNo") String prodNo, HttpSession session,Model model) {
+		System.out.println("==================================");
 		System.out.println("===== 좋아요 선택한 상품 번호 : "+ prodNo +  " ======");
 		
 		UserVO user = (UserVO) session.getAttribute("loginUser");
@@ -98,9 +129,19 @@ public class MainController {
 			return likeMsg;
 		} 
 		int userNo = user.getUserNo();
-		System.out.println("=====로그인 유저 번호 : " + userNo + " ======");
+		System.out.println("===== 로그인 유저 번호 : " + userNo + " ======");
 		mainService.insertLike(userNo, Integer.parseInt(prodNo) );
 		return null;
 	}
 	
+	@RequestMapping("/deleteLike.do")
+	public void deleteLike(@RequestParam("prodNo") String prodNo, HttpSession session) {
+		System.out.println("==================================");
+		System.out.println("===== 좋아요 취소한 상품 번호 : "+ prodNo +  " ======");
+		
+		UserVO user = (UserVO) session.getAttribute("loginUser");
+		int userNo = user.getUserNo();
+		System.out.println("===== 로그인 유저 번호 : " + userNo + " ======");
+		mainService.deleteLike(userNo, Integer.parseInt(prodNo) );
+	}
 }

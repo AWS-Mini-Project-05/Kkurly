@@ -3,6 +3,7 @@ package com.ezen.springboard.service.main;
 import java.util.List;
 
 import com.ezen.springboard.VO.ProdVO;
+import com.ezen.springboard.VO.UserLikeVO;
 
 public interface MainService {
 
@@ -19,4 +20,7 @@ public interface MainService {
 	
 	void insertLike(int userNo, int prodNo);
 
+	List<UserLikeVO> getLikeList(UserLikeVO likeVO);
+	
+	void deleteLike(int userNo, int prodNo);
 }

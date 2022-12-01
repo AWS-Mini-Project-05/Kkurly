@@ -42,4 +42,17 @@
 		(#{userNo}, #{prodNo})
 	</insert>
 	
+	<select id="getLikeList" parameterType="like" resultType="like">
+		SELECT *
+		FROM TB_USER_LIKE
+		WHERE USER_NO = #{userNo}
+		AND PROD_NO = #{prodNo}
+	</select>
+	
+	<delete id="deleteLike" parameterType="map">
+		DELETE FROM TB_USER_LIKE
+		WHERE USER_NO = ${userNo} 
+		AND PROD_NO = ${prodNo}
+	</delete>
+	
 </mapper>
