@@ -720,6 +720,7 @@
 	</div>
 
 </body>
+<script src="${pageContext.request.contextPath }/js/addCartModule.js"></script>
 <script>
 	var swiper = new Swiper(".mySwiper", {
 
@@ -752,9 +753,9 @@
 				prev.style.opacity = 0;
 			})
 	
+
 			
-			
-	$(function() {
+	/* $(function() {
 		$(".product-function").on("click", function() {
 			
 			//localStorage.setItem("kkurlyNonMembersBasket", "prod-ex");
@@ -836,10 +837,10 @@
 			let str = JSON.stringify(Object.fromEntries(map));
 			
 			console.log(str);
-			 */
+			 
 		})
 	}); 
-	
+	 */
 	/* const hasDuplicate = (arrayObj, colName) => {
 		   var hash = Object.create(null);
 		   return arrayObj.some((arr) => {
