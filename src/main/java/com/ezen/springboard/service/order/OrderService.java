@@ -10,7 +10,7 @@ public interface OrderService {
 		
 	List<OrderVO> orderList();
 	OrderVO	orderListDetail(int orderNo);
-	
+	List<OrderVO> canceledOrderListView();
 	int canceledOrder(int orderNo);
 	 
 }

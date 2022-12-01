@@ -23,31 +23,15 @@
     table{border: 1px solid black;border-collapse: collapse;}
     th,td{border: 1px solid black;text-align: center ;}
     th{background-color: #83929e}
-    td{height: 150px;height: 150px;}
+    td{height: 100px;}
 	a{text-decoration: none;   color: black;}
 </style>
-<script>
-	$(function(){
-		$("#cateCondition").on("change",function(){
-			$("#cateForm").submit();
-			
-			
-			
-			
-		})//온체인지 서브밋 끝	
-	})
-    
-</script>
 </head>
 <body id="body">
-   <jsp:include page="/header_admin.jsp"></jsp:include>
-    
+   
     <div id="container">
-       <h3>주문 관리</h3>
+       <h3>취소된 주문</h3>
        <hr style="margin-bottom: 50px">
-        <form action="/order/ocancledOrderList.do?orderNo=${orderVO.orderNo}" method="get" style="display: flex; justify-content: flex-end;">
-	 	 <input type="submit" value="취소 주문 조회">
-	 	 </form>
   
        <hr style="clear: both">
        <table style="width: 100%;">

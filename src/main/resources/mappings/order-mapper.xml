@@ -16,14 +16,14 @@
 		SELECT COUNT(*) FROM TB_RETURN
 		WHERE ORDER_NO =#{orderNo}
 	</select>
-<!-- 	<select id="canceledOrder" resultType="order">
+	<select id="canceledOrderListView" resultType="order">
     SELECT A.*
     FROM 
     TB_ORDER A,
     TB_RETURN B
     WHERE
     B.ORDER_NO= A.ORDER_NO;
-	</select> -->
+	</select>
 	
 	
 </mapper>

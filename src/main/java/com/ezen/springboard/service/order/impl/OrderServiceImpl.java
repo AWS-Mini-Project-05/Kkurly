@@ -31,5 +31,11 @@ public class OrderServiceImpl implements OrderService {
 		 return orderDAO.canceledOrder(orderNo); 
 	 }
 
+	@Override
+	public List<OrderVO> canceledOrderListView() {
+		
+		return orderDAO.canceledOrderListView();
+	}
+
 	
 }

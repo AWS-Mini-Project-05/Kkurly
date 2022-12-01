@@ -50,7 +50,13 @@ public class OrderController {
 		model.addAttribute("userVo",userVo);
 		return "admin/orderListDetail";
 	}
-
+	@RequestMapping("canceledOrderList.do")
+	public String canceledOrderListView(Model model) {
+		List<OrderVO> orderLists = orderService.canceledOrderListView();
+		
+		model.addAttribute("orderLists",orderLists);
+		return "admin/canceledOrderList";
+	}
 	
  	
 }

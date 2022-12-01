@@ -24,6 +24,10 @@ public class OrderDAO {
 	  public int canceledOrder(int orderNo) { return
 	  mybatis.selectOne("OrderDAO.canceledOrder",orderNo);
 	}
+	public List<OrderVO> canceledOrderListView(){
+		return mybatis.selectList("OrderDAO.canceledOrderListView");
+
+	}
 	 
 
 }
