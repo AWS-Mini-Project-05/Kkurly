@@ -138,30 +138,19 @@
     </div>
 <jsp:include page="${pageContext.request.contextPath }/mainFooter.jsp"></jsp:include>
 <script>
-/* $(function() {
+  $(function() {
 	$("#btnUpdate").on("click", function() {
-		$.ajax({
-			url: "/user/mypage_update.do",
-			type: "post",
-			data: $("#userPw"),
-			success: function(obj) {
-				
-				//비밀번호 체크
-				if(obj =="pwFail") {
-					alert("비밀번호가 틀렸습니다. 다시 확인해주세요.");
-					$("#userPw").focus();
-					console.log($("#userPw").val());
-					return;
-				}
-				
-				location.href="/user/mypage_update_detail.do";
-			},
-			error: function(e) {
-				console.log(e);
-			}
-		});
-	});
-}); */
+		 if(session.getAttribute("userPw").equals("#userPw")) {
+			 location.href="/user/mypage_update_detail.do";
+			 } else {
+				alert("비밀번호가 틀렸습니다. 다시 확인해주세요.");
+				$("#userPw").focus();
+				return;
+			 }
+		 });
+});  
+
+
 </script>
 </body>
 </html>

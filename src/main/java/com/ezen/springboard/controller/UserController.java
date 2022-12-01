@@ -71,6 +71,11 @@ public class UserController {
 	public String updateView() {
 		return "user/mypage_update";
 	}
+	
+	@GetMapping("/mypage_update_detail.do")
+	public String updateDetialView() {
+		return "user/mypage_update_detail";
+	}
 
 
 	//post방식은 해당 로직 처리
