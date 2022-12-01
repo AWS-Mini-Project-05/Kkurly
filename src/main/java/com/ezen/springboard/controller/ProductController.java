@@ -3,6 +3,7 @@ package com.ezen.springboard.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,7 +20,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ezen.springboard.VO.CateVO;
 import com.ezen.springboard.VO.ProdFileVO;
 import com.ezen.springboard.VO.ProdVO;
-import com.ezen.springboard.VO.UserVO;
 import com.ezen.springboard.service.product.ProductService;
 
 import common.FileUtils;
