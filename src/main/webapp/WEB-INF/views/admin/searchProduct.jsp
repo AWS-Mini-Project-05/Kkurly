@@ -77,7 +77,7 @@
        <table style="width: 100%;">
         <tr>
         <th style="width: 5%;">No</th>
-        <th style="width: 21%">사진(최종은 히든)</th>
+        <th style="width: 21%">사진</th>
         <th style="width: 25%;">상품명</th>
         <th style="width: 8%;">판매가</th>
         <th style="width: 8%;">카테고리</th>

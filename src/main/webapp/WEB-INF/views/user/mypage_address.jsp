@@ -129,7 +129,7 @@
                                         <div class="desc">
                                             <dl>
                                                 <dt>주소</dt>
-                                                <dd></dd>
+                                                <dd>${userAdr }</dd>
                                             </dl>
                                             <dl>
                                                 <dt>전화번호</dt>
