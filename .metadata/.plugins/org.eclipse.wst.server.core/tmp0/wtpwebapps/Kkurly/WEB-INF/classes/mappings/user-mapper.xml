@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.drg/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserDAO">
+	<!-- 쿼리 작성 영역 -->
+	<select id="idCheck" parameterType="String" resultType="integer">
+		SELECT COUNT(*) FROM T_USER WHERE USER_ID = #{id}
+	</select>
+	
+	<select id="manageUser" parameterType="map" resultType="user">
+	<![CDATA[
+		SELECT *
+			FROM TB_USER
+	]]>
+			<if test="searchKeyword != null and searchKeyword != ''">
+				<if test="searchCondition == 'all'">
+				WHERE 1 = 0
+				   OR USER_NO LIKE CONCAT('%', #{searchKeyword}, '%')
+				   OR USER_Id LIKE CONCAT('%', #{searchKeyword}, '%')
+				</if>
+				<if test="searchCondition != 'all'">
+				WHERE 1 = 1
+					<if test="searchCondition == 'No'">
+						AND USER_NO LIKE CONCAT('%', #{searchKeyword}, '%')
+					</if>
+					<if test="searchCondition == 'name'">
+						AND USER_Id LIKE CONCAT('%', #{searchKeyword}, '%')
+					</if>
+				</if>
+			</if>
+	</select>
+		<select id="manageUser" parameterType="map" resultType="user">
+	<![CDATA[
+		SELECT *
+			FROM TB_USER
+	]]>
+			<if test="boardSearch.searchKeyword != null and boardSearch.searchKeyword != ''">
+				<if test="boardSearch.searchCondition == 'all'">
+				WHERE 1 = 0
+				   OR BOARD_TITLE LIKE CONCAT('%', #{boardSearch.searchKeyword}, '%')
+				   OR BOARD_CONTENT LIKE CONCAT('%', #{boardSearch.searchKeyword}, '%')
+				   OR BOARD_WRITER LIKE CONCAT('%', #{boardSearch.searchKeyword}, '%')
+				</if>
+				<if test="boardSearch.searchCondition != 'all'">
+				WHERE 1 = 1
+					<if test="boardSearch.searchCondition == 'title'">
+						AND BOARD_TITLE LIKE CONCAT('%', #{boardSearch.searchKeyword}, '%')
+					</if>
+					<if test="boardSearch.searchCondition == 'content'">
+						AND BOARD_CONTENT LIKE CONCAT('%', #{boardSearch.searchKeyword}, '%')
+					</if>
+					<if test="boardSearch.searchCondition == 'writer'">
+						AND BOARD_WRITER LIKE CONCAT('%', #{boardSearch.searchKeyword}, '%')
+					</if>
+				</if>
+			</if>
+			LIMIT #{cri.amount} OFFSET #{cri.startNum}
+	</select>
+	<select id="getBoardTotalCnt" parameterType="map" resultType="int">
+		SELECT COUNT(*)
+			FROM T_BOARD
+			<if test="searchKeyword != null and searchKeyword != ''">
+				<if test="searchCondition == 'all'">
+				WHERE 1 = 0
+				   OR BOARD_TITLE LIKE CONCAT('%', #{searchKeyword}, '%')
+				   OR BOARD_CONTENT LIKE CONCAT('%', #{searchKeyword}, '%')
+				   OR BOARD_WRITER LIKE CONCAT('%', #{searchKeyword}, '%')
+				</if>
+				<if test="searchCondition != 'all'">
+				WHERE 1 = 1
+					<if test="searchCondition == 'title'">
+						AND BOARD_TITLE LIKE CONCAT('%', #{searchKeyword}, '%')
+					</if>
+					<if test="searchCondition == 'content'">
+						AND BOARD_CONTENT LIKE CONCAT('%', #{searchKeyword}, '%')
+					</if>
+					<if test="searchCondition == 'writer'">
+						AND BOARD_WRITER LIKE CONCAT('%', #{searchKeyword}, '%')
+					</if>
+				</if>
+			</if>
+	</select>
+	
+	
+	
+	
+	<select id="getUser" parameterType="int" resultType="user">
+		SELECT * FROM TB_USER 
+		WHERE USER_NO =#{userNo}
+	</select>
+	<update id="updateUser" parameterType="map">
+		UPDATE TB_USER
+		SET 
+		USER_ID = #{userVO.userId},
+		USER_NM = #{userVO.userNm},
+		USER_EMAIL = #{userVO.userEmail},
+		USER_NICK = #{userVO.userNick},
+		USE_YN = #{userVO.useYn}
+		WHERE USER_NO = #{userNo}
+	</update>
+	<delete id="deleteUser" parameterType="int">
+		DELETE FROM TB_USER
+		WHERE USER_NO = #{no}
+	
+	</delete>
+	
+	
+</mapper>

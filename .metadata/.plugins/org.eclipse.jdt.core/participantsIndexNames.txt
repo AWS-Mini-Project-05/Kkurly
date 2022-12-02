@@ -1,0 +1,11 @@
+INDEX VERSION 1.131
+C:\Users\øµ∑’\OneDrive\πŸ≈¡ »≠∏È\SpringFrameWork\market\Kkurly\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2121824065.index
+\Kkurly\src\main\java
+C:\Users\øµ∑’\OneDrive\πŸ≈¡ »≠∏È\SpringFrameWork\market\Kkurly\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4165478847.index
+\Kkurly\src\main\java
+C:\Users\øµ∑’\OneDrive\πŸ≈¡ »≠∏È\SpringFrameWork\market\Kkurly\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3701834144.index
+\Kkurly\src\main\java
+C:\Users\øµ∑’\OneDrive\πŸ≈¡ »≠∏È\SpringFrameWork\market\Kkurly\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\217950097.index
+\Kkurly\src\main\java
+C:\Users\øµ∑’\OneDrive\πŸ≈¡ »≠∏È\SpringFrameWork\market\Kkurly\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2048416251.index
+\Kkurly\src\main\java

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-	<jsp:include page="./mainHeader.jsp"></jsp:include>
+	<jsp:include page="./header.jsp"></jsp:include>
 <body>
 	
 	<div style="text-align: center;">
