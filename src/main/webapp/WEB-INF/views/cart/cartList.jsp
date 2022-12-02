@@ -190,7 +190,7 @@ footer {
 	padding-right: 10px;
 	text-align: right;
 }
-#table-order{
+#table-order, #table-order-user{
 	width: 270px; height: 45px;
 	margin-top: 20px;
 	border: none; border-radius: 2%;
@@ -238,7 +238,7 @@ input[type=checkbox]:checked + label {
 			<span><input type="button" class="btn-txt-delete" value="선택삭제"></span>
 			</c:when>
 			<c:otherwise>
-			<span><input type="button" class="btn-txt-delete-user" name="del" value="삭제"></span>
+			<span><input type="button" class="btn-txt-delete-user" name="del" value="선택삭제"></span>
 			</c:otherwise>
 		</c:choose>
 	</div>
@@ -445,13 +445,13 @@ input[type=checkbox]:checked + label {
 		</table> -->
 		<c:choose>
 			<c:when test="${loginUser eq null}">
-				<input type="button" onclick="location.href='/user/login.do'" id="table-order" value="주문 전 로그인">
+				<input type="button" onclick="location.href='/user/login.do'" class="temp" id="table-order" value="주문 전 로그인">
 			</c:when>
 			<c:otherwise>
 				<form action="/cart/order.do" method="post" class="orderContainer" id="orderContainer" style="display:none;">
           				<input type="hidden" class="orderInput" id="order" name="order">
           		</form>
-				<input type="button" id="table-order" value="주문하기">
+				<input type="button" id="table-order-user" class="${loginUser.userNo }" value="주문하기">
 			</c:otherwise>
 		</c:choose>
 		
@@ -890,8 +890,8 @@ input[type=checkbox]:checked + label {
 			});
 		}
 		
-		$("#table-order").on("click", function() {
-			let userNo = ${loginUser.userNo};
+		$("#table-order-user").on("click", function() {
+			let userNo = $(this).attr("class");
 			let arrProdNo = new Array();
 			let arrProdQty = new Array();
 			

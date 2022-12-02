@@ -19,6 +19,7 @@
 		<typeAlias type="com.ezen.springboard.VO.OrderVO" alias ="order"></typeAlias>
 		<typeAlias type="com.ezen.springboard.VO.UserLikeVO" alias ="like"></typeAlias>
 		<typeAlias type="com.ezen.springboard.VO.CartVO" alias ="cart"></typeAlias>
+		<typeAlias type="com.ezen.springboard.VO.OrderDetailVO" alias ="detail"></typeAlias>
 	</typeAliases>
 	
 	<!-- 사용할 SQL 매퍼 위치 지정 -->

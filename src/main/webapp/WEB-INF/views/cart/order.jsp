@@ -187,7 +187,7 @@ section {
 					<p style="font-size: 14px; background-color: #D8D8D8; border-radius: 5%; width: 70px; text-align: center;">
 						기본배송지
 					</p>
-					임시 주소지
+					${userAdr }
 				</td>
 			</tr>
 			<tr>
@@ -221,27 +221,27 @@ section {
 			<table id="priceTb">
 				<tr style="height: 35px;">
 					<td class="priceTxt">주문금액 </td>
-					<td class="priceNum">103,435</td>
+					<td class="priceNum" id="price01">0</td>
 					<td>원 </td>
 				</tr>
 				<tr style="font-size: 13px; color: #A4A4A4;">
 					<td class="priceTxt subTxt">└ 상품금액 </td>
-					<td class="priceNum">${prodPrice }</td>
+					<td class="priceNum" id="price02">${prodPrice }</td>
 					<td>원 </td>
 				</tr>
 				<tr style="font-size: 13px; color: #A4A4A4;">
 					<td class="priceTxt subTxt">└ 상품할인금액 </td>
-					<td class="priceNum">- 1,935</td>
+					<td class="priceNum" id="price03">0</td>
 					<td>원 </td>
 				</tr>
 				<tr style="height: 35px;">
 					<td class="priceTxt">배송비 </td>
-					<td class="priceNum">0</td>
+					<td class="priceNum" id="price04">0</td>
 					<td>원 </td>
 				</tr>
 				<tr style="height: 35px; border-bottom: 1px solid black;">
 					<td class="priceTxt">쿠폰할인 </td>
-					<td class="priceNum">0</td>
+					<td class="priceNum" id="price05">0</td>
 					<td>원 </td>
 				</tr>
 				<tr>
@@ -249,7 +249,7 @@ section {
 				</tr>
 				<tr style="height: 35px; border-top: 1px solid black;">
 					<td class="priceTxt">최종결제금액 </td>
-					<td class="priceNum" style="font-size: 23px;">103,435</td>
+					<td class="priceNum" id="priceAll" style="font-size: 23px;">0</td>
 					<td>원 </td>
 				</tr>
 			</table>
@@ -267,7 +267,10 @@ section {
 	</div>
 	
 	<div style="width: 1040px; text-align: center;">
-		<input type="button" value="103,435원 결제하기" style="margin-top: 30px; width: 250px;
+		<form action="/cart/payment.do" method="post" class="resultContainer" id="resultContainer" style="display:none;">
+          	<input type="hidden" class="resultInput" id="resultInput" name="resultInput">
+        </form>
+		<input type="button" id="result" value="103,435원 결제하기" style="margin-top: 30px; width: 250px;
 			height: 50px; font-size: 17px; background-color: #6A0888; border: none;
 			cursor: pointer; border-radius: 2%; color: white;">
 	</div>
@@ -279,6 +282,17 @@ section {
 
 <script>
 	$(function() {
+		let priceProd = parseInt($("#price02").text()) - parseInt($("#price03").text());
+		let tmpPriceProd = priceProd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+		$("#price01").text(tmpPriceProd);
+		
+		let price02 = $("#price02").text().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+		$("#price02").text(price02);
+	
+		$("#priceAll").text(tmpPriceProd);
+		
+		$("#result").val(tmpPriceProd+"원 결제하기");
+		
 		$(".btn-fold").click(function(e) {
 			if ($(this).val() == "fold") {
 				$(this).attr("src", "${pageContext.request.contextPath }/images/unfold.png");
@@ -290,6 +304,11 @@ section {
 				$(this).val("fold");
 				$(".prod-table").show();
 			}
+		});
+		
+		$("#result").on("click", function() {
+			$("#resultInput").val(priceProd);
+			$("#resultContainer").submit();
 		});
 	});
 </script>

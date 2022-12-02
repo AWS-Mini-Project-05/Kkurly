@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ezen.springboard.VO.CartVO;
+import com.ezen.springboard.VO.OrderDetailVO;
+import com.ezen.springboard.VO.OrderVO;
 import com.ezen.springboard.VO.ProdVO;
 
 @Repository
@@ -43,5 +45,21 @@ public class CartDAO {
 		pMap.put("prodQty", prodQty);
 		pMap.put("userNo", userNo);
 		mybatis.update("CartDAO.updateItem", pMap);
+	}
+	
+	public String getUserAddr(int userNo) {
+		return mybatis.selectOne("CartDAO.getUserAddr", userNo);
+	}
+	
+	public void setOrderInfo(OrderVO orderVO) {
+		mybatis.insert("CartDAO.setOrderInfo", orderVO);
+	}
+	
+	public int getOrderNo(int userNo) {
+		return mybatis.selectOne("CartDAO.getOrderNo", userNo);
+	}
+	
+	public void setOrderDetail(OrderDetailVO detailVO) {
+		mybatis.insert("CartDAO.setOrderDetail", detailVO);
 	}
 }

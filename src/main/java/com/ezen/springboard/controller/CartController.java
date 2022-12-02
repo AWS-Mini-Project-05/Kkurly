@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ezen.springboard.VO.CartVO;
+import com.ezen.springboard.VO.OrderDetailVO;
+import com.ezen.springboard.VO.OrderVO;
 import com.ezen.springboard.VO.ProdVO;
 import com.ezen.springboard.VO.UserVO;
 import com.ezen.springboard.service.cart.CartService;
@@ -222,8 +224,19 @@ public class CartController {
 			
 		}
 		
-		UserVO userVO = (UserVO)session.getAttribute("loginUser");
 		
+		//OrderVO orderVO = new OrderVO();
+		UserVO userVO = (UserVO)session.getAttribute("loginUser");
+		//System.out.println(userVO)
+		// 주소
+//		String userAdr = userVO.getUserAdr(); // 안됨 
+		int userNo = userVO.getUserNo();
+		String userAdr = cartService.getUserAddr(userNo);
+		
+		
+		System.out.println("userAddr: " + userAdr);
+		
+		System.out.println(prodList.toString());
 		//System.out.println(userVO.toString());
 		
 		model.addAttribute("prodList", prodList);
@@ -231,6 +244,11 @@ public class CartController {
 		model.addAttribute("priceList", priceList);
 		model.addAttribute("userVO", userVO);
 		model.addAttribute("prodPrice", prodPrice);
+		model.addAttribute("userAdr", userAdr);
+		
+		session.setAttribute("prodList", prodList);
+		session.setAttribute("qtyList", qtyList);
+		session.setAttribute("priceList", priceList);
 		
 		return "/cart/order";
 	}
@@ -259,6 +277,58 @@ public class CartController {
 		cartService.updateItem(prod, qty, userNo);
 		
 		return "good";
+	}
+	
+	@RequestMapping("/payment.do")
+	public String payment(HttpSession session, @RequestParam("resultInput") int price) {
+	
+		
+		OrderVO orderVO = new OrderVO();
+		UserVO userVO = (UserVO)session.getAttribute("loginUser");
+		//System.out.println(userVO)
+		// 주소 
+		int userNo = userVO.getUserNo();
+		String userNm = userVO.getUserNm();
+		String userAdr = cartService.getUserAddr(userNo);
+		String userTel = userVO.getUserTel();
+		
+		orderVO.setUserNo(userNo);
+		orderVO.setReceiverNm(userNm);
+		orderVO.setAdrNo(userAdr);
+		orderVO.setReceiverTel(userTel);
+		orderVO.setPayWay("무통장입금");
+		orderVO.setOrderStatus("배송 준비");
+		String p = Integer.toString(price);
+		orderVO.setTotalPrice(p);
+		
+		//System.out.println(orderVO.toString());
+		cartService.setOrderInfo(orderVO);
+		
+		List<ProdVO> prodList = (List<ProdVO>)session.getAttribute("prodList");
+		List<Integer> qtyList = (List<Integer>)session.getAttribute("qtyList");
+		List<Integer> priceList = (List<Integer>)session.getAttribute("priceList");
+		
+		
+		OrderDetailVO detailVO = new OrderDetailVO();
+//		private int orderNo;
+//		private String orderDNo;
+//		private int prodQty;
+//		private String couponNo;
+//		private String totalPrice;
+
+		//System.out.println(prodList);
+		int orderNo = cartService.getOrderNo(userNo);
+		for (int i = 0; i< prodList.size(); i++) {
+			detailVO.setOrderNo(orderNo);
+			detailVO.setProdNo(prodList.get(i).getProdNo());
+			detailVO.setProdQty(qtyList.get(i));
+			detailVO.setTotalPrice(Integer.toString(priceList.get(i)));
+			//System.out.println("detail: " + detailVO);
+			cartService.setOrderDetail(detailVO);
+		}
+
+		
+		return "/index";
 	}
 	
 }

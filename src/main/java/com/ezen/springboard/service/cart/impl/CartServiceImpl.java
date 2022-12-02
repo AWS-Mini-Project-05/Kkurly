@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ezen.springboard.VO.CartVO;
+import com.ezen.springboard.VO.OrderDetailVO;
+import com.ezen.springboard.VO.OrderVO;
 import com.ezen.springboard.VO.ProdVO;
 import com.ezen.springboard.service.cart.CartService;
 
@@ -38,5 +40,25 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public void updateItem(int prodNo, int prodQty, int userNo) {
 		cartDAO.updateItem(prodNo, prodQty, userNo);
+	}
+	
+	@Override
+	public String getUserAddr(int userNo) {
+		return cartDAO.getUserAddr(userNo);
+	}
+	
+	@Override
+	public void setOrderInfo(OrderVO orderVO) {
+		cartDAO.setOrderInfo(orderVO);
+	}
+	
+	@Override
+	public int getOrderNo(int userNo) {
+		return cartDAO.getOrderNo(userNo);
+	}
+	
+	@Override
+	public void setOrderDetail(OrderDetailVO detailVO) {
+		cartDAO.setOrderDetail(detailVO);
 	}
 }

@@ -66,4 +66,11 @@ public class OrderVO {
 	public void setTotalPrice(String totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+	@Override
+	public String toString() {
+		return "OrderVO [orderNo=" + orderNo + ", userNo=" + userNo + ", orderDt=" + orderDt + ", adrNo=" + adrNo
+				+ ", receiverNm=" + receiverNm + ", receiverTel=" + receiverTel + ", payWay=" + payWay
+				+ ", orderStatus=" + orderStatus + ", totalPrice=" + totalPrice + "]";
+	}
+	
 }
