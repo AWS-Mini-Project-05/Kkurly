@@ -451,7 +451,7 @@ input[type=checkbox]:checked + label {
 				<form action="/cart/order.do" method="post" class="orderContainer" id="orderContainer" style="display:none;">
           				<input type="hidden" class="orderInput" id="order" name="order">
           		</form>
-				<input type="button" id="table-order" value="주문하기">
+				<input type="button" id="table-order-user" class="${loginUser.userNo }" value="주문하기">
 			</c:otherwise>
 		</c:choose>
 		
@@ -890,8 +890,8 @@ input[type=checkbox]:checked + label {
 			});
 		}
 		
-		$("#table-order").on("click", function() {
-			let userNo = ${loginUser.userNo};
+		$("#table-order-user").on("click", function() {
+			let userNo = $(this).attr("class");
 			let arrProdNo = new Array();
 			let arrProdQty = new Array();
 			
