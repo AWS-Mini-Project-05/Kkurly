@@ -1,0 +1,26 @@
+1669181926283	Copy files
+1669182386589	Copy compilation unit
+1669182442188	Delete element
+1669183037651	Delete elements
+1669183053186	Copy files
+1669183382685	Delete element
+1669187578953	Copy compilation unit
+1669187615534	Copy packages
+1669187636182	Rename type 'UserService'
+1669187646199	Rename type 'UserDAO'
+1669187658345	Rename type 'UserServiceImpl'
+1669187745374	Copy compilation unit
+1669188208936	Rename type 'AdminVO'
+1669188762955	Rename type 'AdminController'
+1669188779573	Rename package 'com.ezen.springboard.service.admin'
+1669188787737	Rename type 'AdminService'
+1669188801277	Rename package 'com.ezen.springboard.service.admin.impl'
+1669188808108	Rename type 'AdminDAO'
+1669188814125	Rename type 'AdminServiceImpl'
+1669190321917	Copy file
+1669190388071	Rename resource 'product-mapper.xml'
+1669191359190	Move folder
+1669191362116	Move file
+1669191373844	Delete element
+1669357209909	Copy file
+1669426578414	Move folder

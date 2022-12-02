@@ -10,15 +10,38 @@
 	</select>
 	
 	<!-- 리스트 체크 -->
-	<select id="searchProduct" resultType="prod">
-	SELECT * FROM TB_PROD
+	<select id="searchProduct" parameterType="map" resultType="prod">
+	<![CDATA[
+		SELECT *
+			FROM TB_PROD
+	]]>
+			<if test="searchKeyword != null and searchKeyword != ''">
+				<if test="searchCondition == 'all'">
+				WHERE 1 = 0
+				   OR PROD_NO LIKE CONCAT('%', #{searchKeyword}, '%')
+				   OR PROD_NM LIKE CONCAT('%', #{searchKeyword}, '%')
+				   OR PROD_CG_CD LIKE CONCAT('%', #{searchKeyword}, '%')
+				</if>
+				<if test="searchCondition != 'all'">
+				WHERE 1 = 1
+					<if test="searchCondition == 'No'">
+						AND PROD_NO LIKE CONCAT('%', #{searchKeyword}, '%')
+					</if>
+					<if test="searchCondition == 'Name'">
+						AND PROD_NM LIKE CONCAT('%', #{searchKeyword}, '%')
+					</if>
+					<if test="searchCondition == 'Cate'">
+						AND PROD_CG_CD LIKE CONCAT('%', #{searchKeyword}, '%')
+					</if>
+				</if>
+			</if>
 	</select>
 	
- 	<insert id="prodInsert" parameterType="prod">
+ 	<insert id="prodInsert" parameterType="map">
  	<selectKey resultType="int" keyProperty="prodNo" order="BEFORE">
 			SELECT IFNULL(MAX(A.PROD_NO), 0) + 1 FROM TB_PROD A
 		</selectKey>
-		INSERT INTO TB_PROD(
+	INSERT INTO TB_PROD(
 		PROD_NO,
 		PROD_CG_CD,
 		PROD_NM,
@@ -28,47 +51,37 @@
 		PROD_UNIT,
 		PROD_VOL,
 		USE_YN,
-		SALE_Qty
-		)VALUES
-		(	
+		SALE_Qty,
+		PROD_IMG_NM,
+		PROD_IMG_PATH
+	) VALUES(	
 		#{prodNo},
-		'1120',
-		#{prodNm},
-		#{prodPrice},
-		#{prodQty},
+		#{prodVO.prodCgcd},
+		#{prodVO.prodNm},
+		#{prodVO.prodPrice},
+		#{prodVO.prodQty},
 		NOW(),
-		#{prodUnit},
-		#{prodVol},
+		#{prodVO.prodUnit},
+		#{prodVO.prodVol},
 		'Y',
-		0
+		0,
+		#{prodFile.prodFileNm},
+		#{prodFile.prodFilePath}
 	)
 	</insert> 
-	<insert id="prodInsertFileList" parameterType="list">
-		INSERT INTO TB_PROD_IMAGES(
-			PROD_NO,
-			PROD_IMG_NO,
- 			PROD_IMG_NM,
- 			INPUT_DT,
-			USE_YN,
-			MAIN_YN,
-			IMG_SIZE
-		) VALUES
-		<foreach collection="list" item="file" separator=",">
-		(
-			#{file.prodNo},
-			(
-				SELECT IFNULL(MAX(A.PROD_IMG_NO), 0) + 1
-					FROM TB_PROD_IMAGES A
-					WHERE A.PROD_NO = #{file.prodNo}
-			),
-			#{file.prodFileNm},
-			NOW(),
-			'Y',
-			'Y',
-			200
-		)
-		</foreach> 
-	</insert>
-
+	
+	<select id="prodDetail" resultType="prod" parameterType="int">
+	SELECT * FROM TB_PROD
+	WHERE PROD_NO = #{prodNo}
+	</select>
+	
+	<select id="prodInsert2" resultType="cate">
+	SELECT * FROM TB_CD
+	WHERE P_CD = "T01"
+	</select>
+	<delete id="prodDelete" parameterType="int">
+	DELETE FROM TB_PROD
+	WHERE PROD_NO = #{prodNo}
+	</delete>
 	
 </mapper>
