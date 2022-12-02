@@ -301,7 +301,7 @@ public class CartController {
 		String p = Integer.toString(price);
 		orderVO.setTotalPrice(p);
 		
-		//System.out.println(orderVO.toString());
+		//System.out.println(orderVO.toString());klk
 		cartService.setOrderInfo(orderVO);
 		
 		List<ProdVO> prodList = (List<ProdVO>)session.getAttribute("prodList");

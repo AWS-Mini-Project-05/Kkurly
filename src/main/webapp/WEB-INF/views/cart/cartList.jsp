@@ -677,9 +677,17 @@ input[type=checkbox]:checked + label {
 			countNumOfSelect();
 			countNumOfTotal();
 			
-		})
+		});
 		
-		$(".btn-txt-delete").on("click", function() {
+/* 		//////./////////
+		$("#orderContainer").on("submit", function(e) {
+			e.preventDefault();
+			console.log($("#tmp").val());
+		});
+		
+		/////////////// */
+		
+		$(".btn-txt-delete").on("click", function(e) {
 			console.log("btn test");
 			
 			$(".prod-table").each(function(index, item){
@@ -825,6 +833,7 @@ input[type=checkbox]:checked + label {
 		function delItemInLocalStorage(prodNo) {
 			let tmpLocalStorage = localStorage.getItem('kkurlyNonMembersBasket');
 			let tmpArrayStr = new Array();
+			console.log($("#tmp").val());
 			
 			tmpArrayStr = JSON.parse(tmpLocalStorage);
 			
